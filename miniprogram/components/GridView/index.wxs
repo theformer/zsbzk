@@ -1,0 +1,19 @@
+var imageSize = {
+  direction: function (size, windowWidth) {
+    var width = size.width, height=size.height;
+    var max_width = parseInt(windowWidth / 2 );
+    var max_height = parseInt(windowWidth / 2 );
+    var rate = 1;
+    if (width > max_width || height > max_height){//超出尺寸的图片
+      if (width > height){
+        rate = (width / max_width).toFixed(2);
+      }else{
+        rate = (height / max_width).toFixed(2);
+      }
+    }
+    width = width / rate;
+    height = height / rate;
+    return "width:" + width + "px;height:" + height + "px";
+  }
+}
+module.exports = imageSize;

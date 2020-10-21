@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="item-box">
+    <view class="item-header">
+      <view class="item-title"><i class="line line-left"></i>完成规则<i class="line line-right"></i></view>
+    </view>
+    <view class="item-content">
+      <view>1.新手任务，同一账号只可完成一次。</view>
+      <view>2.每日任务，每日只可完成一次，0点更新任务状态。</view>
+      <view>3.完成任务后请及时领取相应积分，以免0点清零。</view>
+      <view>4.邀请好友任务没有完成次数限制。</view>
+    </view>
+  </view>
+  <view class="item-box">
+    <view class="item-header">
+      <view class="item-title"><i class="line line-left"></i>奖励规则<i class="line line-right"></i></view>
+    </view>
+    <view class="item-content">
+      <view>1.完成任务可领取相应奖励积分。</view>
+      <view>2.获得的积分，可在"积分中心'点击'前往兑换"到兑换 专区进行积分兑换。</view>
+      <view>3.积分兑换后将扣除相应积分，并无法撤销。</view>
+      <view>4.积分兑换礼品时请看清礼品使用说明。</view>
+      <view>5.以上所有解释权，归自考伴所有。</view>
+    </view>
+  </view>
+</view>

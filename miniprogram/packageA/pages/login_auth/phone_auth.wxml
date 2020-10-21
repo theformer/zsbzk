@@ -1,0 +1,13 @@
+<!--packageA/pages/login_auth/phone_auth.wxml-->
+<view style="padding-top:100rpx"></view>
+<view class="text-center">
+  <view><image src="/static/images/bgImg/logo.png" style="width:158rpx;height:158rpx;"></image></view>
+  <view class="text-dl text-bold text-content margin-top-xl">绑定手机号</view>
+  <view class="text-xs-s text-grey text-content margin-top-sm">
+    <view>为了你账号的安全级正常使用，依《网络安全法》</view>
+    <view>相关要求，账号需绑定手机</view>
+  </view>
+</view>
+<view class="margin-top-xxxl">
+  <button class="btn-img warr-btn" hover-class="hidden" openType="getPhoneNumber" bindgetphonenumber='bindGetPhoneNumber' lang='zh_CN'>手机号授权登录</button>
+</view>

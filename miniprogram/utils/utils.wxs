@@ -1,0 +1,74 @@
+var String = {
+  dataSlice: function (str) {
+    return str.length > 10 ? str.slice(0, 10) : str;
+  },
+  dataTermSub:function(str){
+    str = str.slice(0, 10);
+    var reg = getRegExp("-", "g");
+    return str.replace(reg, '.')
+  },
+  titleSlice: function (str) {
+    return str.length > 28 ? str.slice(0, 28) + "..." : str;
+  },
+  videoUrlReplace : function(str){
+    if(str){
+      var reg = getRegExp('tk.', 'gi');
+      return str.replace(reg,"s1.v.");
+    }
+  },
+  keyword : function(centent,arr){
+    arr.forEach(function(v,i,a){
+      var reg = getRegExp(v.content, "g");
+      centent = centent.replace(reg,"<span style='color:#FF3233'>#"+ v.content +"#</span>");
+    })
+    return centent;
+  },
+}
+var DateUtils = {
+  dateFormerly : function(dateStr){
+    if (dateStr==undefined){
+      return;
+    }
+    var reg = getRegExp("-", "g");
+    var str = dateStr.substring(0, 19);
+    var endTime = getDate(str.replace(reg, '/')).getTime();
+    var currTime = getDate().getTime();
+    var millisecond = currTime - endTime;
+    if (millisecond < 60 * 1000) {//一分钟之内
+      return "刚刚";
+    }else  if (millisecond < 60 * 60 * 1000){//一小时内
+      var hours = Math.ceil(millisecond / (60 * 1000));
+      return hours + "分钟前";
+    } else if (millisecond < 60 * 60 * 24 * 1000){//一天内
+      var hours = Math.ceil(millisecond / (60 * 60 * 1000));
+      return hours + "小时前";
+    } else if (millisecond < 60 * 60 * 24 * 7 * 1000){//七天内
+      var days = Math.ceil(millisecond / (60 * 60 * 24 * 1000));
+      return days + "天前";
+    } else if (millisecond < 60 * 60 * 24 * 30 * 1000){//30天内
+      var days = Math.ceil(millisecond / (60 * 60 * 24 * 1000));
+      return days + "天前";
+    } else if (millisecond < 60 * 60 * 24 * 365 * 1000) {//一年内
+      var month = Math.ceil(millisecond / (60 * 60 * 24 * 30 * 1000 ));
+      return month + "月前";
+    } else{//大于一年
+      var year = Math.ceil(millisecond / (60 * 60 * 24 * 30 * 365 * 1000));
+      return year + "年前";
+    }
+  },
+  dateForMD : function(dateStr){
+    var date  = getDate(dateStr);
+    return (date.getMonth()+1) + "月" + date.getDate() + "日";
+    
+  }
+}
+
+
+module.exports = {
+  dataSlice: String.dataSlice,
+  dataTermSub: String.dataTermSub,
+  titleSlice: String.titleSlice,
+  DateUtils : DateUtils,
+  videoUrlReplace : String.videoUrlReplace,
+  keyword:String.keyword,
+}

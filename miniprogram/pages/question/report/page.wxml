@@ -1,0 +1,23 @@
+<wxs module="utils" src="../../../utils/utils.wxs" />
+<scroll-view class="scroll-box" scroll-y >
+  <block wx:for="{{list}}" wx:key="list" >
+    <view class="item shadow margin padding-dp radius-xl ">
+      <view class="item-icon">
+        <image src="/static/images/icon/icon-report.png"></image>
+      </view>
+      <view class="item-content">
+        <view class="text-df">{{item.paperName}}</view>
+        <view class="text-sm text-gray margin-top-sm">{{utils.DateUtils.dateFormerly(item.recordTime)}}</view>
+      </view>
+      <view class="item-btn">
+        <button class="cu-btn round btn-title text-sm bg-white" catchtap="to_mode" data-item="{{item}}">重做</button>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{list.length==0}}">
+    <view class="data-error">
+      <image src="/static/images/bgImg/data_error.png"></image>
+      <view class="error-tips">暂无数据</view>
+    </view>
+  </block>
+</scroll-view>

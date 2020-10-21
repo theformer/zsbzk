@@ -1,0 +1,263 @@
+.fui-navbar.iphoneX{
+    padding-bottom: 50rpx;
+}
+
+.bargain .fui-goods-group {
+    margin-top: 88rpx;
+    padding: 0;
+}
+
+.fui-goods-group.block .fui-goods-item {
+    padding: 0;
+    padding-bottom: 16rpx;
+}
+
+.fui-goods-group.block .fui-goods-item:nth-child(2n-1) {
+    padding-right: 8rpx;
+}
+
+.fui-goods-group.block .fui-goods-item:nth-child(2n) {
+    padding-left: 8rpx;
+}
+
+.bargain .fui-goods-group.block .fui-goods-item .detail {
+    padding: 10px 24rpx 14rpx;
+}
+
+.fui-goods-item .detail .price {
+    font-size: 26rpx;
+    margin-top: 14rpx;
+}
+
+.fui-goods-item .detail .price .text {
+    font-weight: bold;
+}
+
+.fui-goods-item .detail .price .original_price {
+    color: #999;
+    font-size: 24rpx;
+    text-decoration: line-through;
+    margin-top: 2rpx;
+}
+
+.name image {
+    display: inline-block;
+    width: 50rpx;
+    height: 24rpx;
+    vertical-align: middle;
+    margin-top: -5rpx;
+    margin-right: 10rpx;
+}
+
+.bargain .empty {
+    text-align: center;
+    padding-top: 88rpx;
+}
+
+.bargain .empty view {
+    position: relative;
+    font-size: 28rpx;
+    color: #999;
+    line-height: 128rpx;
+}
+
+.bargain .empty view:before {
+    position: absolute;
+    content: '';
+    width: 140rpx;
+    border-bottom: 1px solid #e5e5e5;
+    top: 60rpx;
+    left: 130rpx;
+}
+
+.bargain .empty view:after {
+    position: absolute;
+    content: '';
+    width: 140rpx;
+    border-bottom: 1px solid #e5e5e5;
+    top: 60rpx;
+    right: 130rpx;
+}
+
+.searchEmpty {
+    text-align: center;
+    padding-top: 196rpx;
+}
+
+.searchEmpty image {
+    width: 240rpx;
+    height: 240rpx;
+}
+
+.searchEmpty .text {
+    line-height: 105rpx;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.flex {
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.flex1 {
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+
+
+/* 砍价列表样式 */
+.fui-list-media {
+    width:270rpx;
+    height:150rpx;
+}
+
+.fui-list {
+    padding: 10px 10px;
+    display: flex;
+    background: #fff;
+}
+
+.fui-list-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fui-list-inner .des{
+    font-size: 30rpx;
+    padding-bottom: 36rpx;
+    line-height: 36rpx;
+    color: #333333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: pre-wrap;
+}
+/* line-height: 36rpx; */
+.fui-list-inner .price {
+    font-size: 28rpx;
+    color: #ff5555;
+    flex-direction: column;
+    display: flex;
+    width: 60%;
+}
+
+.fui-list-inner .line {
+    font-size: 22rpx;
+    color: #b2b2b2;
+    font-weight: bold;
+    text-decoration: line-through;
+    padding-top: 3px;
+}
+
+/* 点击免费拿 */
+.groupbtn {
+  width: 40%;
+  background: #ff5555;
+  color: #fff;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.groupbtn.over{
+  background:#888;
+}
+
+/* 授权弹框样式 start */
+
+/* button {
+    font-size: 30rpx;
+    background-color:#e0000000;
+    line-height: 100rpx;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+} */
+
+button:after {
+    display: none;
+}
+
+.model {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.model .inner {
+    width: 624rpx;
+    height: 380rpx;
+    background: #fff;
+    border-radius: 8rpx;
+    margin: 260rpx auto;
+    overflow: hidden;
+}
+
+.model .inner .title {
+    font-size: 36rpx;
+    color: #000;
+    line-height: 100rpx;
+    text-align: center;
+    margin-top: 20rpx;
+    border-bottom: 1rpx solid #ebebeb;
+}
+
+.model .inner .image {
+    text-align: center;
+    margin-top: 20rpx;
+}
+
+.model .inner image {
+    width: 342rpx;
+    height: 202rpx;
+}
+
+.model .inner .subtitle {
+    margin-top: 36rpx;
+    padding: 0 80rpx;
+    color: #888;
+    font-size: 26rpx;
+    line-height: 40rpx;
+}
+
+.model-btns {
+    border-top: 1rpx solid #ebebeb;
+    height: 100rpx;
+    margin-top: 42rpx;
+    display: flex;
+    text-align: center;
+    font-size: 30rpx;
+    color: #000;
+    line-height: 100rpx;
+}
+
+.model-btns .cancel {
+    width: 50%;
+    position: relative;
+}
+
+.model-btns .cancel:after {
+    content: " ";
+    position: absolute;
+    top: -1rpx;
+    right: 0;
+    width: 1px;
+    height: 210rpx;
+    border-right: 1px solid #ebebeb;
+    color: #ebebeb;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+}
+
+/* 授权弹框样式 start */
+

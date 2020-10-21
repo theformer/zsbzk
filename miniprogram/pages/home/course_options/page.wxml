@@ -1,0 +1,20 @@
+<view class='manu' >
+  <scroll-view class='manu-head' scroll-y scroll-into-view="{{siv}}">
+    <block wx:for="{{courseList}}" wx:key='courseIndex' wx:for-item='item' wx:index="index">
+      <view class="manu-ul {{item.id == course.id  ? 'active':''}}" catchtap='manuCatchtp' data-index='{{index}}' id="id{{item.id}}">
+        <view class='courseName'>{{item.name}}</view>
+        <view class="right-direction iconfont iconsanjiaojiantou rotate-right"></view>
+      </view>
+    </block>
+  </scroll-view>
+  <scroll-view class='manu-body' scroll-y scroll-into-view="sid{{subCourse.id}}">
+    <block wx:for="{{courseList}}" wx:key='courseIndex' wx:for-item='super' wx:for-index="cindex" wx:if="{{super.id == course.id}}">
+      <block wx:for="{{super.subCourses}}" wx:key='subCourseIndex' wx:for-item='sub' wx:for-index="sindex" >
+        <view class="manu-li {{sub.id == subCourse.id ? 'active':''}}" catchtap='subCourseCatchtp'  data-sindex='{{sindex}}' data-cindex='{{cindex}}' id="sid{{sub.id}}">
+          <view class='subCourseName'>{{sub.subCourseName}}</view>
+          <!-- <view class="right-direction iconfont iconicon" ></view> -->
+        </view>
+      </block>  
+    </block>
+  </scroll-view>
+</view>

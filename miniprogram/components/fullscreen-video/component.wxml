@@ -1,0 +1,20 @@
+<!--components/fullscreen-video/component.wxml-->
+
+<video src="{{imgUrl}}{{video.url}}" 
+id="videoId"
+direction="0"
+picture-in-picture-mode="push"
+show-center-play-btn
+show-play-btn="{{false}}"
+play-btn-position="center"
+bindfullscreenchange="videofullscreenchange"
+bindplay="videoPlay"
+class="video-container"
+>
+  <!-- <view class="video-box" wx:if="{{!fullscreen}}">
+    <image class="video-image image" src="{{imgUrl}}{{video.firstImgUrl}}" mode="aspectFill"></image>
+    <view  class="video-play img-btn" catchtap="fullscreen_play" >
+      <image src="/static/images/icon/video-play.png" class="image"></image>
+    </view>
+  </view> -->
+</video>

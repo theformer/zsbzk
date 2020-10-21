@@ -1,0 +1,33 @@
+var IndexGroup = {
+  isAnswer: function (str, answer) {
+    if(str != undefined){
+      return str.indexOf(answer) > -1;
+    }else{
+      return "";
+    }
+    
+  },
+  replaceImg : function(content) {
+    if (!content) {
+        return;
+    }
+    var reg = getRegExp('<img', 'gi');
+    return content.replace(reg, '<img style="max-width:100% !important;height:auto !important;display:block"')
+  },
+  inspect : function(num){
+    if(num==null){
+      return;
+    }else
+    if(num==2){
+      return "success";
+    }else
+    if(num==4){
+      return "error";
+    }
+  }
+}
+module.exports = {
+  isAnswer: IndexGroup.isAnswer,
+  replaceImg:IndexGroup.replaceImg,
+  inspect:IndexGroup.inspect,
+}

@@ -1,0 +1,86 @@
+<!--packageA/pages/community/module/page.wxml-->
+<wxs module="utils" src="/utils/utils.wxs" />
+<view class="container {{messageShow && 'noscroll'}}">
+  <view class="nav-top">
+    <scroll-tab scrollData="{{modules}}" selectedIndex="{{activeIndex}}" bind:callbackFunc="scrollClick" class="nav_container"></scroll-tab>
+  </view>
+  <view class="body">
+    <swiper class='swiper-box' current="{{current}}" bindchange="bindChange" duration="100">
+      <block wx:for="{{dataList}}" wx:key="dataList" wx:for-item="qualityList">
+        <swiper-item>
+          <scroll-view class="item-scroll" scroll-y refresher-enabled="{{activeIndex == index}}"
+          refresher-threshold="{{100}}" refresher-triggered="{{modules[activeIndex].refresher}}" 
+          bindrefresherrefresh="getPostNewDate" bindscrolltolower="pushNewData" lower-threshold="800">
+          <block wx:for="{{qualityList}}" wx:key="qualityList" wx:for-item="arr" wx:for-index="listIndex">
+            <block wx:for="{{arr}}" wx:key="quality" wx:for-index="comIndex">
+              <view class="item-com">
+                <view class="com-header" bindtap="openArticle" data-indexA="{{listIndex}}" data-indexB="{{comIndex}}">
+                  <block wx:for="{{item.labelList}}" wx:key="label" wx:for-item="label">
+                    <text class="com-quality">{{label.name}}</text>
+                  </block>
+                  <text class="com-title">{{item.title}}</text>
+                </view>
+                <view class="com-image-box" wx:if="{{item.state == 1 }}">
+                  <!-- <block wx:for="{{item.urls}}" wx:key="img" wx:for-item="img" wx:for-index="imgIndex">
+                    <view class="com-image-li" bindtap="openImage" data-indexA="{{listIndex}}" data-indexB="{{comIndex}}" data-indexC="{{imgIndex}}">
+                      <image src="{{imgUrl}}{{img.url}}" mode="aspectFit" lazy-load></image>
+                    </view>
+                  </block> -->
+                  <GridView images="{{item.urls}}"></GridView>
+                </view>
+                <view class="com-video-box" wx:elif="{{item.state == 2 }}">
+                  <view class="video-container" wx:if="{{!item.play}}">
+                    <image class="poster-image" src="{{imgUrl}}{{item.urls[0].firstImgUrl}}" mode="aspectFit" lazy-load></image>
+                    <view class="video-layer"></view>
+                    <button class="video-play img-btn" bindtap="playVideo" data-indexA="{{listIndex}}" data-indexB="{{comIndex}}">
+                      <image src="/static/images/icon/video-play.png"></image>
+                    </button>
+                  </view>
+                  <video class="video-container" src="{{imgUrl}}{{item.urls[0].url}}" show-center-play-btn="{{false}}" autoplay="{{true}}" enable-play-gesture="{{true}}" wx:else></video>
+                </view>
+                <view class="com-userinfo">
+                  <view class="userinfo-photoUrl">
+                    <image src="{{item.photoUrl ? item.photoUrl : photoUrl}}"></image>
+                  </view>
+                  <view class="userinfo-name">{{item.userNickName}}</view>
+                  <view class="userinfo-time">{{utils.DateUtils.dateFormerly(item.createTime)}}</view>
+                </view>
+                <view class="com-mutual">
+                  <button class="com-btn img-btn" open-type="share" data-indexA="{{listIndex}}" data-indexB="{{comIndex}}">
+                    <image src="/static/images/icon/share2.png"></image>
+                    <text class="com-text">{{item.shareCount}}</text>
+                  </button>
+                  <button class="com-btn img-btn">
+                    <image src="/static/images/icon/chat2.png"></image>
+                    <text class="com-text">{{item.commentCount}}</text>
+                    <isAuthor bind:flagEvent="openMessage" data-indexA="{{listIndex}}" data-indexB="{{comIndex}}"></isAuthor>
+                  </button>
+                  <button class="com-btn img-btn">
+                    <image src="/static/images/icon/praise-active.png" wx:if="{{item.likeState}}"></image>
+                    <image src="/static/images/icon/praise2.png" wx:else></image>
+                    <text class="com-text {{item.likeState&&'com-active'}}">{{item.likeCount}}</text>
+                    <isAuthor bind:flagEvent="userAddLikeCount" data-indexA="{{listIndex}}" data-indexB="{{comIndex}}"></isAuthor>
+                  </button>
+                  <button class="com-btn img-btn" 
+                  bindtap="openPorover" data-A="{{activeIndex}}" data-B="{{listIndex}}" data-C="{{comIndex}}">
+                    <image src="/static/images/icon/ellipsis.png" class="icon-ellipsis"></image>
+                  </button>
+                </view>
+              </view>
+            </block>
+          </block>
+          <block wx:if="{{qualityList.length==0}}">
+              <view class="data-error">
+                <image src="/static/images/bgImg/data_error.png"></image>
+                <view class="error-tips">暂无数据</view>
+              </view>
+            </block>
+          </scroll-view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
+<comment_message commentData="{{commentData}}" bind:close_comment="close_message" class="{{!messageShow && 'messageShow'}}"></comment_message>
+<popoverTab wx:if="{{activeIndex==poroverON.a&&poroverON.b>-1&&poroverON.c>-1}}" 
+                  bind:callback="popover_callback" touches="{{touches}}"></popoverTab>

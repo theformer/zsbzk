@@ -1,0 +1,81 @@
+<!--miniprogram/pages/credit_activity/course/page.wxml-->
+<view class='nav-wrap text-white' style='height:9vh;'>
+  <text class="nav-back cuIcon-back " bindtap="pageBack"></text>
+  <view class='nav-title text-white' >
+    <view class="subcourse-title" catchtap="questionChange">
+        <text>{{course.name}}</text>
+        <image src="/static/images/icon/icon-order.png" mode="aspectFit" class="png" ></image>
+      </view>
+  </view>
+</view>
+<view class="nav-container">
+  <scroll-view class="scroll-box" scroll-y>
+    <view class="flex margin" catchtap="to_wechat" data-type="1">
+      <image src="/static/images/bgImg/bg-zlb.png" mode="widthFix" style="width:100%;"></image>
+    </view>
+    <block wx:for="{{list}}" wx:key="list">
+      <view class="course-item">
+        <view class="item-coverImg">
+          <image src="{{imgUrl + item.picUrl}}" mode="widthFix" style="width:100%;border-radius:10rpx;" ></image>
+        </view>
+        <view class="item-content padding-left-sm">
+          <view class="text-df">{{item.itemsName}}</view>
+          <view class="margin-top-xs text-sm">
+            <view class="rankstars">
+              <block wx:for="{{[0,1,2,3,4]}}" wx:key="star" wx:for-item="i">
+                <image wx:if="{{item.avg >= i+1}}" src="/static/images/icon/stargray.png" class="icon-star"></image>
+                <image wx:elif="{{item.avg > (i +0.5)}}" src="/static/images/icon/starmedium.png" class="icon-star"></image>
+                <image wx:elif="{{item.avg < (i +0.5)}}" src="/static/images/icon/starfull.png" class="icon-star"></image>
+              </block>
+            </view>
+            <text class="text-gray margin-left-xs">{{item.avg}} </text>
+            <text class="text-gray margin-left">{{item.number}}已兑换</text>
+          </view>
+          <view class="item-buttom">
+            <text class="text-df text-red text-bold">{{item.creditPrice}}学分</text>
+            <button class="item-btn cu-btn round text-sm bg-white text-red" >
+              <text wx:if="{{item.exchangeState}}">立即学习</text>
+              <text wx:else>立即兑换</text>
+            </button>
+          </view>
+        </view>
+        <isAuthor bind:flagEvent="exchange" data-item="{{item}}"></isAuthor>
+      </view>
+    </block>
+    <view class=""></view>
+  </scroll-view>
+  <block wx:if="{{list.length==0}}">
+      <view class="data-error">
+        <image src="/static/images/bgImg/data_error.png" ></image>
+        <view class="error-tips">暂无数据</view>  
+      </view>
+    </block>
+</view>
+<view class="abs-task" catchtap="to_singin">
+  <image src="/static/images/icon/bg-task.png" mode="aspectFit"></image>
+</view>
+<view class="load-modal" wx:if="{{modalShow}}">
+  <view class="tips-box">
+    <view class="tips-top">
+      <image src="/static/images/bgImg/credit.png" mode="widthFix" style="width:100%;" wx:if="{{user_credit_ample}}" ></image>
+      <image src="/static/images/bgImg/not-credit.png" mode="widthFix" style="width:100%;" wx:else ></image>
+    </view>
+    <view class="tips-content" wx:if="{{user_credit_ample}}">
+      <view>你确定使用<text class="text-red">{{curr_item.creditPrice}}</text>学分</view>
+      <view>兑换此课程吗？</view>
+    </view>
+    <view class="tips-content" wx:else>
+      <view>您当前学分不足兑换此课程</view>
+      <view>快去领学分吧！</view>
+    </view>
+    <button class="tips-btn  text-red text-sm text-bold round" catchtap="exchangeCourse">
+      <image class="tips-btn-bg" src="/static/images/bgImg/credit-btn-bg.png" mode="widthFix" style="width:100%;"></image>
+      <text wx:if="{{user_credit_ample}}">立即兑换</text>
+      <text wx:else>去领学分</text>
+    </button>
+  </view>
+  <view class="load-close" catchtap="closeModal">
+    <text class="cuIcon-roundclose text-white"></text>
+  </view>
+  <view class="altremodel"></view>
+</view>

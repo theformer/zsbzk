@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#F96f1C",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "isAuthor": "../../../components/author/author"
+  },
+  "navigationBarTitleText": "课程详情"
+}

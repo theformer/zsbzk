@@ -1,0 +1,41 @@
+<!--pages/member/myComment/page.wxml-->
+<wxs module="utils" src="../../../utils/utils.wxs" />
+<view class="container">
+  <scroll-view class="item-scroll" scroll-y refresher-enabled="{{enabled}}"
+          refresher-threshold="{{100}}" refresher-triggered="{{refresher}}" 
+          bindrefresherrefresh="getPostNewDate"  bindscrolltolower="getMyCommentList">
+    <block wx:for="{{commentList}}"  wx:key="commentList" wx:for-item="arr" wx:for-index="listIndex">
+      <block wx:for="{{arr}}" wx:key="arr" wx:for-index="arrIndex" wx:for-item="obj">
+        <view class="header-item">
+          我{{utils.DateUtils.dateForMD(obj.createTime)}}评论的
+        </view>
+        <block wx:for="{{obj.data}}" wx:key="comment" wx:for-index="comIndex" wx:for-item="item">
+          <view class="comment-item" >
+            <view class="comment-head">
+              <view class="comment-icon">
+                <image src="/static/images/icon/book.png" wx:if="{{item.state==1}}"></image>
+                <image src="/static/images/icon/icon-play2.png" wx:else></image>
+              </view>
+            </view>
+            <view class="comment-body" bindtap="openArticle" data-item="{{item}}">
+              <view class="comment-title">{{item.tcontent}}</view>
+              <view class="comment-type">{{item.state==1?'帖子':'视频'}}</view>
+            </view>
+            <view class="comment-foot">
+              <view class="comment-delete" bindtap="deleteComment" data-item="{{item}}">
+                <image src="/static/images/icon/big-delete.png"></image>
+              </view>
+            </view>
+          </view>
+        </block>
+        
+      </block>
+    </block>
+  </scroll-view>
+  <block wx:if="{{commentList.length==0}}">
+    <view class="data-error">
+      <image src="/static/images/bgImg/data_error.png"></image>
+      <view class="error-tips">暂无数据</view>
+    </view>
+  </block>
+</view>

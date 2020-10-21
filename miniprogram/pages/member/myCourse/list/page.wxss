@@ -1,0 +1,55 @@
+/* miniprogram/pages/member/myCourse/list/page.wxss */
+.scroll-box{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.course-item{
+  position: relative;
+  padding: 30rpx 0;
+  margin:0 30rpx;
+  display:flex;
+}
+.item-coverImg{
+  position: relative;
+  display: inline-block;
+  width: 45%;
+  height: auto;
+}
+.item-content{
+  position: relative;
+  display: inline-block;
+  width: 55%;
+}
+
+.rankstars{
+  display: inline-flex;
+  flex-direction: row;
+  height: 21rpx;
+  margin-right: 6rpx;
+  margin-top: 12rpx;
+  }
+.rankstars .icon-star{
+  padding-left: 3rpx;
+  height: 21rpx;
+  width: 20rpx;
+  margin-left: 10rpx;
+}
+
+.item-buttom{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: 48rpx;
+}
+
+.item-btn{
+  position: relative;
+  float: right;
+  padding: 0 20rpx;
+  margin: 0;
+  margin-right: 12rpx;
+  text-align: center;
+  border: 2rpx solid #FF3233;
+  height: 48rpx;
+}

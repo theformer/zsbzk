@@ -1,0 +1,222 @@
+<import src="/utils/wxParse/wxParse.wxml"></import>
+<view class="model" wx:if="{{userInfoShow}}">
+  <include src="/pages/index/openauth.wxml"></include>
+</view>
+<!-- 自定义弹框 start -->
+<view class="video-mask" catchtouchmove="preventTouchMove" wx:if="{{showDlg}}"></view>
+<view class="video-modalDlg" wx:if="{{showDlg}}">
+  <text style='padding-top:20rpx;color:#666666'>{{showContext}}</text>
+  <view class='video-modalDlg-view'>
+    <button bindtap="dismissDlg" plain="true">关闭</button>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumbercallback">好的</button>
+  </view>
+</view>
+<view class="page navbar" style="background-color: #ffecc9;">
+  <image mode='widthFix' src='https://tel.360xkw.com/attachment/images/2/2018/08/KEofBxCEFCYC40L6OGf6Bq4xlfhEX0.png' style="width:100%;height:auto;margin-bottom:-38%;margin-top:-12%;"></image>
+  <view class="bargain-shop">
+
+    <view class='bargain-shop-back'>
+      <view class="user" style='flex-direction: column;display: flex;align-items: center;'>
+        <image src="{{bargainItem.wxImgUrl}}"></image>
+        <text>{{bargainItem.wxNickName}}</text>
+      </view>
+
+      <navigator class="goodsinfo flex" url="/pages/bargain/detail/detail?id={{bargainItem.id}}">
+        <view class="image">
+          <image mode="widthFix" src="{{imgUrl}}{{bargainItem.item.picUrl}}"></image>
+        </view>
+        <view class="goodsinner">
+          <view class="title">{{bargainItem.item.kcname}}</view>
+          <view>总价:
+            <text style='color:#ff5555;padding-right:12px;'>￥{{bargainItem.total_price}}</text>
+          </view>
+          <view> 已有{{bargainItemUserList.length}}人参与砍价 </view>
+          <!-- <view class="status">库存{{bargain.stock}} | 已售{{bargain.sold}}</view> -->
+        </view>
+      </navigator>
+
+      <view class='dashline'></view>
+      <wxs module="filt" src="./bargain.wxs" />
+      <view class='prossview'>
+
+        <!-- 进度100%一已经砍价list.bargain_price -->
+        <progress style="width:70%;border-radius:40rpx;overflow:hidden;" percent='{{filt.toNumtxt(bargain_price,bargainItem.total_price)}}' activeColor='#ff430e' backgroundColor='#ffeac9' stroke-width="12" active />
+
+        <view style="width:70%;display: flex;margin-top:12rpx;">
+
+          <text style="width:50%;text-align:left;color:#ff430e;"> 已砍￥{{bargain_price}}</text>
+          <text style="width:50%;text-align:right;">免费拿 </text>
+        </view>
+      </view>
+
+      <view class="prices">
+
+        <view style='font-size:28rpx;color:#666666;margin:10px 0 4px 0;' wx:if="{{istime==1&&state==0}}">
+          {{istimeTitle}}
+          <text class="number" wx:for="{{time}}" wx:key="item" wx:if="{{index!=0}}">{{item}}{{index==0?'':''}}{{index==1?':':''}}{{index==2?':':''}}{{index==3?'':''}}</text>
+        </view>
+        <navigator style='font-size:28rpx;color:#666666;margin-top:16rpx;' wx:if="{{istime==2}}" url="/pages/bargain/index/index">
+          砍价已结束,返回砍价首页
+        </navigator>
+        <navigator style='font-size:28rpx;color:#666666;margin-top:16rpx;' wx:if="{{istime==3}}" url="/pages/bargain/index/index">
+          活动数量已抢光，下次早点来哦！
+        </navigator>
+        <view wx:if="{{istime==1}}">
+          <button class="time" formType="submit" bindtap="cutPrice" wx:if="{{myself_swi==0&&state==0}}">立即砍价</button>
+          <button class="time" style="width:83%;" bindtap="seekHelp"  wx:if="{{myself_swi==1&&state==0}}">邀请好友帮砍</button>
+          <button class="time" bindtap="receiveBargain" wx:if="{{state==1}}">点击免费拿课程</button>
+          <button class="time" bindtap="gotoMycourse" wx:elif="{{state==2}}">课程已领取,去学习</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view style='width:100%;margin:3% 0 3% 0; align-items: center;justify-content: center;display: flex;'>
+    <view style='background-color:none;width:40%;height:auto;margin:0;padding:0 0;' bindtap='gotoSingup'>
+      <image mode='widthFix' style='width:100%;' src='/static/images/ceyic_btn.png'></image>
+    </view>
+    <view bindtap='showFreeState' style='background-color:none;width:40%;height:auto;margin:0;padding:0 0;margin-left:8%;'>
+      <image mode='widthFix' style='width:100%;' src='/static/images/groups_brn.png'></image>
+    </view>
+  </view>
+
+
+  <view class="fui-cell-group {{isIphoneX && 'iphoneX'}}">
+    <view class="title">
+      <view class="fui-tab fui-tab-danger" id="tab">
+        <view bindtap="goodsTab" class="item {{showtab=='family'?'active':''}}" data-tap="family">亲友团</view>
+        <view bindtap="goodsTab" class="item {{showtab=='info'?'active':''}}" data-tap="info">商品详情</view>
+        <view bindtap="goodsTab" class="item {{showtab=='rule'?'active':''}}" data-tap="rule">活动规则</view>
+        <view bindtap="goodsTab" class="item {{showtab=='join'?'active':''}}" data-tap="join" wx:if="{{bargain_set.partin>-10000}}">参与榜</view>
+      </view>
+    </view>
+    <view class="tabcontent">
+      <view wx:if="{{showtab=='family'}}">
+        <view class="fui-cell" wx:for="{{bargainItemUserList}}" wx:key="item">
+          <view class="fui-cell-label">
+            <image src="{{item.wxImgUrl}}"></image>
+          </view>
+          <view class="fui-cell-info">
+            <view class="title">{{item.wxNickName}}</view>
+            <view class="text">{{item.bargainTime}}</view>
+          </view>
+          <view class="fui-cell-remark noremark danger">
+            <text>-{{item.bargainPrice}}</text>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{showtab=='info'}}">
+        <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
+      </view>
+      <view wx:if="{{showtab=='rule'}}">
+        <include src="/pages/common/bargainRule.wxml"></include>
+      </view>
+      <view wx:if="{{showtab=='join'&&bargain_set.partin>-10000}}">
+        <view class="fui-cell" wx:for="{{bargain_actor}}">
+          <view class="fui-cell-label">
+            <image src="{{item.head_image}}"></image>
+          </view>
+          <view class="fui-cell-info">
+            <view class="title">{{item.nickname}}</view>
+            <view class="text">{{item.update_time}}</view>
+          </view>
+          <view class="fui-cell-remark noremark danger">
+            <text wx:if="{{item.bargain_price<=0}}">{{item.bargain_price}}</text>
+            <text wx:if="{{item.bargain_price>0}}">+{{item.bargain_price}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="fui-navbar flex {{isIphoneX && 'iphoneX'}}" wx:if="{{istime==1&&state==3}}">
+    <navigator class="buybtn" url="/pages/bargain/detail/detail?id={{bargainItem.itemId}}">我也要砍</navigator>
+    <view class="bargainBuy" wx:if="{{bargainItem.status==1}}">砍价已结束</view>
+    <view bindtap="cutPrice" class="bargainBuy" wx:else>帮砍一刀</view>
+  </view>
+
+  <view class="{{isIpx?'fui-iphonex-button':''}}"></view>
+  <view bindtap="closeLayer" class="layer" wx:if="{{layer}}">
+    <view class="content">
+      <view class="icox icox-close"></view>
+      <image src="/static/images/success.png"></image>
+      <view style="line-height:82rpx;font-size:28rpx">恭喜你成功砍掉</view>
+      <view style="line-height:70rpx;font-size:66rpx;font-weight:bold;color:#ff5555">{{cutPrice}}元</view>
+      <view class="layerbtn">知道了</view>
+    </view>
+  </view>
+  <view class="layer" wx:if="{{error_hint}}">
+    <view class="showModal">
+      <view class="inner">{{error_hint_title}}</view>
+      <view class="operate flex">
+        <view bindtap="closeError" class="flex1">确定</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="{{ showDialog ? 'zan-dialog--show' : '' }}">
+    <view class="zan-dialog__mask" />
+    <view class="zan-dialog__container">
+        <view>
+            <view class='layui-layer-wrap' style='height:600rpx; padding-top:80rpx'>
+                <view class='scroll-view'>
+                    <view class='title'>恭喜您领课成功</view>
+                    <view>1、课程会发送至您绑定手机的账户上</view>
+                    <view>2、您可以在个人中心=>我的课程,查看领取的课程资料</view>
+                    <view>3、您还可以已该手机号登录成考APP查看学习</view>
+                </view>
+                <button class='closeBtn' bindtap='gotoMycourse'>去学习</button>
+            </view>
+        </view>
+    </view>
+</view>
+
+<navigator style='position:fixed;width:100%;top:40%;left:83%;' open-type="switchTab" url="/pages/index/index" wx:if="{{pageIndex}}">
+  <view class='group-right-back-index-qun'>
+      <text>回到\n首页</text>
+  </view>
+</navigator>
+<view class="wechat-dialog" wx:if="{{wechatShow}}">
+  <view class="wechat-dialog__mask"></view>
+  <view class="wechat-box">
+    <view class="wechat-tips">
+      <i class="border-line"/>分享到<i class="border-line"/>
+    </view>
+    <view class="wechat-share">
+      <button class="wechat-item" open-type="share" hover-class="none">
+        <image src="/static/images/share/wechat.png" class="wechat-img"></image>
+        <view class="wechat-title">微信</view>
+      </button>
+      <button class="wechat-item" hover-class="none" catchtap="onCreatePoster">
+        <image src="/static/images/share/wechatCircle.png" class="wechat-img"></image>
+        <view class="wechat-title">微信朋友圈</view>
+      </button>
+    </view>
+    <view class="wechat-close" bindtap="seekHelp">
+      <image src="/static/images/icon-white/round_close-48.png"></image>
+    </view>
+  </view>
+</view>
+<!-- 生成海报组件 -->
+<poster id="poster" hide-loading="{{false}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
+<!-- 展示海报弹窗 -->
+<view class="cu-modal {{isShowPosterModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class='content'>分享朋友圈</view>
+      <view class='action' bindtap='hideModal'>
+        <text class='cuIcon-close text-red'></text>
+      </view>
+    </view>
+    <view>
+      <image style='height:800rpx;' mode="aspectFit" src="{{posterImageUrl}}" bindtap="posterImageClick"></image>
+    </view>
+    <view class="cu-bar bg-white">
+      <view class='action margin-0 flex-sub text-green solid-left' bindtap='hideModal'>取消</view>
+      <view class='action margin-0 flex-sub  solid-left' bindtap='savePosterImage'>保存本地分享</view>
+    </view>
+  </view>
+</view>
+<view class="shareTips" wx:if="{{shareModal}}">
+  <image src="/static/images/share/cirleTips.png"  style="width:100%;height:100%;"></image>
+  <view class="closeModel" catchtap="closeShareTips"></view>
+</view>

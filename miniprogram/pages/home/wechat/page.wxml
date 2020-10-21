@@ -1,0 +1,2 @@
+<!--miniprogram/pages/home/wechat/page.wxml-->
+<web-view src="{{default_url}}"></web-view>

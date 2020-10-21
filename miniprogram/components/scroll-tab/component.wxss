@@ -1,0 +1,36 @@
+/* components/scroll-tab/component.wxss */
+.scroll-box{
+  position: relative;
+  width: 100%;
+  overflow-x: scroll;
+  white-space: nowrap;
+  display: block;
+  height: 100%;
+}
+.scroll-item{
+  position: relative;
+  display: inline-block;
+  width: 25%;
+  padding: 20rpx 0rpx;
+  text-align: center;
+  color: #666666;
+  font-size: 26rpx;
+}
+.scroll-item.item-active{
+  color: #E70012;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.scroll-item.item-active::before{
+  position: absolute;
+  display: inline-block;
+  content: "";
+  background: #E70012;
+  height: 8rpx;
+  width: 64rpx;
+  border-radius: 32rpx;
+  margin: auto;
+  left:0; 
+  right:0;
+  bottom:0;
+}

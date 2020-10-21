@@ -1,0 +1,117 @@
+<!-- 个人中心界面 自定义 -->
+<loading wx:if="{{loadshow}}">加载中...</loading>
+<!-- 弹框提示 start -->
+<view class="exercise-index-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showDlg}}"></view>
+<view class="exercise-index-modalDlg" wx:if="{{showDlg}}">
+  <text style='padding-left:30rpx;padding-right:30rpx;padding-top:20rpx;color:#343434;font-size:14px;'>点击 “好的” 回复 “2”</text>
+  <view class='exercise-index-modalDlg-view'>
+    <button bindtap="dismissDlg" plain="true" class="btn-left">关闭</button>
+    <button open-type="contact" bindtap="dismissDlg" plain>好的</button>
+  </view>
+</view>
+<!-- 弹框提示 end -->
+<view class="page member">
+    <view class="member-box">
+      <view class="member-head" style="z-index:9999;border: none;">
+        <view class="child userinfo">
+          <view class="avatar" >
+            <image class="icon" src="{{member.photoUrl}}" wx:if="{{member.photoUrl}}"></image>
+            <open-data type="userAvatarUrl" wx:else></open-data>
+          </view>
+          <view class="username">
+            <view class="nickname" >{{member.nickName||'点击登录'}}</view>
+            <view class="userVip">欢迎来到自考伴</view>
+            <isAuthor bind:flagEvent="userLogin" ></isAuthor>
+          </view>
+          <view class="right-btn">
+            <button class="img-btn">
+              <image src="/static/images/bgImg/sign-btn.png"></image>
+              <isAuthor bind:flagEvent="userSignIn" ></isAuthor>
+            </button>
+          </view>
+        </view>
+      </view> 
+      <view class="member-count">
+        <navigator class="count-item" url="/pages/member/publish/page" hover-class="none">
+          <view class="count-num">{{userHistoryCount.ftcount||0}}</view>
+          <view class="count-title">已发布</view>
+        </navigator>
+        <navigator class="count-item" url="/pages/member/likeRecordList/page" hover-class="none">
+          <view class="count-num">{{userHistoryCount.dzcount||0}}</view>
+          <view class="count-title">已点赞</view>
+        </navigator>
+        <navigator class="count-item" url="/pages/member/myComment/page" hover-class="none">
+          <view class="count-num">{{userHistoryCount.plcount||0}}</view>
+          <view class="count-title">已评论</view>
+        </navigator>
+        <navigator class="count-item" url="/pages/member/recordHistory/page" hover-class="none">
+          <view class="count-num">{{userHistoryCount.llcount||0}}</view>
+          <view class="count-title">浏览足迹</view>
+        </navigator>
+      </view>
+    </view>
+    <view class="task margin  text-black">
+      <image src="/static/images/icon/icon-xing.png" mode="aspectFit" class="icon-xing margin-right-sm"></image>
+      <text class="text-red text-df">完成每日任务，领取视频课程</text>
+      <view class="task-right">立即领取</view>
+      <isAuthor bind:flagEvent="openSingIn" ></isAuthor>
+    </view>
+    <scroll-view style="height:63%" scroll-y="true">
+      <view class="fui-cell-group margin shadow">
+        <view class="fui-cell" hoverClass="none">
+          <view class="fui-cell-icon">
+            <image src='/static/images/icon/icon-singIn.png'></image>
+          </view>
+          <view class="fui-cell-text">我的学分</view>
+          <view class='fui-cell-remark'>
+            <image src='/static/images/icon/remark.png'></image>
+          </view>
+          <isAuthor bind:flagEvent="openSingIn" ></isAuthor>
+        </view>
+        <view class="fui-cell" hoverClass="none">
+          <view class="fui-cell-icon">
+            <image src='/static/images/icon/icon-myCourse.png'></image>
+          </view>
+          <view class="fui-cell-text">我的课程</view>
+          <view class='fui-cell-remark'>
+            <image src='/static/images/icon/remark.png'></image>
+          </view>
+          <isAuthor bind:flagEvent="to_myCourse" ></isAuthor>
+        </view>
+        
+        <view class="fui-cell" hoverClass="none">
+          <view class="fui-cell-icon">
+            <image src='/static/images/icon/icon-course.png'></image>
+          </view>
+          <view class="fui-cell-text">意见反馈</view>
+          <view class='fui-cell-remark'>
+            <image src='/static/images/icon/remark.png'></image>
+          </view>
+          <isAuthor bind:flagEvent="openFeedback" ></isAuthor>
+        </view>
+        <view class="fui-cell" hoverClass="none">
+          <view class="fui-cell-icon">
+            <image src='/static/images/icon/icon-down-app.png'></image>
+          </view>
+          <view class="fui-cell-text">下载app</view>
+          <view class='fui-cell-remark'>
+            <image src='/static/images/icon/remark.png'></image>
+          </view>
+          <isAuthor bind:flagEvent="showDialogBtn" ></isAuthor>
+        </view>
+        <view class="fui-cell" hoverClass="none">
+          <view class="fui-cell-icon">
+            <image src='/static/images/icon/icon-black.png'></image>
+          </view>
+          <view class="fui-cell-text">黑名单管理</view>
+          <view class='fui-cell-remark'>
+            <image src='/static/images/icon/remark.png'></image>
+          </view>
+          <isAuthor bind:flagEvent="openBlacklist" ></isAuthor>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="activity-task" catchtap="to_activity">
+      <image src="/static/images/bgImg/course-task.png" ></image>
+    </view>
+</view>

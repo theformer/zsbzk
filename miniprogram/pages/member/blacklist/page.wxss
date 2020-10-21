@@ -1,0 +1,64 @@
+/* pages/member/blacklist/page.wxss */
+page{
+  background: #FFF;
+}
+.container{
+  position: relative;
+  padding-top:2vh;
+  padding-bottom: 0rpx;
+  background: #FFF;
+  height: 100vh;
+  font-size: 30rpx;
+}
+.item-scroll {
+  position: relative;
+  height: 100%;
+  padding: 0 30rpx;
+}
+
+.item{
+  position: relative;
+  height: 142rpx;
+  border-bottom : 1px solid #E6E6E6;
+  display: flex;
+  align-items:center;
+}
+
+.item .item-header{
+  position: relative;
+  display: inline-flex;
+  width: 15%;
+}
+.item-header .user-photo{
+  position: relative;
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.item .item-content{
+  position: relative;
+  display: inline-flex;
+  width: 65%;
+}
+.item-content .user-name{
+  position: relative;
+}
+.item .item-foot{
+  position: relative;
+  display: inline-flex;
+  width: 20%;
+}
+
+.item-foot .gray-button{
+  position: relative;
+  display: inline-block;
+  height: 60rpx;
+  font-size: 24rpx;
+  color: #999999;
+  border: 1px solid #E6E6E6;
+  text-align: center;
+  line-height: 60rpx;
+}

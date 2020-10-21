@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "isAuthor": "/components/author/author"
+  }
+}

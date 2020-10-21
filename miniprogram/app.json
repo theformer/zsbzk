@@ -1,0 +1,96 @@
+{
+  "pages": [
+    "pages/home/index/page",
+    "pages/home/channel/page",
+    "pages/home/article/page",
+    "pages/home/test-circle/page",
+    "pages/bargain/act/act",
+    "pages/bargain/bargain/bargain",
+    "pages/bargain/detail/detail",
+    "pages/bargain/index/index",
+    "pages/bargain/purchase/purchase",
+    "pages/member/index/page",
+    "pages/member/feedback/page",
+    "pages/member/singin/page",
+    "pages/member/credit-explain/page",
+    "pages/member/sign-explain/page",
+    "pages/member/task-explain/page",
+    "pages/member/publish/page",
+    "pages/member/myComment/page",
+    "pages/member/likeRecordList/page",
+    "pages/member/recordHistory/page",
+    "pages/member/blacklist/page",
+    "pages/home/province/page",
+    "pages/home/course_options/page",
+    "pages/question/collection/page",
+    "pages/question/wrongReview/page",
+    "pages/question/report/page",
+    "pages/question/paper/page",
+    "pages/question/subject/page",
+    "pages/question/mode/page",
+    "pages/question/answerList/page",
+    "pages/question/paperReport/page",
+    "pages/credit_activity/course/page",
+    "pages/member/myCourse/list/page",
+    "pages/member/myCourse/item/page",
+    "pages/member/myCourse/video/page",
+    "pages/credit_activity/assist/page",
+    "pages/wechat/page",
+    "pages/index/openauth"
+  ],
+  "subpackages": [
+    {
+      "root": "packageA",
+      "name": "pack1",
+      "pages": [
+        "pages/wechat/page",
+        "pages/login_auth/base_info_auth",
+        "pages/login_auth/phone_auth",
+        "pages/community/index/page",
+        "pages/community/module/page",
+        "pages/community/release/page",
+        "pages/community/article/page",
+        "pages/community/label-module/page"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位省份"
+    }
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#000",
+    "selectedColor": "#000",
+    "borderStyle": "black",
+    "backgroundColor": "#f7f7fa",
+    "list": [
+      {
+        "pagePath": "pages/home/index/page",
+        "text": "首页",
+        "iconPath": "/static/images/menu/home.png",
+        "selectedIconPath": "/static/images/menu/home-active.png"
+      },
+      {
+        "pagePath": "pages/bargain/index/index",
+        "text": "助力",
+        "iconPath": "/static/images/menu/home_pt.png",
+        "selectedIconPath": "/static/images/menu/home_pt.png"
+      },
+      {
+        "pagePath": "pages/member/index/page",
+        "text": "我的",
+        "iconPath": "/static/images/menu/member.png",
+        "selectedIconPath": "/static/images/menu/member-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

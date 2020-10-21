@@ -1,0 +1,171 @@
+/* packageA/pages/community/release/page.wxss */
+@import "/static/font/iconfont.wxss";
+page{
+  background: #FFF;
+}
+.container{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  padding: 20rpx 45rpx;
+}
+
+.iconfont {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.toolbar {
+  box-sizing: border-box;
+  padding: 0 10px;
+  height: 50px;
+  width: 100%;
+  right: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid #ECECEC;
+  border-left: none;
+  border-right: none; */
+}
+.container .form-item{
+  position: relative;
+  margin-bottom: 40rpx;
+}
+.form-item .form-input{
+  position: relative;
+  width: 100%;
+  height: 70rpx;
+  line-height: 64rpx;
+  color: #26292C;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid #A9ACB0;
+}
+.form-input.border{
+  border-bottom:1rpx solid #E70012;
+}
+.form-item .form-textarea{
+  position: relative;
+  width: 100%;
+  height: 300rpx;
+  line-height: 40rpx;
+  overflow-y: auto;
+  /* margin-top: 40rpx; */
+}
+.form-item .form-upload{
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 80rpx;
+  padding-top: 10rpx;
+  padding-right: 10rpx;
+}
+.video-container{
+  position: relative;
+  width: 100%;
+  height: 50vw;
+  border-radius: 10rpx;
+}
+.form-upload .form-uploader_file{
+  position: relative;
+  display:block;
+  margin-right: 1%;
+  width: 32.3%;
+  height: 196rpx;
+  text-align: center;
+  margin-bottom: 8rpx;
+  float: left;
+  background: #212121;
+}
+.form-upload .delBtn{
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  width: 28rpx;
+  height: 28rpx;
+  z-index: 100;
+}
+.form-upload .delvideo{
+  position: absolute;
+  top: 0rpx;
+  right: 0rpx;
+  width: 28rpx;
+  height: 28rpx;
+  z-index: 100;
+}
+.form-upload .form-uploader_file.form-uploader-box{
+  background:no-repeat;
+}
+.form-upload .form-uploader_file:nth-child(3n-1){
+  margin-right:0.5%;
+  margin-left:0.5%; 
+}
+.form-upload .form-uploader_file:nth-child(3n+0){
+  margin-right: 0;
+  margin-left:1%; 
+}
+.label-title{
+  position: relative;
+  width: 200rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  padding: 0 10rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+  background: #EDEFF2;
+  border-radius: 54rpx;
+  color: #A9ACB0;
+}
+.label-title image{
+  position: relative;
+  display: inline-block;
+  height: 22rpx;
+  width: 22rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.label-box{
+  position: relative;
+  display: -webkit-box;
+  width: 100%;
+  margin-bottom: 50rpx;
+}
+.label-box .label-item{
+  position: relative;
+  display: inline-block;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 20rpx;
+  color: #26292C;
+  font-size: 24rpx;
+  background:rgba(237,239,242,1);
+  border-radius:24rpx;
+  margin-right: 20rpx;
+  margin-bottom:20rpx;
+}
+.label-active{
+  color: #E70012;
+}
+.label-active image{
+  width: 18rpx;
+  height: 18rpx;
+}
+.form-item .form-submit{
+  position: relative;
+  margin: 30rpx;
+  border-radius: 40rpx;
+  height: 80rpx;
+  line-height:80rpx;
+  font-size: 30rpx;
+  text-align: center;
+  background: #E70012;
+  color: #FFF;
+}
+.form-item .form-label{
+  position: relative;
+  font-size: 22rpx;
+  color: #A9ACB0;
+  line-height: 40rpx;
+}

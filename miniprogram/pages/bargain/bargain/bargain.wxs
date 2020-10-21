@@ -1,0 +1,46 @@
+var filters = {
+  toFix: function (value) {
+    return value.toFixed(2)//此处2为保留两位小数
+  }
+}
+var filt = {
+  toFix: function (value) {
+    return value.substring(0, value.indexOf("."))//去除小数点后两2位小数
+  },
+  toNumtxt: function (value, value1) {//计算砍价进度条数
+    var num = (parseFloat(value) + 0.01) / parseFloat(value1) * 100;
+    if (value==0)
+      return 0;
+    else
+      return num;
+  },
+  toNumber: function (value) {//计算砍价进度条数console.log('10 ===' + ce);
+    var ceo = parseFloat(value);
+    var cee = 0.01;
+    var ce = ceo + cee;
+    if (value == 0)
+      return 0;
+    else
+      return ce;
+  }
+}
+
+var gzh ='点击“好的”，回复“2”，前往关注界面';
+var appdown = '点击“好的”，回复“2”，下载成考APP学习';
+var mfzl = '点击“好的”，回复“2”，前往成考公众号领取资料';
+var daillog = {//提示不同文字
+  todTxt: function (value) {
+    switch (value){
+      case '1': return gzh; break;
+      case '2': return appdown; break;
+      case '3': return mfzl; break;
+    }
+  }
+}
+module.exports = {
+  toFix: filters.toFix,
+  toFixs: filt.toFix,
+  toNumtxt: filt.toNumtxt,
+  todTxt: daillog.todTxt,
+  toNumber: filt.toNumber
+}

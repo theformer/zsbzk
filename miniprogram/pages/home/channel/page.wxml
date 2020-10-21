@@ -1,0 +1,33 @@
+<!--pages/home/channel/page.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="title">我的频道</view>
+    <view class="label">按住拖拽调整顺序</view>
+  </view>
+  <view class="selected-ul">
+    <block wx:for="{{typeList}}" wx:key="selected" >
+      <view class="selected-li" wx:if="{{!item.disabled}}">
+        <view class="grid-box">
+          <text>{{item.name}}</text>
+          <view class="close" bindtap="typeClose" data-index="{{index}}"><image src="/static/images/icon/close.png"></image></view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="header">
+    <view class="title">我的频道</view>
+    <view class="label">点击添加频道</view>
+  </view>
+  <view class="select-ul">
+    <block wx:for="{{typeList}}" wx:key="select" >
+      <view class="select-li" wx:if="{{item.disabled}}">
+        <view class="grid-box">
+          <image src="/static/images/icon/add-min.png" class="add" bindtap="typeAdd" data-index="{{index}}"></image>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <button class="save-btn" hover-class="none" bindtap="saveFun">保存</button>
+</view>

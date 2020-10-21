@@ -1,0 +1,8 @@
+<!--components/scroll-tab/component.wxml-->
+<scroll-view class="scroll-box" scroll-x scroll-left="{{selectedIndex>2 ? (selectedIndex-2) *85 :0}}">
+    <block wx:for="{{scrollData}}" wx:for-index="index" wx:for-item='item' wx:key="scroll" >
+      <view class="scroll-item {{selectedIndex == index ?'item-active':'' }}" bindtap="selectedClick" data-index="{{index}}" wx:if="{{item.disabled==0}}">
+        <text>{{item.name}}</text>
+      </view>
+    </block>
+</scroll-view>

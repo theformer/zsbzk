@@ -1,0 +1,224 @@
+<!--pages/member/singin/page.wxml-->
+<wxs module="indexGroup" src="page.wxs" />
+<view class="container">
+  <view class="header">
+    <image src="/static/images/bgImg/sign-bg.png"  class="bgimg"></image>
+    <view class="header-content">
+      <view class="header-title">
+        <view class="header-text">我的学分</view>
+        <view class="header-credit">{{creditCount || 0}}</view>
+      </view>
+      <view class="header-btn">
+        <button class="img-btn duihuan" catchtap="to_activity">前往兑换</button>
+        <navigator class="img-btn credit-explain" url="/pages/member/credit-explain/page" hover-class="none">
+          学分明细
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="signin-source">
+    <view class="sign-header">
+      <view class="sign-processive">已连续签到{{signDays || 0}}天</view>
+      <navigator class="sign-explain img-btn" url="/pages/member/sign-explain/page" hover-class="none">
+        <image class="font-img font-wenhao" src="/static/images/icon/wenhao.png"></image>签到说明
+      </navigator>
+    </view>
+    <view class="sign-box">
+      <!-- <canvas id="sign-progress" style="width: 100%; height: 200px;"></canvas> -->
+      <view class="first-row">
+        <view class="sign-date {{signDays >= 1 && 'signActive' }}">
+          <view class="sign-reward">{{signArr[0].credit}}</view>
+          <view class="sign-jb">
+            <image src="/static/images/icon/jingbi.png"></image>
+          </view>
+          <view class="sign-progress"><view class="sign-point"></view></view>
+          <view class="sign-days">{{signDays==1?"今日已签":"1天"}}</view>
+        </view>
+        <view class="sign-date {{signDays >= 2 && 'signActive' }}">
+          <view class="sign-reward">{{signArr[1].credit}}</view>
+          <view class="sign-jb">
+            <image src="/static/images/icon/jingbi.png"></image>
+          </view>
+          <view class="sign-progress"><view class="sign-point"></view></view>
+          <view class="sign-days">{{signDays==2?"今日已签":"2天"}}</view>
+        </view>
+        <view class="sign-date {{signDays >= 3 && 'signActive' }}">
+          <view class="sign-reward">{{signArr[2].credit}}</view>
+          <view class="sign-jb">
+            <image src="/static/images/icon/jingbi.png"></image>
+          </view>
+          <view class="sign-progress"><view class="sign-point"></view></view>
+          <view class="sign-days">{{signDays==3?"今日已签":"3天"}}</view>
+        </view>
+        <view class="sign-date {{signDays >= 4 && 'signActive' }}">
+          <view class="sign-reward">{{signArr[3].credit}}</view>
+          <view class="sign-jb">
+            <image src="/static/images/icon/jingbi.png"></image>
+          </view>
+          <view class="sign-progress"><view class="sign-point"></view></view>
+          <view class="sign-days">{{signDays==4?"今日已签":"4天"}}</view>
+        </view>
+        <view class="sign-date {{signDays >= 5 && 'signActive' }}">
+          <view class="sign-reward">{{signArr[4].credit}}</view>
+          <view class="sign-jb">
+            <image src="/static/images/icon/jingbi.png"></image>
+          </view>
+          <view class="sign-progress"><view class="sign-point"></view></view>
+          <view class="sign-days">{{signDays==5?"今日已签":"5天"}}</view>
+        </view>
+      </view>
+      <view class="last-row">
+        <view class="sign-date sign-lastDays {{signDays >= 30 && 'signActive' }}">
+          <view class="sign-reward">{{signArr[29].credit}}</view>
+          <view class="sign-jiangbei">
+            <image src="/static/images/icon/jiangbei.png"></image>
+          </view>
+          <view class="sign-progress"><view class="sign-point"></view></view>
+          <view class="sign-days">{{signDays==30?"今日已签":"30天"}}</view>
+        </view>
+        <view class="sign-date {{signDays >= 14 && 'signActive' }}">
+          <view class="sign-reward">{{signArr[13].credit}}</view>
+          <view class="sign-jb">
+            <image src="/static/images/icon/lihe.png"></image>
+          </view>
+          <view class="sign-progress"><view class="sign-point"></view></view>
+          <view class="sign-days">{{signDays==14?"今日已签":"14天"}}</view>
+        </view>
+        <view class="sign-date {{signDays >= 7 && 'signActive' }}">
+          <view class="sign-reward">{{signArr[6].credit}}</view>
+          <view class="sign-jb">
+            <image src="/static/images/icon/lihe.png"></image>
+          </view>
+          <view class="sign-progress"><view class="sign-point"></view></view>
+          <view class="sign-days">{{signDays==7?"今日已签":"7天"}}</view>
+        </view>
+        <view class="sign-date {{signDays >= 6 && 'signActive' }}">
+          <view class="sign-reward">{{signArr[5].credit}}</view>
+          <view class="sign-jb">
+            <image src="/static/images/icon/jingbi.png"></image>
+          </view>
+          <view class="sign-progress"><view class="sign-point"></view></view>
+          <view class="sign-days">{{signDays==6?"今日已签":"6天"}}</view>
+        </view>
+      </view>
+      <view class="vertical {{signDays >= 6 && 'signActive' }}"></view>
+    </view>
+    <view class="sign-btn">
+      <button class="img-btn sign-submit {{isToday&&'today'}}" bindtap="userSignIn" >
+        <image src="/static/images/icon/rili.png" class="font-rili"></image>
+        {{isToday?'今日已签到':'立即签到'}}
+      </button>
+    </view>
+  </view>
+  <view class="flex margin-xs-down" catchtap="showDialogBtn">
+      <image src="/static/images/exercise/down_banner.png" mode="widthFix" style="width:100%;"></image>
+    </view>
+  <view class="task">
+    <view class="task-header">
+      <view class="inline-title">做任务赚学分</view>
+      <view class="inline-day">今日已领取<text class="task-toDay">{{addCredit}}分</text></view>
+      <view class="task-buttom">
+        <navigator class="credit-explain img-btn" url="/pages/member/task-explain/page" hover-class="none">
+          <image class="font-img font-wenhao" src="/static/images/icon/wenhao.png"></image>任务说明
+        </navigator>
+      </view>
+    </view>
+
+    <!-- <view class="task-item">
+      <view class="task-title"><view class="item-key">绑定微信</view> <view class="item-value">+5分</view> </view>
+      <view class="task-body">
+          <progress class="task-progress" percent="100" border-radius="5" color="#E70012"/> <text class="progress-scale">1/1次</text>
+          <view class="task-btn task-success">已完成</view>
+      </view> 
+    </view> -->
+    <block wx:for="{{userTask}}"  wx:key="userTask">
+      <view class="task-item" wx:if="{{item.id != 3}}">
+        <view class="task-title"><view class="item-key">{{item.name}}</view> <view class="item-value">+{{item.credit}}分</view> </view>
+        <view class="task-body">
+            <progress class="task-progress" percent="{{item.count ? item.count/item.requried*100 : 0}}" border-radius="5" color="#E70012"/> <text class="progress-scale">{{item.count ? item.count:0}}/{{item.requried}}</text>
+            <view class="task-btn {{item.state&&'task-success'}}" catchtap="go_task" data-item="{{item}}">{{item.state?'已完成':indexGroup.getStyle(item.id)}}</view>
+        </view> 
+      </view>
+    </block>
+    <!-- <view class="task-item">
+      <view class="task-title"><view class="item-key">发帖一次</view> <view class="item-value">+5分</view> </view>
+      <view class="task-body">
+          <progress class="task-progress" percent="100" border-radius="5" color="#E70012"/> <text class="progress-scale">1/1次</text>
+          <view class="task-btn task-success">已完成</view>
+      </view>
+    </view>
+
+    <view class="task-item">
+      <view class="task-title"><view class="item-key">评论一次</view> <view class="item-value">+5分</view> </view>
+      <view class="task-body">
+          <progress class="task-progress" percent="100" border-radius="5" color="#E70012"/> <text class="progress-scale">1/1次</text>
+          <view class="task-btn task-success">已完成</view>
+      </view> 
+    </view>
+
+    <view class="task-item">
+      <view class="task-title"><view class="item-key">浏览一篇帖子</view> <view class="item-value">+1分</view> </view>
+      <view class="task-body">
+          <progress class="task-progress" percent="100" border-radius="5" color="#E70012"/> <text class="progress-scale">1/1次</text>
+          <view class="task-btn task-success">已完成</view>
+      </view> 
+    </view>
+
+    <view class="task-item">
+      <view class="task-title"><view class="item-key">浏览一篇资讯</view> <view class="item-value">+1分</view> </view>
+      <view class="task-body">
+          <progress class="task-progress" percent="100" border-radius="5" color="#E70012"/> <text class="progress-scale">1/1次</text>
+          <view class="task-btn task-success">已完成</view>
+      </view> 
+    </view>
+
+    <view class="task-item">
+      <view class="task-title"><view class="item-key">分享帖子</view> <view class="item-value">+3分</view> </view>
+      <view class="task-body">
+          <progress class="task-progress" percent="0" border-radius="5" color="#E70012"/> <text class="progress-scale">0/3次</text>
+          <view class="task-btn">去分享</view>
+      </view> 
+    </view>
+
+    <view class="task-item">
+      <view class="task-title"><view class="item-key">分享资讯</view> <view class="item-value">+3分</view> </view>
+      <view class="task-body">
+          <progress class="task-progress" percent="0" border-radius="5" color="#E70012"/> <text class="progress-scale">0/3次</text>
+          <view class="task-btn">去分享</view>
+      </view> 
+    </view> -->
+
+    <!-- <view class="task-item">
+      <view class="task-title"><view class="item-key">分享视频</view> <view class="item-value">+3分</view> </view>
+      <view class="task-body">
+          <progress class="task-progress" percent="33" border-radius="5" color="#E70012"/> <text class="progress-scale">1/3次</text>
+          <view class="task-btn">去分享</view>
+      </view> 
+    </view>
+    <view class="task-item">
+      <view class="task-title"><view class="item-key">观看学习视频</view> <view class="item-value">+5分</view> </view>
+      <view class="task-body">
+          <progress class="task-progress" percent="50" border-radius="5" color="#E70012"/> <text class="progress-scale">1/2次</text>
+          <view class="task-btn">去看看</view>
+      </view> 
+    </view>
+    <view class="task-item">
+      <view class="task-title"><view class="item-key">题库做题</view> <view class="item-value">+3分</view> </view>
+      <view class="task-body">
+          <progress class="task-progress" percent="33" border-radius="5" color="#E70012"/> <text class="progress-scale">1/3次</text>
+          <view class="task-btn">去做题</view>
+      </view> 
+    </view> -->
+  </view>
+</view>
+
+<!-- 弹框提示 start -->
+<view class="exercise-index-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showDlg}}"></view>
+<view class="exercise-index-modalDlg" wx:if="{{showDlg}}">
+    <text style='padding-left:30rpx;padding-right:30rpx;padding-top:20rpx;color:#343434;font-size:14px;'>点击 “好的” 回复 “2”</text>
+    <view class='exercise-index-modalDlg-view'>
+        <button bindtap="dismissDlg" plain="true" class="btn-left">关闭</button>
+        <button open-type="contact" bindtap="dismissDlg" plain>好的</button>
+    </view>
+</view>
+<!-- 弹框提示 end -->

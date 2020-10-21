@@ -1,0 +1,2 @@
+<web-view src="{{url}}" wx:if="{{url}}"></web-view>
+<view wx:else>url错误</view>

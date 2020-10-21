@@ -1,0 +1,12 @@
+.warr-btn{
+  width: 75vw;
+  height: 88rpx;
+  line-height: 88rpx;
+  margin:auto;
+  text-align: center;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+  background-color: #FF2A2A;
+  color: #fff;
+  font-weight: bold;
+}

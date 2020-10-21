@@ -1,0 +1,14 @@
+<!--components/popoverTab/popoverTab.wxml-->
+<wxs src="./popoverTab.wxs" module="htmlUtils"></wxs>
+<view class="popover  {{touches.y > 280? 'top':'bottom'}} {{touches.type==1?'info':'comment'}}" 
+ style="{{htmlUtils.postion(touches,windowHeight)}}">
+  <view class="arrow" style="left:{{touches.x>350?330:touches.x-50}}px"></view>
+  <view class="popover-body">
+    <scroll-view class="popover-scroll" scroll-y>
+      <block wx:for="{{markList}}" wx:key="markList" wx:for-item="mark" wx:for-index="index">
+        <view class="porpver-item" catchtap="feedback" data-index="{{index}}" >{{mark.name}}</view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<view class="dialogCover" bindtap="close"></view>

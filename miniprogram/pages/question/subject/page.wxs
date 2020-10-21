@@ -1,0 +1,52 @@
+var IndexGroup = {
+  isAnswer: function (str, answer) {
+    if(str != undefined){
+      return str.indexOf(answer) > -1;
+    }else{
+      return "";
+    }
+    
+  },
+  replaceImg : function(content) {
+    if (!content) {
+        return;
+    }
+    content = content.replace("<p><br/></p>",'');
+    var reg = getRegExp('<img', 'gi');
+    return content.replace(reg, '<img style="max-width:100% !important;height:auto !important;display:block"')
+  },
+  filterArrayAndCount:function(arr){
+    return arr.filter( function(d){
+      if(d) return d; 
+    }).length;
+  },
+  ArrayIndexOf : function(array,value){
+    return array.indexOf(value) > -1
+  },
+  questionTop:function(winheight ,move,factor){
+    if(factor!=1){
+      return ;
+    }
+    if(move == undefined){
+      return "height:50vh;transform:translateY(40vh);";
+    }else
+    if(move < 50){
+      var height  = winheight  - 50;
+      return "height:"+ height +"px;transform:translateY(50px);";
+    }else if(move > (winheight -10)){
+      var height  = winheight  - 10;
+      return "height:10px;transform:translateY(" + height + "px);";
+    }else{
+      var height  = winheight  - move;
+      return "height:"+ height +"px;transform:translateY(" + move + "px);";
+    }
+    
+  },
+}
+module.exports = {
+  isAnswer: IndexGroup.isAnswer,
+  replaceImg:IndexGroup.replaceImg,
+  filterArrayAndCount: IndexGroup.filterArrayAndCount,
+  ArrayIndexOf :IndexGroup.ArrayIndexOf,
+  questionTop: IndexGroup.questionTop, 
+}

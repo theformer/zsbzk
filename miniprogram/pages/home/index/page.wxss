@@ -1,0 +1,487 @@
+/* pages/home/index/page.wxss */
+/* 自定义导航栏 */
+.custom{
+  /* position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 10vh;
+  line-height: 10vh;
+  z-index: 999;
+  background: #fff;
+  margin-top: 20rpx; */
+  
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 10vh;
+  line-height: 10vh;
+  z-index: 999;
+  background: #fff;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+.custom .province{
+  /* position: absolute;
+  height: 6vh;
+  line-height: 6vh;
+  width: 200rpx;
+  left: 31rpx;
+  top: 3vh; */
+
+  line-height: 6vh;
+  width: 140rpx;
+  padding-left: 50rpx;
+}
+.custom .subcourse-box{
+  /* position: absolute;
+  height: 6vh;
+  line-height: 6vh;
+  width: 425rpx;
+  left: 145rpx;
+  top: 3vh; */
+
+  width: 425rpx;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+}
+.custom .subcourse-box{
+  padding: 20rpx 30rpx ;
+}
+.custom .subcourse-box .subcourse-title{
+  /* position: relative; */
+  font-size: 34rpx;
+  font-weight: 500;
+  height:60rpx;
+  color: #26292C;
+  line-height: 60rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  /* padding-right: 30rpx; */
+}
+
+.custom .subcourse-box .png{
+  width: 40rpx;
+  height: 31rpx;
+  /* top: -78rpx;
+  right: -325rpx; */
+}
+.custom .red_radio{
+  background: #FF3233;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 12px;
+  right: -5px;
+}
+
+.province .province-image{
+  position: relative;
+  display: inline-block;
+  width: 36rpx;
+  height: 36rpx;
+}
+.province-image image{
+  vertical-align: middle;
+}
+.province .province-title{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 26rpx;
+  color: #333;
+}
+.custom .page-title{
+  position: relative;
+  text-align: center;
+  color: #000;
+  font-size: 32rpx;
+}
+.container{
+  position: relative;
+  /* padding: 0 30rpx; */
+  height: 90vh;
+  background: #FFF;
+  top: 10vh;
+}
+.nav{
+  position: relative;
+  display: flex;
+  display: -webkit-flex;
+  padding: 1vh 80rpx 2vh 80rpx;
+  border-bottom: 1rpx solid #EDEFF1;
+}
+.nav .nav-item{
+  position: relative;
+  flex: 1; 
+}
+.border-title{
+  position: relative;
+  height: 6vh;
+  line-height: 6vh;
+  width:  5rem;
+  margin: auto;
+  text-align: center;
+  font-size: 30rpx;
+}
+.border-title .nav-title{
+  color: #666666;
+}
+.nav-active .border-title{
+  font-size: 34rpx;
+}
+.nav-active .border-title .nav-title{
+  color: #26292C;
+}
+.nav-active .border-title-bottom{
+  position: absolute;
+  bottom: 0;
+  height: 8rpx;
+  right: 0;
+  left: 4rpx;
+  margin: auto;
+  width: 1.8rem;
+  background-color: #FF3233;
+  border-radius: 20rpx;
+}
+
+
+.swiper-box{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 81vh;
+}
+.swiper-box.iphoneX{
+  padding-bottom: 0;
+}
+.swiper-scroll{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.swiper-scroll.notHeight{
+  height:auto;
+}
+.question-statistics{
+    display: flex;
+    justify-content: center;
+}
+.statistic{
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.border_box{
+  margin: 15rpx;
+  width: 315rpx;
+  height: 190rpx;
+  box-shadow: 0px 0px 10px 0px rgba(237,239,241,1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.border_next{
+  width: 200rpx;
+}
+
+.statistic .percentage{
+  font-size: 28rpx;
+  color: #FF3233;
+  font-weight: bold;
+}
+
+.percentage2{
+  font-size: 18rpx;
+  color: #999999;
+  font-weight: bold;
+}
+
+.statistic .title{
+  font-size: 28rpx;
+  color: #A9ACB0;
+}
+
+.title2{
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.btn_img{
+  display: flex;
+  justify-content: space-between;
+}
+
+.qs-image-btn-left{
+  width: 30rpx;
+  height: 31rpx;
+  margin-right: 70rpx;
+  margin-top: 40rpx;
+}
+
+.qs-image-btn-gif{
+  width: 30rpx;
+  height: 31rpx;
+  margin-right: 70rpx;
+  margin-top: 40rpx;
+}
+
+.qs-image-btn-right{
+  width: 62rpx;
+  height: 52rpx;
+  margin-top: 30rpx;
+}
+
+
+.task{
+  position: relative;
+  height: 96rpx;
+  line-height: 96rpx;
+  box-shadow:0px 0px 10px 0px rgba(237,239,242,1);
+  font-size: 28rpx;
+  border-radius:48px;
+  padding-left: 24rpx;
+}
+.icon-xing{
+  position: relative;
+  width: 62rpx;
+  height: 62rpx;
+  vertical-align: middle;
+  
+}
+.arrow {
+	padding-right: 90rpx
+}
+.arrow:before {
+	position: absolute;
+	top: 0;
+	right: 30rpx;
+	bottom: 0;
+	display: block;
+	margin: auto;
+	width: 30rpx;
+	height: 30rpx;
+	color: var(--black);
+	content: "\e6a3";
+	text-align: center;
+	font-size: 38rpx;
+	font-family: "cuIcon";
+	line-height: 30rpx
+}
+.qs-item{
+  position: relative;
+  display: block;
+}
+.qs-image{
+  position: relative;
+  display: block;
+  width: 54rpx;
+  height: 54rpx;
+  margin: auto;
+}
+
+
+.abs-task{
+  position: absolute;
+  width: 178rpx;
+  height: 175rpx;
+  right: 0;
+  bottom: 15%;
+}
+.hot-news{
+  position: relative;
+  margin-top: 18rpx;
+}
+
+.roll-hot{
+  position: relative;
+  float: right;
+  width: calc(100% - 165rpx);
+  height: 40rpx;
+}
+.hot-item{
+  position: relative;
+  line-height: 40rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.laber{
+  position: relative;
+  padding: 2px 4px;
+  font-size: 0.85rem;
+  font-weight: lighter;
+  width: 2.5rem;
+  border-radius: 6rpx;
+  text-align: center;
+  line-height: 1.4rem;
+  top: -0.2rem;
+  color: #FF3233;
+  border: 1px solid #FF3233;
+}
+.item-content{
+  display: -webkit-box;
+    max-height: 5.2rem;
+    font-size: 1rem;
+    line-height: 1.7rem;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.video-container{
+  position: relative;
+  width: 100%;
+  height: 50vw;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.video-container .poster-image{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.video-container .video-play {
+  position: absolute;
+  width: 128rpx;
+  height: 128rpx;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 12;
+}
+.icon-right-delete{
+  position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	display: block;
+	margin: auto;
+	width: 30rpx;
+  height: 22rpx;
+}
+.item-icon-btn{
+  position: relative;
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+.item-buttom{
+  position: relative;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background-color: #F6F6F7;
+}
+
+.text-line::after{
+  position: absolute;
+  content: "";
+  width: 120rpx;
+  height: 2rpx;
+  background-color: #A9ACB0;
+  top: 36rpx;
+  margin-top: 8px;
+  margin-left: 9px;
+}
+.text-line::before{
+  position: absolute;
+  content: "";
+  width: 120rpx;
+  height: 2rpx;
+  background-color: #A9ACB0;
+  top: 36rpx;
+  margin-top: 8px;
+  left:150rpx;
+}
+.release-fixed {
+  position: fixed;
+  bottom: 15%;
+  width: auto;
+  height: 112rpx;
+  line-height: 112rpx;
+  right: 0;
+  z-index: 99;
+}
+
+.release-fixed .release-tips {
+  position: relative;
+  float: left;
+  margin-left: 15vw;
+  height: 60rpx;
+  color: #fff;
+  line-height: 60rpx;
+  width: 65vw;
+  border-radius: 10rpx;
+  text-align: center;
+  background: #e6645f;
+  margin-top: 24rpx;
+}
+
+.release-tips .arrow {
+  position: absolute;
+  top: 16rpx;
+  right: -28rpx; /* 圆角的位置需要细心调试哦 */
+  width: 0;
+  height: 0;
+  font-size: 0;
+  border: solid 16rpx;
+  border-color: transparent transparent transparent #e6645f;
+}
+
+.release-fixed .release-btn {
+  position: relative;
+  float: right;
+  width: 110rpx;
+  height: 112rpx;
+  margin-right: 24rpx;
+  z-index: 10;
+}
+
+.fixed-bottom-group{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background-color: #FFF1F1;
+  line-height: 100rpx;
+  padding-left: 40rpx;
+  z-index: 98;
+  margin-bottom: 25px;
+}
+.fixed-bottom-group .group-logo{
+  position: relative;
+  width: 58rpx;
+  height: 48rpx;
+  vertical-align: middle;
+}
+.fixed-bottom-group .group-btn{
+  position: relative;
+  float: right;
+  color: #FF3233;
+  height: 100rpx;
+  margin-right: 60rpx;
+}
+.fixed-bottom-group .group-close{
+  position: absolute;
+  line-height: 30rpx;
+  top: 10rpx;
+  right: 20rpx;
+  font-size: 30rpx;
+}

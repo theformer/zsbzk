@@ -1,0 +1,37 @@
+<view class="page navbar">
+    <view class="fui-goods-group" wx:if="{{list}}">
+        <navigator class="fui-goods-item" hoverClass="none" openType="navigate" url="/pages/bargain/bargain/bargain?bargainid={{item.id}}" wx:for="{{list}}" wx:key="item" wx:if="{{item.status == 1}}">
+            <view class="image" style="width:270rpx;height:150rpx;background-image:url({{imgUrl + item.item.picUrl}})"></view>
+            <view class="detail goods_list_detail">
+                <view class="name">{{item.item.kcname}}</view>
+                <view class="price">
+                    <view class="text ">有效期：{{item.receive_time}}</view>
+                </view>
+                <view class="currentPrice"> 开始学习 </view>
+            </view>
+            <view class="fui-goods-remark icox icox-qianjin-copy"></view>
+        </navigator>
+    </view>
+    <view class="empty" wx:if="{{!list}}">
+        <view>暂无已获得砍价商品</view>
+    </view>
+    <view class="fui-navbar footer-nav {{isIphoneX && 'iphoneX'}}">
+        <navigator class="nav-item" hoverClass="none" openType="switchTab" url="/pages/index/index">
+            <span class="icox icox-shouye1"></span>
+            <span class="label">返回首页</span>
+        </navigator>
+        <navigator class="nav-item" hoverClass="none" openType="redirect" url="/pages/bargain/index/index">
+            <span class="icox icox-quanbukanjia"></span>
+            <span class="label">全部砍价</span>
+        </navigator>
+        <navigator class="nav-item" hoverClass="none" openType="redirect" url="/pages/bargain/act/act">
+            <span class="icox icox-kanjiazhong"></span>
+            <span class="label">砍价中</span>
+        </navigator>
+        <navigator class="nav-item active" hoverClass="none" openType="redirect" url="/pages/bargain/purchase/purchase">
+            <span class="icox icox-yigoumai"></span>
+            <span class="label">已成功</span>
+        </navigator>
+    </view>
+    <view class="{{isIpx?'fui-iphonex-button':''}}"></view>
+</view>

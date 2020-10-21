@@ -1,0 +1,18 @@
+var IndexGroup = {
+  getStyle : function(ids) {
+    var str = "";
+    switch(ids){
+      case 8:
+      case 9:
+      case 10:
+        str = "去分享"
+        break;
+      default:
+        str = "去看看";
+    }
+    return str
+  }
+}
+module.exports = {
+  getStyle:IndexGroup.getStyle,
+}

@@ -1,0 +1,42 @@
+<!--components/share/component.wxml-->
+<view class="wechat-dialog">
+  <view class="wechat-dialog__mask"></view>
+  <view class="wechat-box">
+    <view class="wechat-tips">
+      <i class="border-line"/>分享到<i class="border-line"/>
+    </view>
+    <view class="wechat-share">
+      <button class="img-btn wechat-item" open-type="share" hover-class="none" data-shareinfo="{{shareParam}}" catchtap="share">
+        <image src="/static/images/icon/wechat.png" class="wechat-img"></image>
+        <view class="wechat-title">微信</view>
+      </button>
+      <button class="img-btn wechat-item " hover-class="none" catchtap="onWechatCircle" >
+        <image src="/static/images/icon/wechatCircle.png" class="wechat-img"></image>
+        <view class="wechat-title">微信朋友圈</view>
+      </button>
+    </view>
+    <view class="wechat-close" bindtap="close">
+      <image src="/static/images/icon/icon-delete-white.png" class="image"></image>
+    </view>
+  </view>
+</view>
+<!-- 生成海报组件 -->
+<poster id="poster" hide-loading="{{false}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
+<!-- 展示海报弹窗 -->
+<view class="cu-modal {{isShowPosterModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class='content'>分享朋友圈</view>
+      <view class='action' bindtap='hideModal'>
+        <text class='cuIcon-close text-red'></text>
+      </view>
+    </view>
+    <view>
+      <image style='height:800rpx;' mode="aspectFit" src="{{posterImageUrl}}" bindtap="posterImageClick"></image>
+    </view>
+    <view class="cu-bar bg-white">
+      <view class='action margin-0 flex-sub text-green solid-left' bindtap='hideModal'>取消</view>
+      <view class='action margin-0 flex-sub  solid-left' bindtap='savePosterImage'>保存本地分享</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,31 @@
+<!--pages/home/commentDetails/page.wxml-->
+<view class="comment-container {{inputLoading && 'inputLoading'}}">
+
+</view>
+<view class="comment-buttom {{inputLoading && 'inputLoading'}}">
+    <form bindsubmit="commentSubmit" wx:if="{{userLogin}}">
+      <view class="input-comment">
+        <view class="icon-font" wx:if="{{!inputLoading}}">
+          <image src="/static/images/icon/write.png"></image>
+        </view>
+        <textarea class="input-content " placeholder="写评论..." show-confirm-bar="{{false}}" disabled="{{menberfoot}}" name="comment_content" value="{{comment_content}}" bindfocus="inputFocus" bindblur="inputBlur"></textarea>
+      </view>
+      <button class="input-submit" form-type="submit" wx:if="{{inputLoading}}" hover-class="none">发送</button>
+    </form>
+    <view class="input-comment" wx:else>
+      <view class="icon-font">
+        <image src="/static/images/icon/write.png"></image>
+      </view>
+      <view class="input-content" placeholder="请登录...">请登录...</view>
+      <isAuthor bind:flagEvent="checkLogin"></isAuthor>
+    </view>
+    <view class="btn-box" wx:if="{{!inputLoading}}">
+      <view class="btn-img">
+        <image src="/static/images/icon/share.png"></image>
+      </view>
+      <view class="btn-img">
+        <image src="/static/images/icon/praise.png"></image>
+        <isAuthor bind:flagEvent="addLike"></isAuthor>
+      </view>
+    </view>
+  </view>

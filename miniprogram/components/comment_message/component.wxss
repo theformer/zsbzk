@@ -1,0 +1,325 @@
+.chatting{
+  position: relative;
+  width: 100;
+  height: 100;
+  background: #FFF;
+  border-radius: 60rpx 60rpx 0 0;
+  box-shadow:0px 1px 8px 0px rgba(221,221,221,0.79);
+  z-index: 1000;
+}
+.dialogCover{
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 998;
+  background-color: #000000;
+  opacity: 0.7;
+  top: 0;
+}
+.hideClass{
+  display: none;
+}
+.chatting .comment-container{
+  position: relative;
+  margin-top: 15vh;
+  height: 75vh;
+  width: 100%;
+  padding: 30rpx;
+}
+.chatting .comment-container.inputLoading{
+  height: 65vh;
+}
+.commentReply-container{
+  position: relative;
+  margin-top: 15vh;
+  height: 75vh;
+  width: 100%;
+  padding: 30rpx;
+}
+.commentReply-container.inputLoading{
+  height: 65vh;
+}
+
+.comment-top{
+  position: relative;
+  text-align: center;
+  border-bottom: 1rpx solid #EDEFF2;
+  line-height: 44rpx;
+  padding-bottom: 20rpx;
+}
+.comment-top .comment-close{
+  position: relative;
+  float: left;
+  width: 40rpx;
+  height: 40rpx;
+}
+.comment-top .comment-header{
+  position: relative;
+  display: inline-block;
+  font-size: 30rpx;
+  color: #26292C;
+}
+/* 评论内容 */
+.comment-body{
+  position: relative;
+  /* overflow-y: auto; */
+  width: 100%;
+  height: 100%;
+  padding-bottom: 40rpx;
+}
+.comment-body .comment-item{
+  position: relative;
+  width: 100%;
+  display: flex;
+  margin-top:20rpx; 
+  margin-bottom: 20rpx;
+}
+.comment-item .item-left{
+  position: relative;
+  display: inline-block;
+  width: 15%;
+  min-height: 12vw;
+}
+.comment-item .item-left .message-avater{
+  position: absolute;
+  top: 0;
+  width: 12vw;
+  height: 12vw;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.comment-item .item-right{
+  position: relative;
+  display: inline-block;
+  width: 85%;
+  min-height: 12vw;
+}
+.comment-item .item-header{
+  position: relative;
+  width: 100%;
+  height: 10vw;
+  line-height: 10vw;
+  color: #E70012;
+}
+.comment-item .item-header .item-username{
+  position: relative;
+  display: inline-block;
+  font-size: 28rpx;
+  color: #355D86;
+}
+.comment-item .item-header .item-like{
+  position: absolute;
+  top:0;
+  right: 0;
+}
+.comment-item .item-header .item-like .like-image{
+  position: relative;
+  display: inline-block;
+  height: 36rpx;
+  width: 36rpx;
+  vertical-align: middle;
+}
+.comment-item .item-header .item-like .like-count{
+  position: relative;
+  display: inline-block;
+  margin-left: 20rpx;
+  vertical-align: middle;
+  color: #26292C;
+  font-size: 28rpx;
+}
+.comment-item .item-header .item-like .like-count.like-active{
+  color: #E70012;
+}
+.comment-item .item-content{
+  position: relative;
+  width: 100%;
+  padding-right:20rpx;
+  max-height: 200rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  color: #26292C;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  margin-bottom: 30rpx;
+}
+.comment-item .item-date{
+  position: relative;
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+.parent-label{
+  position: relative;
+  font-size: 20rpx;
+  margin-left: 10rpx;
+  padding: 4rpx;
+  border: 1rpx solid #355D86;
+  color: #355D86;
+}
+.comment-item .item-date .item-time{
+  position: relative;
+  display: inline-block;
+  color: #A9ACB0;
+  font-size: 26rpx;
+}
+.comment-item .item-date .item-speck{
+  position: relative;
+  display: inline-block;
+  color: #A9ACB0;
+  font-size: 26rpx;
+  font-weight: bold;
+  margin: 0 10rpx;
+}
+.comment-item .item-date .item-reply{
+  position: relative;
+  display: inline-block;
+  color: #26292C;
+  font-size: 26rpx;
+  padding: 10rpx 20rpx;
+  background-color: #EDEFF2;
+  border-radius: 20px;
+}
+
+
+.comment-item .item-date .item-delete{
+  position: relative;
+  float: right;
+  top: 5rpx;
+  height: 44rpx;
+  width: 100rpx;
+}
+.item-delete .item-delete-icon{
+  position: relative;
+  width: 60rpx;
+  height: 44rpx;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+.item-delete .item-delete-title{
+  position: relative;
+  line-height: 44rpx;
+  text-align: center;
+  width: 100rpx;
+}
+.comment-item .item-popover{
+  position: absolute;
+  width: 100%;
+  bottom: 50rpx;
+}
+/* 评论内容 */
+/* 底部输入框 */
+.chatting .comment-buttom{
+  position: relative;
+  height: 10vh;
+  width: 100;
+  background: #FFF;
+  box-shadow:0px 2px 10px 0px rgba(221,221,221,1);
+  z-index: 1001;
+}
+.chatting .comment-buttom.inputLoading{
+  background: #EDEFF2;
+  height: 20vh;
+}
+.comment-buttom.inputLoading .input-comment{
+  position: relative;
+  background: #FAFAFA;
+  width: 80vw;
+  height: 15vh;
+  border-radius: 10rpx;
+}
+.comment-buttom .input-comment{
+  position: relative;
+  height: 64rpx;
+  display: inline-block;
+  margin: 30rpx auto 30rpx 30rpx;
+  width: 65%;
+  /* padding: 16rpx; */
+  background-color: #F1F1F1;
+  border-radius: 40rpx;
+  border: none; 
+  vertical-align: middle;
+}
+.comment-buttom .input-submit{
+  position: relative;
+  display: inline-block;
+  background:no-repeat;
+  margin: 0 auto;
+  padding: 0;
+  padding-left: 30rpx;
+  line-height: 30rpx;
+  color: #26292C;
+  text-align: center;
+  font-size: 30rpx;
+  border: none;
+}
+.comment-buttom .input-submit::after{
+  border: none;
+}
+.comment-buttom .input-comment.input-load{
+  width: 66%;
+}
+.input-comment .icon-font{
+  position: relative;
+  display: inline-block;
+  height: 36rpx;
+  width: 36rpx;
+  vertical-align: top;
+  margin-top:16rpx; 
+  margin-left:16rpx; 
+}
+.input-comment .input-content{
+  position: relative;
+  display: inline-block;
+  width: 80%;
+  height: 60rpx;
+  line-height: 40rpx;
+  font-size: 32rpx;
+}
+.comment-buttom.inputLoading .input-content{
+  width: 100%;
+  height: 100%;
+}
+.comment-buttom .btn-box{
+  position: relative;
+  display: inline-flex;
+  width: 30%;
+  height: 100%;
+  line-height: 10vh;
+  justify-content: center;
+  vertical-align: middle;
+}
+.comment-buttom .btn-box .btn-chat{
+  position: relative;
+  display: inline-block;
+  width: 64rpx;
+  height: 64rpx;
+  margin:0 auto;
+}
+.comment-buttom .btn-box .btn-img{
+  position: relative;
+  display: inline-block;
+  width: 44rpx;
+  height: 44rpx;
+  margin:auto;
+}
+.btn-box image{
+  vertical-align:  top;
+}
+.img-btn{
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: none;
+  line-height:unset;
+  overflow:visible;
+}
+.img-btn::after{
+  border: none;
+  border-radius: 0;
+}
+/* 底部输入框end */

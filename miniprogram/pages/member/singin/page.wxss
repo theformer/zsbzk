@@ -1,0 +1,365 @@
+/* pages/member/singin/page.wxss */
+page{
+  background: #FFF;
+}
+.container{
+  position: relative;
+  padding: 0 30rpx;
+  
+}
+.container .header{
+  position: relative;
+  height:160rpx;
+  box-shadow:0px 4px 20px 0px rgba(235,235,235,1);
+}
+.container .header .bgimg{
+  width: 100%;
+  height: 100%;
+}
+
+.header .header-content{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.header-content .header-title{
+  position: relative;
+  float: left;
+  top: 30rpx;
+  left: 30rpx;
+  color: #E70012;
+}
+.header-title .header-text{
+  position: relative;
+  font-size: 24rpx;
+  line-height: 30rpx;
+}
+.header-title .header-credit{
+  position: relative;
+  font-size: 52rpx;
+  line-height: 60rpx;
+  font-weight: bold;
+}
+.header-content .header-btn{
+  position: relative;
+  float: right;
+  top: 30rpx;
+  right: 30rpx;
+}
+.header-btn .duihuan{
+  width:160rpx;
+  height:56rpx;
+  line-height: 56rpx;
+  font-size: 28rpx;
+  color: #FFF;
+  background:linear-gradient(90deg,rgba(255,133,26,1) 0%,rgba(231,0,18,1) 100%);
+  box-shadow:0px 10px 20px 0px rgba(255,132,53,0.25);
+  border-radius:28rpx;
+}
+.header-btn .credit-explain{
+  font-size: 24rpx;
+  display: block;
+  color: #FF3233;
+  width:160rpx;
+  height:56rpx;
+  text-align: center;
+  line-height: 56rpx;
+}
+.signin-source{
+  position: relative;
+  box-shadow:0px 4px 20px 0px rgba(235,235,235,1);
+  height: 600rpx;
+  padding: 60rpx 24rpx 20rpx 24rpx;
+}
+.signin-source .sign-header{
+  position: relative;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.sign-header .sign-processive{
+  position: relative;
+  float: left;
+  color: #26292C;
+  font-size: 28rpx;
+}
+.sign-header .sign-explain{
+  position: relative;
+  float: right;
+  color: #A9ACB0;
+  font-size: 24rpx;
+  width: auto;
+}
+.font-img{
+  position: relative;
+  display: inline-block;
+}
+.font-wenhao{
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.signin-source .sign-box{
+  position: relative;
+  height: 360rpx;
+  padding: 0 10rpx;
+}
+.sign-box .first-row{
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 125rpx;
+  justify-content:space-between;
+}
+.sign-box .sign-date{
+  position: relative;
+  width: 65rpx;
+  height: 90rpx;
+  border-radius:56rpx;
+  box-shadow:0px 2px 24px 0px rgba(233,233,233,1);
+  background-color: #EDEFF2;
+  text-align: center;
+  margin: auto;
+}
+
+.sign-date.signActive{
+  background-color: #E70012;
+}
+.sign-date .sign-reward{
+  position: relative;
+  margin-top: 18rpx;
+  font-size: 20rpx;
+  color: #26292C;
+  z-index: 100;
+}
+
+.sign-date .sign-days{
+  position: absolute;
+  width: 80rpx;
+  text-align: center;
+  bottom: -60rpx;
+  left: -10rpx;
+  font-size: 20rpx;
+  color: #A9ACB0;
+}
+
+.sign-date.signActive .sign-days{
+  color:#E70012;
+}
+.sign-date.signActive .sign-reward{
+  color: #FFF;
+}
+.sign-date.sign-lastDays .sign-reward{
+  color: #E70012;
+}
+.sign-date .sign-jb{
+  position: relative;
+  width: 32rpx;
+  height: 26rpx;
+  margin: auto;
+  margin-top: 10rpx;
+}
+
+.sign-date.sign-lastDays{
+  position: relative;
+  width: 78rpx;
+  height: 90rpx;
+  border-radius:0;
+  box-shadow: unset;
+  background-color:unset;
+  text-align: center;
+  margin: auto;
+}
+.sign-lastDays .sign-jiangbei{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.sign-date .sign-progress{
+  position: absolute;
+  bottom: -30rpx;
+  width: 200%;
+  height: 14rpx;
+  background: #EDEFF2;
+  left: -50%;
+  z-index: 10;
+}
+.last-row .sign-date .sign-progress{
+  width: 250%;
+  left: -78%;
+}
+.last-row .sign-date.sign-lastDays .sign-progress{
+  width: 200%;
+  left: -50%;
+}
+.last-row .sign-date:last-child .sign-progress{
+  border-bottom-right-radius: 14rpx;
+}
+.first-row .sign-date:last-child .sign-progress{
+  border-top-right-radius: 14rpx;
+}
+.sign-date.signActive .sign-progress{
+  background:#E70012;
+  
+}
+.sign-date:first-child .sign-progress{
+  border-radius: 10rpx;
+}
+.sign-progress .sign-point{
+  position: relative;
+  width: 10rpx;
+  height: 10rpx;
+  background: #FCFCFC;
+  border-radius: 50%;
+  margin: 2rpx auto;
+}
+.sign-date.signActive .sign-progress .sign-point{
+  background:#FFF;
+}
+.last-row{
+  position: relative;
+  margin-top: 30rpx;
+  display: flex;
+  width: 100%;
+  height: 125rpx;
+  justify-content:space-between;
+}
+.vertical{
+  position: absolute;
+  height: 165rpx;
+  width: 14rpx;
+  background: #EDEFF2;
+  right: 9rpx;
+  top: 125rpx;
+  border-top-right-radius: 14rpx;
+  border-bottom-right-radius: 14rpx;
+  z-index: 0;
+}
+.vertical.signActive{
+  background: #E70012;
+}
+
+.signin-source .sign-btn{
+  position: relative;
+  height: 90rpx;
+  margin: 0 100rpx;
+}
+.sign-btn .sign-submit{
+  position: relative;
+  width: 100%;
+  background-color: #E70012;
+  color: #FFF;
+  font-size: 28rpx;
+  line-height: 90rpx;
+  border-radius: 45rpx;
+}
+.sign-btn .sign-submit.today{
+  background-color:#A9ACB0
+}
+.font-rili{
+  position: relative;
+  width: 29rpx;
+  height: 32rpx;
+  vertical-align: middle;
+  margin-right: 20rpx;
+  top:-5rpx;
+}
+
+.task{
+  position: relative;
+  display: block;
+  padding: 20rpx;
+}
+
+.task .task-header{
+  position: relative;
+  line-height: 40rpx;
+}
+.task-header .inline-title{
+  display: inline-block;
+  font-weight: bold;
+  font-size: 32rpx;
+  color: #26292C;
+}
+.task-header .inline-day{
+  display: inline-block;
+  margin-left: 20rpx;
+  color: #A9ACB0;
+  font-size: 24rpx;
+}
+.inline-day .task-toDay{
+  color: #E70012;
+}
+.task .task-buttom{
+  position: relative;
+  float: right;
+  color: #A9ACB0;
+}
+.task-item{
+  position: relative;
+}
+.task-item .task-title{
+  position: relative;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin: 10rpx 0;
+}
+.task-title .item-key{
+  position: relative;
+  display: inline-block;
+  color: #26292C;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-right: 10rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.task-title .item-value{
+  position: relative;
+  display: inline-block;
+  background: #FF851A;
+  color: #FFF;
+  border-radius: 20rpx;
+  padding: 0 15rpx;
+  font-size: 20rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.task-item .task-body{
+  position: relative;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.task-item .task-progress{
+  position: relative;
+  display: inline-flex;
+  width: 200rpx;
+  border-radius: 5rpx;
+  margin-right: 20rpx;
+}
+.task-item .progress-scale{
+  position: relative;
+  vertical-align: middle;
+  color: #A9ACB0;
+  font-size: 20rpx;
+
+}
+.task-item .task-btn{
+  position: relative;
+  display: inline-block;
+  height: 40rpx;
+  line-height: 40rpx;
+  float: right;
+  font-size: 20rpx;
+  text-align: center;
+  width: 88rpx;
+  background: #E70012;
+  color: #FFF;
+}
+.task-btn.task-success{
+  color: #26292C;
+  background: #EDEFF2;
+}

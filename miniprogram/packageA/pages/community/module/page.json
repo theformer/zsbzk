@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "论坛",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "scroll-tab": "/components/scroll-tab/component",
+    "isAuthor": "/components/author/author",
+    "comment_message": "/components/comment_message/component",
+    "popoverTab": "/components/popoverTab/popoverTab",
+    "GridView": "/components/GridView/index"
+  }
+}

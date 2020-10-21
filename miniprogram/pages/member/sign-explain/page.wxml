@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="item-box">
+    <view class="item-header">
+      <view class="item-title"><i class="line line-left"></i>签到规则<i class="line line-right"></i></view>
+    </view>
+    <view class="item-content">
+      <view>1、一天只能签到一次</view>
+      <view>2、连续签到中间间隔一天重新开始累加</view>
+      <view>3、连续签到指定的天数方可获取对应的奖励学分</view>
+      <view>4、连续签到满30天之后重新计算连续签到天数</view>
+      <view>5、签到获取的学分可用于兑换课程直接学习</view>
+    </view>
+  </view>
+  <view class="item-box">
+    <view class="item-header">
+      <view class="item-title"><i class="line line-left"></i>签到奖励<i class="line line-right"></i></view>
+    </view>
+    <view class="item-content">
+      <view>1.完成任务可领取相应奖励积分。</view>
+      <view>2.获得的积分，可在"积分中心'点击'前往兑换"到兑换 专区进行积分兑换。</view>
+      <view>3.积分兑换后将扣除相应积分，并无法撤销。</view>
+      <view>4.积分兑换礼品时请看清礼品使用说明。</view>
+      <view>5.以上所有解释权，归自考伴所有。</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,24 @@
+<view class="bottom-bar {{isIphoneX && 'iphoneX'}} " wx:if="{{!onHide}}">
+    <view bindtap="bindToggle" data-type="0" class="item {{customTabBarSelected === 0 ? 'active': ''}}">
+        <view class="img-view">
+            <view class="badge" wx:if="{{redCount.index}}">{{redCount.index}}</view>
+            <image class="img" src="/static/images/menu/home-active.png" wx:if="{{customTabBarSelected === 0}}"></image>
+            <image class="img" src="/static/images/menu/home.png"  wx:else></image>
+        </view>
+        <view  class="text">学习</view>
+    </view>
+    <view bindtap="bindToggle" data-type="1" class="item {{customTabBarSelected === 1 ? 'active': ''}}">
+        <view class="img-view-img">
+            <view class="badge" wx:if="{{redCount.question_bank}}">{{redCount.question_bank}}</view>
+            <image class="flex-img" src="/static/images/menu/home_pt.png"></image>
+        </view>
+    </view>
+    <view bindtap="bindToggle" data-type="2" class="item {{customTabBarSelected === 2 ? 'active': ''}}">
+        <view class="img-view">
+            <view class="badge" wx:if="{{redCount.my}}">{{redCount.my}}</view>
+            <image class="img" src="/static/images/menu/member-active.png" wx:if="{{customTabBarSelected === 2}}"></image>
+            <image class="img" src="/static/images/menu/member.png" wx:else></image>
+        </view>
+        <view  class="text">我的</view>
+    </view>
+</view>

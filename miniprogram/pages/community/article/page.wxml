@@ -1,0 +1,334 @@
+<import src="/utils/wxParse/wxParse.wxml" />
+<wxs module="utils" src="../../../utils/utils.wxs" />
+<view class='nav-wrap ' style='height:{{CustomBar}}px;'>
+  <text class="nav-back cuIcon-back {{article.state == 1 ? 'text-black':'text-white'}}" bindtap="pageBack"></text>
+</view>
+<block wx:if="{{!noData}}">
+<block wx:if="{{article.state == 1}}">
+  <view style='height:{{CustomBar}}px;'></view>
+  <scroll-view class="container {{dialogShow && 'noscroll'}}" scroll-y bindscroll="scrollEventh" scroll-top="{{scrollTop}}" 
+  scroll-into-view="{{scrollTopId}}" >
+    <view class="padding-left padding-right">
+    <view class="header">{{article.title}}</view>
+    <view class="author-box">
+      <view class="author-avater">
+        <image src="{{article.photoUrl ?  article.photoUrl : photoUrl}}"></image>
+      </view>
+      <view class="author-userInfo">
+        <view class="author-nickName">{{article.userNickName}}</view>
+        <view class="author-createTime">{{utils.DateUtils.dateFormerly(article.createTime)}}</view>
+      </view>
+      <view class="author-attr">
+        <view class="label-attr">原创</view>
+      </view>
+    </view>
+    <view class="content">
+      <template is="wxParse" data="{{wxParseData:articleHtml.nodes}}" />
+    </view>
+    <view class="image-box" wx:if="{{article.state==1}}">
+      <block wx:for="{{article.urls}}" wx:key="images">
+        <view class="images-item">
+          <image src="{{imgUrl}}{{item.url}}" mode="aspectFit" lazy-load></image>
+        </view>
+      </block>
+    </view>
+    <view class="text-sm text-grey margin-top">{{article.readCount}}阅读</view>
+    <view class="groups">
+      <view class="groups-item">
+        <image class="group-image" src="/static/images/icon/praise-active.png" wx:if="{{article.likeState > 0 }}" ></image>
+        <image class="group-image" src="/static/images/icon/praise.png" wx:else></image>
+        <text class="group-text">{{article.likeCount>0?article.likeCount:'赞'}}</text>
+        <isAuthor bind:flagEvent="addLike"></isAuthor>
+      </view>
+      <view class="groups-item">
+        <image class="group-image" src="/static/images/icon/icon-delete.png" ></image>
+        <text class="group-text">不喜欢</text>
+        <isAuthor bind:flagEvent="screenArticle"></isAuthor>
+      </view>
+      <button class="img-btn groups-item" open-type="share">
+        <image src="/static/images/icon/wechat01.png" class="group-image" style="width:38rpx;height:30r"></image>
+        <text class="group-text">微信</text>
+      </button>
+      <!-- <view class="groups-item">
+        <image src="/static/images/icon/wechatCircle.png" class="group-image"></image>
+        <text class="group-text">朋友圈</text>
+      </view> -->
+    </view>
+    <view class="user-comment" id="userComment">
+      <block wx:for="{{commentList}}" wx:key="comment" wx:for-index="comIndex">
+        <view class="comment-item" >
+          <view class="item-left">
+            <view class="message-avater">
+              <image src="{{item.photoUrl ?  item.photoUrl : photoUrl}}"></image>
+            </view>
+          </view>
+          <view class="item-right">
+            <view class="item-header">
+              <view class="item-username">{{item.nickName}}</view>
+              <view class="item-like">
+                <image class="like-image" src="/static/images/icon/praise-active.png" wx:if="{{item.likeState > 0 }}" ></image>
+                <image class="like-image" src="/static/images/icon/praise.png" wx:else></image>
+                <view class="like-count {{item.likeState > 0 && 'like-active'}}">{{item.likeCount>0?item.likeCount:'赞'}}</view>
+                <isAuthor bind:flagEvent="addCommentLikeCount" data-index="{{comIndex}}"></isAuthor>
+              </view>
+            </view>
+            <view class="item-content">{{item.content}}</view>
+            <view class="item-date">
+              <view class="item-time">{{utils.DateUtils.dateFormerly(item.createTime)}}</view>
+              <view class="item-speck">·</view>
+                <view class="item-reply {{item.commentReplys.length&&'item-reply-border'}}" bindtap="openCommentReplys" data-index="{{comIndex}}">{{item.commentReplys.length>0?item.commentReplys.length:''}}回复</view>
+              <view class="item-delete" >
+                <view class="item-delete-title" wx:if="{{item.userId==userInfor.id}}" bindtap="deleteComment" data-a="{{comIndex}}">删除</view>
+                <view class="item-delete-icon" wx:else bindtap="openPorover" data-a="{{comIndex}}">
+                  <image src="/static/images/icon/big-delete.png"></image>
+                </view>
+              </view>              
+            </view>
+          </view>
+          <view class="item-popover">
+            <popoverTab wx:if="{{comIndex==poroverON.a&&!commentReplyShow}}" 
+                  bind:callback="popover_callback" touches="{{touches}}"></popoverTab>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{commentList.length==0}}">
+        <view class="data-error">
+          <image src="/static/images/bgImg/data_error.png" ></image>
+          <view class="error-tips">暂无评论</view>
+        </view>
+      </block>
+    </view>
+    </view>
+  </scroll-view>
+</block>
+<block wx:elif="{{article.state == 2}}">
+  <view class="videoBox">
+    <view class="video-box">
+      <video class="video-container" src="{{imgUrl}}{{article.urls[0].url}}" 
+      controls="{{false}}"
+      autoplay  loop  enable-play-gesture	
+      id="videoId"
+      bindplay="loadVideo"
+      bindended="videoEnded"
+      bindtimeupdate="videotimeupdate"
+      >
+      </video>
+    </view>
+    <view class="video-title">{{article.title}}</view>
+    <view class="video-user">
+      <view class="author-avater">
+        <image src="{{article.photoUrl ?  article.photoUrl : photoUrl}}"></image>
+      </view>
+      <view class="author-userInfo">
+        <view class="author-nickName">{{article.userNickName}}</view>
+      </view>
+    </view>
+    
+    <view class="video-comment-content">
+    <progress class="task-progress" percent="{{currentTime/duration*100}}" stroke-width="2"  color="#E70012"/>
+      <view class="input-comment">
+        <view class="icon-font">
+          <image src="/static/images/icon/write-white.png"></image>
+        </view>
+        <view class="input-content" style="padding:10rpx">{{userLogin?'写评论':'请登录'}}...</view>
+        <isAuthor bind:flagEvent="changeComment"></isAuthor>
+      </view>
+    </view>
+    <view class="video-btn">
+      <view class="btn-item"  >
+        <view class="btn-icon">
+          <image src="/static/images/icon/praise-active.png" wx:if="{{article.likeState > 0}}"></image>
+          <image src="/static/images/icon/praise-white.png" wx:else></image>
+        </view>
+        <view class="commentCount">{{article.likeCount>0?article.likeCount:"赞"}}</view>
+        <isAuthor bind:flagEvent="addLike"></isAuthor>
+      </view>
+      <view class="btn-item" bindtap="changeComment">
+        <view class="btn-icon"><image src="/static/images/icon/chat-white.png"></image></view>
+        <view class="commentCount">{{article.commentCount}}</view>
+      </view>
+      <button class="img-btn btn-item" open-type="share" hover-class="none">
+        <view class="btn-icon">
+          <image src="/static/images/icon/wechat01.png" wx:if="{{videoPlayend}}"></image>
+          <image src="/static/images/icon/share-white.png" wx:else></image>
+        </view>
+        <view class="commentCount">分享</view>
+      </button>
+    </view>
+  </view>
+</block>
+<view class="dialogue-bottom {{isIphoneX && 'iphoneX'}} {{inputLoading && 'inputLoading'}} " wx:if="{{article.state!=2 || commentShow}}">
+  <form bindsubmit="commentSubmit" wx:if="{{userLogin}}">
+    <view class="input-comment {{commentReplyShow && 'commentReplyBottom'}} {{article.state==2 && 'commentReplyBottom'}}">
+      <view class="icon-font" wx:if="{{!inputLoading}}">
+        <image src="/static/images/icon/write.png"></image>
+      </view>
+      <textarea class="input-content " placeholder="{{commentReplyUser ?'回复:' + commentReplyUser :'写评论...'}}" show-confirm-bar="{{false}}" disabled="{{menberfoot}}" name="comment_content" value="{{comment_content}}" bindfocus="inputFocus" bindblur="inputBlur"
+        fixed disable-default-padding cursor-spacing="{{device == 'ios' ? '100': '20' }}" style="padding:10rpx"></textarea>
+      <input class="hidden-input" name="comment_replys_pid" value="{{commentParent.id || 0}}"></input>
+    </view>
+    <button class="input-submit" form-type="submit" wx:if="{{inputLoading}}" hover-class="none">发送</button>
+  </form>
+  <view class="input-comment" wx:else>
+    <view class="icon-font">
+      <image src="/static/images/icon/write.png"></image>
+    </view>
+    <view class="input-content" style="padding:10rpx">请登录...</view>
+    <isAuthor bind:flagEvent="checkLogin"></isAuthor>
+  </view>
+  <view class="btn-box {{commentReplyShow && 'commentReply-btn'}} {{article.state==2 && 'commentReply-btn'}}" wx:if="{{!inputLoading}}">
+    <view class="btn-chat" bindtap="changeComment" wx:if="{{!commentReplyShow && article.state != 2}}">
+      <image src="/static/images/icon/icon-chat01.png"></image>
+      <view class="commentCount">{{article.commentCount}}</view>
+    </view>
+    <view class="btn-praise">
+      <image src="/static/images/icon/praise-active.png" wx:if="{{article.likeState > 0}}"></image>
+      <image src="/static/images/icon/praise.png" wx:else></image>
+      <isAuthor bind:flagEvent="addLike"></isAuthor>
+    </view>
+    <button class="btn-share img-btn" open-type="share">
+      <image src="/static/images/icon/icon-share01.png"></image>
+    </button>
+  </view>
+</view>
+
+<view class="comments-view {{commentShow && 'zan-dialog--show'}}">
+  <view class="dialogCover"></view>
+  <view class="comment-container {{inputLoading && 'inputLoading'}}">
+    <view class="comment-top">
+      <view class="comment-close" bindtap="changeComment">
+        <image src="/static/images/icon/close2.png"></image>
+      </view>
+      <view class="comment-header">{{commentList.length}}条评论</view>
+    </view>
+    <scroll-view class="comment-body" scroll-y bindscrolltolower="pushCommentList">
+      <block wx:for="{{commentList}}" wx:key="comment" wx:for-index="comIndex">
+        <view class="comment-item">
+          <view class="item-left">
+            <view class="message-avater">
+              <image src="{{item.photoUrl ?  item.photoUrl : photoUrl}}"></image>
+            </view>
+          </view>
+          <view class="item-right">
+            <view class="item-header">
+              <view class="item-username">{{item.nickName}}</view>
+              <view class="item-like">
+                <image class="like-image" src="/static/images/icon/praise-active.png" wx:if="{{item.likeState > 0 }}" ></image>
+                <image class="like-image" src="/static/images/icon/praise.png" wx:else></image>
+                <view class="like-count {{item.likeState > 0 && 'like-active'}}">{{item.likeCount > 0 ? item.likeCount : "赞"}}</view>
+                <isAuthor bind:flagEvent="addCommentLikeCount" data-index="{{comIndex}}"></isAuthor>
+              </view>
+            </view>
+            <view class="item-content">{{item.content}}</view>
+            <view class="item-date">
+              <view class="item-time">{{utils.DateUtils.dateFormerly(item.createTime)}}</view>
+              <view class="item-speck">·</view>
+              <view class="item-reply" bindtap="openCommentReplys" data-index="{{comIndex}}">{{item.commentReplys.length}}回复</view>
+              <view class="item-delete" >
+                <view class="item-delete-title" wx:if="{{item.userId==userInfor.id}}" bindtap="deleteComment" data-a="{{comIndex}}">删除</view>
+                <view class="item-delete-icon" wx:else bindtap="openPorover" data-a="{{comIndex}}">
+                  <image src="/static/images/icon/big-delete.png"></image>
+                </view>
+              </view>              
+            </view>
+          </view>
+          <view class="item-popover">
+            <popoverTab wx:if="{{comIndex==poroverON.a&&!commentReplyShow}}" 
+                  bind:callback="popover_callback" touches="{{touches}}"></popoverTab>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{loading}}">
+        <mp-loading type="circle"></mp-loading>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+
+<view class="commentReplys {{commentReplyShow && 'zan-dialog--show'}}">
+  <view class="dialogCover"></view>
+  <view class="comment-container {{inputLoading && 'inputLoading'}}">
+    <view class="comment-top">
+      <view class="comment-close" bindtap="closeCommentReplys">
+        <image src="/static/images/icon/close2.png"></image>
+      </view>
+      <view class="comment-header">{{commentReplysList.length}}条回复</view>
+    </view>
+    <scroll-view class="comment-body" scroll-y>
+      <view class="commentReplysParent">
+        <view class="comment-item">
+          <view class="item-left">
+            <view class="message-avater">
+              <image src="{{commentParent.photoUrl ?  commentParent.photoUrl : photoUrl}}"></image>
+            </view>
+          </view>
+          <view class="item-right">
+            <view class="item-header">
+              <view class="item-username">{{commentParent.nickName}}
+                <text class="parent-label">楼主</text>
+              </view>
+              <view class="item-like">
+                <image class="like-image" src="/static/images/icon/praise-active.png" wx:if="{{commentParent.likeState > 0}}" ></image>
+                <image class="like-image" src="/static/images/icon/praise.png" wx:else></image>
+                <view class="like-count {{commentParent.likeState > 0 && 'like-active'}}">{{commentParent.likeCount}}</view>
+                <!-- <isAuthor bind:flagEvent="addCommentLikeCount"></isAuthor> -->
+              </view>
+            </view>
+            <view class="item-content">{{commentParent.content}}</view>
+            <view class="item-date">
+              <view class="item-time">{{utils.DateUtils.dateFormerly(commentParent.createTime)}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="otherUsercomment">全部评论</view>
+      <block wx:for="{{commentReplysList}}" wx:key="replys" wx:for-index="replysIndex">
+        <view class="comment-item">
+          <view class="item-left">
+            <view class="message-avater">
+              <image src="{{item.photoUrl ?  item.photoUrl : photoUrl}}"></image>
+            </view>
+          </view>
+          <view class="item-right">
+            <view class="item-header">
+              <view class="item-username">{{item.nickName}}</view>
+              <view class="item-like">
+                <image class="like-image" src="/static/images/icon/praise-active.png"  wx:if="{{item.likeState > 0}}"></image>
+                <image class="like-image" src="/static/images/icon/praise.png" wx:else></image>
+                <view class="like-count {{item.likeState > 0 && 'like-active'}}">{{item.likeCount > 0 ? item.likeCount : "赞"}}</view>
+                <isAuthor bind:flagEvent="addReplysCommentLikeCount" data-index="{{replysIndex}}"></isAuthor>
+              </view>
+            </view>
+            <view class="item-content">
+              <text wx:if="{{item.pName}}">及时回复//@<text class="item-contentPName">{{item.pName}}</text>：</text>{{item.content}}</view>
+            <view class="item-date">
+              <view class="item-time">{{utils.DateUtils.dateFormerly(item.createTime)}}</view>
+              <view class="item-speck">·</view>
+              <view class="item-reply" bindtap="replysComment" data-index="{{replysIndex}}">回复</view>
+              <view class="item-delete" >
+                <view class="item-delete-title" wx:if="{{item.userId==userInfor.id}}" bindtap="deleteComment" data-a="{{replysIndex}}">删除</view>
+                <view class="item-delete-icon" wx:else bindtap="openPorover" data-a="{{replysIndex}}">
+                  <image src="/static/images/icon/big-delete.png"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="item-popover">
+            <popoverTab wx:if="{{replysIndex==poroverON.a&&commentReplyShow}}" 
+                  bind:callback="popover_callback" touches="{{touches}}"></popoverTab>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+</block>
+<block wx:else>
+  <view class="container" style="height:100vh">
+    <view class="data-error">
+      <image src="/static/images/bgImg/data_error.png"></image>
+      <view class="error-tips">暂无数据</view>
+    </view>
+  </view>
+</block>
+<include src="/pages/common/loading.wxml" wx:if="{{loadModal}}"/>

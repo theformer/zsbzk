@@ -1,0 +1,24 @@
+var pageJs = {
+  dataSlice: function (str) {
+    return str.length > 10 ? str.slice(0, 10): str;
+  },
+  titleSlice:function(str){
+    return str.length > 28 ? str.slice(0, 28) + "..." : str;
+  },
+  questionSlice:function(str){
+    if(str){
+      return str.length > 20 ? str.slice(0, 20) + "..." : str;
+    }
+  },
+  progress : function (number,count){
+    if(number == undefined || count == undefined){
+      return 0;
+    }
+    var percentage = (number/count*100).toFixed();
+    return percentage;
+  },
+  splitName:function(str){
+    return str.slice(0, -1)
+  }
+}
+module.exports = pageJs;

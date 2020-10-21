@@ -1,0 +1,532 @@
+@import "/pages/index/openauth.wxss";
+@import "/static/wxss/icon.wxss";
+@import "/static/wxss/colorui.wxss";
+@import "/static/wxss/editor.wxss";
+@import "/static/wxss/editorIcon.wxss";
+.page.navbar.nobuy {
+  padding-bottom: 180rpx;
+}
+.fui-navbar.iphoneX{
+    padding-bottom: 50rpx;
+}
+.fui-cell-group.iphoneX{
+  padding-bottom: 50rpx;
+}
+.bargain-shop {
+  padding: 0 26rpx;
+}
+bargain_bg{
+  position: absolute;
+  
+}
+.bargain-shop-back {
+  width: 100%;
+  box-shadow: 0 0 20rpx 0 rgba(255, 234, 201, 0.8);
+  border-radius: 8rpx;
+  background-color: white;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 20px;
+}
+.group-right-back-index-qun {
+    height: 100rpx;
+    width: 100rpx;
+    background: #666;
+    color: #fff;
+    border-radius: 50rpx;
+    text-align: center;
+    font-size: 24rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.user {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 100rpx;
+}
+
+.user image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  vertical-align: middle;
+  margin-top: -10%;
+}
+
+.bargain-shop .goodsinfo {
+  height: auto;
+  width: 100%;
+  padding: 0 36rpx 0 36rpx;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.bargain-shop .goodsinfo .title {
+  height: 70rpx;
+  line-height: 50rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.bargain-shop .goodsinfo .price {
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.bargain-shop .goodsinfo .status {
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.goodsinfo .image image {
+  width: 240rpx;
+  margin-right: 24rpx;
+}
+
+.flex {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bargain-shop .prices {
+  text-align: center;
+}
+
+.bargain-shop .prices .current {
+  font-size: 70rpx;
+  font-weight: bold;
+  color: #f55;
+  line-height: 76rpx;
+  margin-top: 50rpx;
+}
+
+.bargain-shop .prices.delay .current {
+  color: #666;
+}
+
+.bargain-shop .prices.delay .current text {
+  border: 1px solid #666;
+}
+
+.bargain-shop .prices.delay .time {
+  background: #999;
+}
+
+.bargain-shop .prices .current text {
+  font-size: 18rpx;
+  height: 30rpx;
+  border: 1px solid #f55;
+  font-weight: normal;
+  display: inline-block;
+  line-height: 30rpx;
+  vertical-align: middle;
+  margin-top: -6px;
+}
+
+.bargain-shop .prices .cut {
+  line-height: 50rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.bargain-shop .prices .cut text {
+  font-weight: bold;
+}
+/* #f94343/#ff8955 */
+.bargain-shop .prices .time {
+  min-width: 70%;
+  display: inline-block;
+  height: 80rpx;
+  border-radius: 80rpx;
+  font-size: 28rpx;
+  color: #fff;
+  line-height: 80rpx;
+  padding: 0 48rpx;
+  margin: 20rpx 0 20rpx;
+  background: linear-gradient(to right, #ff430e 0%, #f94343 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffff8955, endColorstr=#fff94343, gradientType='1');
+}
+
+.bargain-shop .prices .time.delay {
+  background: #999;
+}
+
+.bargain-list {
+  margin-top: 20rpx;
+  background: #fff;
+}
+
+.fui-tab {
+  margin-bottom: 0;
+}
+
+
+
+.fui-cell-group .fui-cell .fui-cell-label {
+  width: 80rpx;
+}
+
+.fui-cell-group .fui-cell .title {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.fui-cell-group .fui-cell .text {
+  font-size: 20rpx;
+  color: #ccc;
+}
+
+.fui-cell .fui-cell-label image {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.fui-cell-group .fui-cell .fui-cell-remark.noremark.danger {
+  color: #f55;
+}
+
+.fui-navbar .buybtn {
+  width: 240rpx;
+  height: 100%;
+  line-height: 100rpx;
+  color: #666;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.fui-navbar .bargainBuy {
+  background: #f55;
+  -webkit-box-flex: 1;
+  flex: 1;
+  text-align: center;
+  line-height: 100rpx;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 0;
+}
+
+/* position: fixed; 浮动 */
+
+.buytips {
+  left: 0;
+  right: 0;
+  bottom: 100rpx;
+  background: #fbf7dc;
+  font-size: 22rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #ff8c5a;
+}
+
+.layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.layer .content {
+  width: 420rpx;
+  height: 460rpx;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -210rpx;
+  margin-top: -230rpx;
+  border-radius: 10rpx;
+  text-align: center;
+}
+
+.layer .content .icox-close {
+  position: absolute;
+  right: 10rpx;
+  top: 0;
+  line-height: 52rpx;
+  font-size: 24rpx;
+  display: block;
+}
+
+.layer .content image {
+  width: 86rpx;
+  height: 103rpx;
+  margin-top: 56rpx;
+}
+
+.layer .content .layerbtn {
+  width: 300rpx;
+  background: #f55;
+  line-height: 72rpx;
+  border-radius: 72rpx;
+  color: #fff;
+  margin: 0 auto;
+  margin-top: 36rpx;
+}
+
+.layer .showModal {
+  width: 560rpx;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -280rpx;
+  margin-top: -196rpx;
+}
+
+.layer .showModal .inner {
+  padding: 58rpx 52rpx;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.layer .showModal .operate {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.layer .showModal .operate view:last-child {
+  border-left: 1px solid #eee;
+  color: #00c201;
+}
+
+
+/* 进度条、文字价格布局 */
+.prossview {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin-top: 6%;
+  color: #999999;
+  font-size:24rpx;
+  text-align:center;
+}
+
+/* 授权弹框样式 start */
+
+button {
+    font-size: 30rpx;
+    background-color:#e0000000;
+    line-height: 100rpx;
+    width: 50%;
+}
+
+button:after {
+    display: none;
+}
+
+.model {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.model .inner {
+    width: 624rpx;
+    height: 380rpx;
+    background: #fff;
+    border-radius: 8rpx;
+    margin: 260rpx auto;
+    overflow: hidden;
+}
+
+.model .inner .title {
+    font-size: 36rpx;
+    color: #000;
+    line-height: 100rpx;
+    text-align: center;
+    margin-top: 20rpx;
+    border-bottom: 1rpx solid #ebebeb;
+}
+
+.model .inner .image {
+    text-align: center;
+    margin-top: 20rpx;
+}
+
+.model .inner image {
+    width: 342rpx;
+    height: 202rpx;
+}
+
+.model .inner .subtitle {
+    margin-top: 36rpx;
+    padding: 0 80rpx;
+    color: #888;
+    font-size: 26rpx;
+    line-height: 40rpx;
+}
+
+.model-btns {
+    border-top: 1rpx solid #ebebeb;
+    height: 100rpx;
+    margin-top: 42rpx;
+    display: flex;
+    text-align: center;
+    font-size: 30rpx;
+    color: #000;
+    line-height: 100rpx;
+}
+
+.model-btns .cancel {
+    width: 50%;
+    position: relative;
+}
+
+.model-btns .cancel:after {
+    content: " ";
+    position: absolute;
+    top: -1rpx;
+    right: 0;
+    width: 1px;
+    height: 210rpx;
+    border-right: 1px solid #ebebeb;
+    color: #ebebeb;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+}
+
+/* 授权弹框样式 start */
+
+/* 报名系统弹框样式  start  */
+
+.zan-dialog__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background: rgb(0, 0, 0); /*设置阴影半透明背景如： background: rgba(0, 0, 0, 0.4);*/
+    display: none;
+    opacity: 0.3;
+}
+
+.zan-dialog__container {
+    position: fixed;
+    top: 200rpx;
+    width: 80%;
+    /* height: 350rpx;弹窗布局高，与下面弹出距离transform有关 */
+    margin-left: 10vw;
+    background: #fff;
+    transform: translateY(400%); /*弹框弹出距离，与弹框布局高度有关，如300%表示弹起距离为3倍弹窗高度*/
+    transition: all 0.4s ease;
+    z-index: 12;
+    border-radius: 20rpx;
+    /* box-shadow: 0px 3px 3px 2px gainsboro;弹框的悬浮阴影效果，如不需要可注释该行 */
+}
+
+.zan-dialog--show .zan-dialog__container {
+    transform: translateY(0);
+}
+
+.zan-dialog--show .zan-dialog__mask {
+    display: block;
+}
+
+.closeBtn {
+    background: #ff5a61;
+    width: 60%;
+    display: block;
+    margin: 20px auto 30px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    color: #fff;
+    outline: none;
+    border: 0;
+    letter-spacing: 2px;
+    font-size: 15px;
+}
+
+.scroll-view {
+    height: 200px;
+    overflow: auto;
+}
+
+.scroll-view view {
+    font-size: 14px;
+    color: #333;
+    width: 90%;
+    background: #fff;
+    margin: 0 auto;
+    line-height: 2;
+}
+.scroll-view .text{
+  text-align: center;
+  font-size: 66rpx;
+  color:#ff5555;
+  line-height:70rpx;
+}
+
+/* 报名系统弹框样式 end  */
+
+/* 手机弹框样式 start */
+
+.video-mask {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    z-index: 99998;
+    opacity: 0.7;
+}
+
+.video-modalDlg {
+    width: 70%;
+    height: auto;
+    left: 0;
+    position: fixed;
+    z-index: 99999;
+    margin: 45vw 12%;
+    background-color: #fff;
+    border-radius: 16rpx;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20rpx;
+}
+
+.video-modalDlg button {
+    width: 50%;
+    color: #fe5455;
+    background-color: #fff;
+    font-size: 16px;
+    border: none;
+}
+
+.video-modalDlg-view {
+    width: 100%;
+    height: auto;
+    margin-top: 10%;
+    display: flex;
+}
+
+/* 弹框样式 end  */
+
+

@@ -1,0 +1,65 @@
+var IndexGroup = {
+  getProgressLength: function (days) {
+    if(days != undefined){
+      var length = days * 3.3;
+      if (length > 48){
+        length = length % 24;
+        length += 24;
+        return length.toFixed(2);
+      }else{
+        return length;
+      }
+    }else{
+      return  3.3;
+    }
+  },
+  getProgressDays: function (days,i) {
+    if (days > 20) {
+      var base = true;
+      var j = 0;
+      if (i == 0) {
+        j = 0;
+      } else if (i == 1) {
+        j = 1;
+      } else if (i == 2) {
+        j = 2;
+      }
+      while (base) {
+        var n = Math.pow(2, i) * 10;
+        if (days >= n) {
+          i++;
+        } else {
+          base = false;
+        }
+      }
+      var m = Math.pow(2, i - 2 + j) * 10;
+      return m;
+    } else {
+      if (i == 0) { return 1 }
+      else {
+        return Math.pow(2, i - 1) * 10;
+      }
+    }
+  },
+  getNextDays:function(days,maxDay){
+    var j = 0;
+    var base =true;
+    while (base) {
+      var n = Math.pow(2, j) * 10;
+      if (days >= n) {
+        j = j + 1;
+      } else {
+        base = false;
+      }
+    }
+    var m = Math.pow(2, j) * 10;
+    var k = Math.ceil((m - days) / (maxDay / 2));
+    return "再邀请"+k+"个好友，就可领取"+m+"学分啦";
+  },
+}
+
+module.exports = {
+  getProgressLength: IndexGroup.getProgressLength,
+  getProgressDays: IndexGroup.getProgressDays,
+  getNextDays: IndexGroup.getNextDays,
+}

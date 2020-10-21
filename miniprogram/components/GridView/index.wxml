@@ -1,0 +1,13 @@
+<!--commpents/GridView.wxml-->
+<block wx:for="{{images}}" wx:key="image">
+  <block wx:if="{{images.length==1}}">
+    <image src="{{imgUrl+item.url}}" style="{{imageSize.direction(size,windowWidth)}}" bindload="loadImage" mode="aspectFit" catchtap="openImage" data-index="{{index}}" lazy-load	webp></image>
+  </block>
+  <block wx:elif="{{images.length==4}}">
+    <view class="images images-even"><image class="img" src="{{imgUrl+item.url}}" mode="aspectFill" catchtap="openImage" data-index="{{index}}" lazy-load	webp></image></view>
+  </block>
+  <block wx:else>
+    <view class="images" ><image class="img" src="{{imgUrl+item.url}}"   mode="aspectFill" catchtap="openImage" data-index="{{index}}" lazy-load	webp></image></view>
+  </block>
+</block>
+<wxs src="./index.wxs" module="imageSize"></wxs>

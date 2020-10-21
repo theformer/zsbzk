@@ -1,0 +1,30 @@
+/* packageA/pages/login_auth/base_info_auth.wxss */
+.avatar {
+  position: relative;
+  display: inline-block;
+  height: 80rpx;
+  width: 80rpx;
+  background: #fff;
+  border-radius: 96rpx;
+  border: 4rpx solid #fff;
+  vertical-align:top;
+  overflow: hidden;
+}
+.model-btn {
+  position: absolute;
+  bottom: 20vh;
+  width: 100%;
+  height: 88rpx;
+}
+.model-btn .warr-btn{
+  width: 75vw;
+  height: 88rpx;
+  line-height: 88rpx;
+  margin:auto;
+  text-align: center;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+  background-color: #FF2A2A;
+  color: #fff;
+  font-weight: bold;
+}

@@ -1,0 +1,29 @@
+<view class='topView'>
+  <image class='topViewImage' src='/static/images/icon/icon-course-top.png'></image>
+  <text class='topText'>包含所有课程</text>
+</view>
+
+<view class='listWrap' wx:for='{{courses}}' wx:key="index" wx:for-item='items'>
+  <view class='sectionHeadView'>
+    <view class='headerVerline'></view>
+    <view class='sectionHeader'>
+      <text class='num'>{{index + 1}}</text>
+      <text class='sectionTitle'>{{items.materiaProperName}}</text>
+    </view>
+  </view>
+  <view wx:for='{{items.childrens}}' wx:for-item='item' wx:key="index" >
+    <view class='rowView' >
+      <view class='verLine'>
+      <image class='cornerImage' src='/static/images/icon/icon-dot.png'></image>
+      </view>
+      <!-- <view class="arrow"></view>
+      <view class='courseTitle shadow padding'>
+        <text>{{item.name}}</text>
+      </view> -->
+      <view class="courseTitle padding-lg" catchtap="to_video" data-subcourseid="{{item.id}}"  data-materiaproper="{{items.materiaProper}}">
+        <image class="courseTitle-bg" src="/static/images/bgImg/course-title.png" mode="widthFix" style="width:100%;"></image>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,136 @@
+<!-- 砍价课程详情 -->
+<import src="/utils/wxParse/wxParse.wxml"></import>
+<loading wx:if="{{loading}}">加载中...</loading>
+<!-- 自定义弹框 start -->
+<view class="video-mask" catchtouchmove="preventTouchMove" wx:if="{{showDlg}}"></view>
+
+<view class="video-modalDlg" wx:if="{{showDlg}}">
+  <text style='padding-top:20rpx;color:#666666'>{{showContext}}</text>
+  <view class='video-modalDlg-view'>
+    <button bindtap="dismissDlg" plain="true">关闭</button>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumbercallback">好的</button>
+  </view>
+</view>
+<!-- 自定义弹框 end -->
+<view class="page navbar">
+  <view class="goods-detail-goods">
+    <swiper autoplay="true" circular="true" class="index-adcs-sqiper" duration="500" indicatorDots="true" interval="3000" style="width:100%;height:384rpx;">
+      <swiper-item>
+        <image class="goodsadvimg" src="{{imgUrl}}{{goods.bigPicUrl}}"></image>
+      </swiper-item>
+    </swiper>
+    <view class="countDown">
+      <view class="countDownleft">
+        <text>砍价课程免费拿</text>
+      </view>
+      <view class="countDownsx">
+        <text style='color:#ff5555;'>{{istimeTitle}}\n</text>
+        <view style='display: flex;margin-top: -8px;'>
+          <text wx:for="{{time}}" wx:key="item" wx:if="{{istime!=2}}"><text class="countDownnumber" >{{item}}</text>
+          <text class="sxtextview">{{index==0?'天':''}}{{index==1?'时':''}}{{index==2?'分':''}}{{index==3?'秒':''}}</text>
+          </text>
+        </view>
+      </view>
+    </view>
+    <view class="fui-cell-group fui-detail-group" style="margin-top:0;padding-top:8px;">
+      <view class="fui-cell price">
+        <block wx:if="{{ShowType}}">
+          <!-- <text style="display:inline-block;line-height:48rpx">原价:</text>
+          <text class="miniprice" selectable="true">￥{{goods.price}}</text> -->
+          <text style="display:inline-block;line-height:48rpx">限时优惠:</text>
+          <text class="miniprice" selectable="true">￥{{goods.disPrice}}</text>
+        </block>
+        <view style='float:right;font-size:24rpx;color:#999;margin-top:18rpx;'>已有{{goods.itemExercise.receiveNum}}人参与砍价</view>
+      </view>
+      <view class="fui-cell">
+        <view class="fui-cell-text name">
+          <text selectable="true" style='font-size: 30rpx;'>{{goods.kcname}}</text>
+        </view>
+        <view class="fui-cell-remark rule" style="margin-left: 60rpx;" bindtap="toggleDialog">
+          <i class="icox icox-activity" style="font-size:42rpx;color: #fd5555;"></i>
+          <view style="font-size: 20rpx;color: #666;margin-top:-6rpx;">规则</view>
+        </view>
+      </view>
+
+      <view class="subtitle">{{goods.subtitle}}</view>
+    </view>
+    <view class="detail-rule">
+      <view class="detail-rule-top">
+        砍价流程
+      </view>
+      <view class="detail-rule-bottom">
+        <view class="step active">
+          <view class="num">1</view>
+          <view class="text">选择相应课程</view>
+        </view>
+        <view class="step">
+          <view class="num">2</view>
+          <view class="text">邀请好友砍价</view>
+        </view>
+        <view class="step">
+          <view class="num">3</view>
+          <view class="text">砍到底价后免费拿</view>
+        </view>
+      </view>
+    </view>
+    <view class="fui-cell-group">
+      <view class="fui-cell">
+        <view class="fui-cell-info" style="padding:10px 0 10px 0;">课程详情</view>
+      </view>
+    </view>
+    <view class="goods-detail-info">
+      <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
+      </view>
+    </view>
+    <view class="fui-navbar {{isIphoneX && 'iphoneX'}}">
+      <!-- <navigator bindtap="backhome" class="nav-item" openType="switchTab" > -->
+      <navigator class="nav-item" open-type="navigateBack">
+        <view class="icox icox-homepage"></view>
+        <view class="label">返回</view>
+      </navigator>
+      <navigator class="nav-item" url="/pages/bargain/act/act">
+        <view class="icox icox-people"></view>
+        <view class="label">我的砍价</view>
+      </navigator>
+      <button wx:if="{{ShowType}}" class="nav-item btn buybtn" >
+       <text>直接购买</text>
+       <isAuthor bind:flagEvent="gotoBuy"></isAuthor>
+      </button>
+      <button class="nav-item btn bargainBuy" wx:if="{{goods.itemExercise.bargainState==1 && istime==1}}">
+        <text>砍价免费拿</text>
+        <isAuthor bind:flagEvent="openBargainItem"></isAuthor>
+      </button>
+      <view class="nav-item btn noBargain" wx:if="{{goods.swi==1}}">尚未开始</view>
+      <view class="nav-item btn noBargain" wx:if="{{goods.swi==2}}">已经结束</view>
+      <view class="nav-item btn noBargain" wx:if="{{goods.swi==3}}">库存不足</view>
+    </view>
+    <view class="{{isIpx?'fui-iphonex-button':''}}"></view>
+  </view>
+</view>
+
+<!-- 砍价 客服按钮布局 -->
+<button class="suspended-service button-hover" openType="contact" sessionFrom="weapp" showMessageCard="true" style="border:none;background-image:url(https://tel.360xkw.com//attachment/zixun.png);" wx:if="{{customer==1}}" plain='true'>
+</button>
+<view class="{{ showDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <view class="zan-dialog__container">
+    <view>
+      <view class='layui-layer-wrap' style='height:600rpx; padding-top:80rpx'>
+        <view class='scroll-view'>
+          <view style="text-align:center;color:#FF4F52;">砍价活动规则</view>
+          <view style='margin-top:15px;'>1.邀请多个好友一起砍价，砍到底价即可领取课程；</view>
+          <view style='margin-top:15px;'>2.对于同一个砍价，您只能帮助砍价一次；</view>
+          <view style='margin-top:15px;'>3.砍价成功领取课程，下载成考APP-我的课程学习；</view>
+          <view style='margin-top:15px;'>4.每次发起砍价商品24小时之后失效；</view>
+          <view style='margin-top:15px;'>5.每次砍价金额随机，参与好友越多越容易成功；</view>
+          <view style='margin-top:15px;'>6.自己发起的砍价商品默认是砍价一次；</view>
+          <view style='margin-top:15px;'>7.当帮砍金额为0时不计入砍计数；</view>
+          <view style='margin-top:15px;'>8.活动课程有数量限制，领完即止。先到先得！</view>
+          <view style='margin-top:15px;'>9、砍价课程有效期15天，过期之后可以继续砍价领取，观看学习的时候尽量缓存下载视频。</view>
+        </view>
+        <button class='closeBtn' bindtap='toggleDialog'>我知道了</button>
+      </view>
+    </view>
+  </view>
+</view>

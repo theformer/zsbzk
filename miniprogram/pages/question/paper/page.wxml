@@ -1,0 +1,25 @@
+<scroll-view class="scroll-box" scroll-y >
+  <view class="flex margin" catchtap="to_wechat" data-type="2">
+    <image src="/static/images/bgImg/bg-xxjh.png" mode="widthFix" style="width:100%;"></image>
+  </view>
+  <block wx:for="{{list}}" wx:key="list" >
+    <view class="item shadow margin padding-dp radius-xl " >
+      <view class="item-icon">
+        <image src="/static/images/icon/icon-paper02.png" wx:if="{{PaperTypeId == 1}}"></image>
+        <image src="/static/images/icon/icon-paper01.png" wx:if="{{PaperTypeId == 4}}"></image>
+      </view>
+      <view class="item-content">
+        <view class="text-df">{{item.paper.paperName}}</view>
+      </view>
+      <view class="item-btn">
+        <button class="cu-btn round btn-title text-sm bg-white" catchtap="to_mode" data-item="{{item}}">做题</button>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{list.length==0}}">
+    <view class="data-error">
+      <image src="/static/images/bgImg/data_error.png"></image>
+      <view class="error-tips">暂无数据</view>
+    </view>
+  </block>
+</scroll-view>

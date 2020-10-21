@@ -1,0 +1,36 @@
+<!--packageA/pages/community/label-module/page.wxml-->
+<!--pages/home/channel/page.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="title">已选标签</view>
+    <!-- <view class="label">按住拖拽调整顺序</view> -->
+  </view>
+  <view class="selected-ul">
+    <block wx:for="{{modules}}" wx:key="selected" >
+      <view class="selected-li" wx:if="{{index==moduleIndex}}">
+        <view class="grid-box" bindtap="moduleDelete">
+          #{{item.name}}
+          <image src="/static/images/icon/close-red.png" class="close"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="header">
+    <view class="title">热门标签</view>
+    <view class="title-hot">
+      <image src="/static/images/icon/hot.png"></image>
+    </view>
+  </view>
+  <view class="select-ul">
+    <block wx:for="{{modules}}" wx:key="select" >
+      <view class="select-li" wx:if="{{index!=moduleIndex}}">
+        <view class="grid-box" bindtap="moduleSelect" data-index="{{index}}">
+          <text>#{{item.name}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <button class="save-btn" hover-class="none" bindtap="saveLabel">确定</button>
+</view>
+

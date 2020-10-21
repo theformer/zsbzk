@@ -1,0 +1,13 @@
+<view class="model" wx:if="{{modelShow}}" catchtouchmove="start">
+  <view class="inner">
+    <view class="title">{{title}}</view>
+    <view class="subtitle">{{subtitle}}</view>
+    <view class="model-btns">
+      <button catchtap="cancelclick" class="cancel">拒绝</button>
+      <button  openType="getUserInfo" bindgetuserinfo='bindGetUserInfo' lang='zh_CN' wx:if="{{author=='getUserInfo'}}">授权</button>
+      <button  openType="getPhoneNumber" bindgetphonenumber='bindGetPhoneNumber' lang='zh_CN' wx:if="{{author=='getPhoneNumber'}}">授权</button>
+    </view>
+  </view>
+</view>
+<button class='author_btn ' catchtap="openAuthor"  wx:if="{{!isAuthor}}"></button>
+<button class='author_btn' catchtap='goOn' wx:else></button>

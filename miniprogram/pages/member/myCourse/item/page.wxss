@@ -1,0 +1,127 @@
+/* miniprogram/pages/member/myCourse/item/page.wxss */
+page {
+  background: #fff;
+}
+
+.topView {
+  width: 100%;
+  height: 90rpx;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+}
+
+.topViewImage {
+  width: 43rpx;
+  height: 44rpx;
+  margin-left: 26rpx;
+}
+
+.topText {
+  color: #393931;
+  font-size: 28rpx;
+  padding-left: 24rpx;
+}
+
+.listWrap {
+  position: relative;
+}
+
+.sectionHeadView {
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+}
+
+.headerVerline {
+  height: 100%;
+  width: 1px;
+  background: #ddd;
+  margin-left: 50rpx;
+}
+
+.sectionHeader {
+  height: 46rpx;
+  left: 26rpx;
+  background-color: #FF3233;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 23rpx;
+  position: absolute;
+}
+
+.num {
+  margin-left: 11rpx;
+  color: #FF3233;
+  background-color: white;
+  border-radius: 50%;
+  font-size: 24rpx;
+  width: 30rpx;
+  height: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionTitle {
+  padding-left: 10rpx;
+  padding-right: 20rpx;
+  color: white;
+  font-size: 28rpx;
+}
+
+.rowView {
+  display: flex;
+  align-items: center;
+  height: 120rpx;
+}
+
+.verLine {
+  height: 100%;
+  width: 1px;
+  background: #ddd;
+  margin-left: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cornerImage {
+  width: 13rpx;
+  height: 14rpx;
+  position: absolute;
+  left: 45.5rpx;
+}
+
+.courseTitle {
+  position: absolute;
+  font-size: 28rpx;
+  width: 88%;
+  left: 8%;
+  overflow: hidden;
+}
+.courseTitle .courseTitle-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.arrow{
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 10px 10px 10px 0;
+  border-style: solid;
+  border-color: transparent #EDEFF2 transparent transparent;
+  left: 10%;
+  box-shadow: 0px 0px 10px 0px #EDEFF2;
+}
+.indictImage {
+  position: absolute;
+  right: 30rpx;
+  width: 11rpx;
+  height: 20rpx;
+}

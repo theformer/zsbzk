@@ -1,0 +1,63 @@
+<!-- 砍价课程首页 -->
+<loading wx:if="{{loading}}">加载中...</loading>
+<!-- 免费资料引导 start -->
+<view class="freebargaining-mask" bindtap='showFreedismissDlg' catchtouchmove="preventTouchMove" wx:if="{{showFree}}">
+</view>
+<view class="showfree-modalDlg" bindtap='showFreedismissDlg' wx:if="{{showFree}}">
+  <button class='ui-button-contact' open-type="contact" sessionFrom='wepp' session-from='2'>
+    <image class='imgs' src='https://tel.360xkw.com/attachment/ziliao.png'></image>
+  </button>
+</view>
+<!-- 免费资料引导 end -->
+<!-- 自定义  富文本内容+关注公众号图片显示问题布局 start  -->
+<navigator url="/pages/appDlg/index" style='background-color:#e0000000;width:100%;height:auto;margin:0;padding:0 0;line-height:0;' wx:if="{{ShowType}}" hover-class='none'>
+  <image mode='widthFix' style='width:100%;' src='https://tel.360xkw.com/attachment/images/2/2018/08/UX27oxan9727Rkt3DdkhnXLnOr7nAd.png'></image>
+</navigator> 
+<!-- 自定义  富文本内容+关注公众号图片显示问题布局 end  -->
+<view class="page navbar bargain">
+  <image style='width:100%;' mode='widthFix' src='https://tel.360xkw.com/attachment/kanjia.jpg'></image>
+  <view>
+    <navigator class="fui-list" url="/pages/bargain/detail/detail?id={{item.id}}" wx:for="{{list}}" wx:key="item" wx:if="{{item.itemExercise !=undefined }}" hover-class="none">
+      <image class="fui-list-media" src="{{imgUrl + item.picUrl}}"></image>
+      <view class="fui-list-inner">
+        <text class="des">{{item.kcname}}</text>
+        <view style='display:flex;'>
+          <view class="price" wx:if="{{ShowType}}">
+            <text>{{item.itemExercise.receiveNum}}人已0元拿</text>
+            <text class="line">原价￥{{item.price}}</text>
+          </view>
+          <view class='price' style='height:60rpx;' wx:else>
+            <text style='line-height:60rpx;'>{{item.number}}人已免费拿</text>
+          </view>
+          <view class="groupbtn">点击免费拿</view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class="empty" wx:if="{{!list}}">
+    <view>暂无砍价商品</view>
+  </view>
+  <view class="searchEmpty" wx:if="{{emptyHint}}">
+    <image src="/static/images/search_empty.png"></image>
+    <view class="text">暂时没有任何商品</view>
+  </view>
+  <view class="fui-navbar footer-nav {{isIphoneX && 'iphoneX'}}">
+    <navigator class="nav-item" hoverClass="none" openType="switchTab" url="/pages/index/index">
+      <span class="icox icox-shouye1"></span>
+      <span class="label">返回首页</span>
+    </navigator>
+    <navigator class="nav-item active" hoverClass="none" openType="redirect" url="/pages/bargain/index/index">
+      <span class="icox icox-quanbukanjia"></span>
+      <span class="label">全部砍价</span>
+    </navigator>
+    <navigator class="nav-item" hoverClass="none" openType="redirect" url="/pages/bargain/act/act">
+      <span class="icox icox-kanjiazhong"></span>
+      <span class="label">砍价中</span>
+    </navigator>
+    <navigator class="nav-item" hoverClass="none" openType="redirect" url="/pages/bargain/purchase/purchase">
+      <span class="icox icox-yigoumai"></span>
+      <span class="label">已成功</span>
+    </navigator>
+  </view>
+  <view class="{{isIpx?'fui-iphonex-button':''}}"></view>
+</view>

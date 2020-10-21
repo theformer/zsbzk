@@ -1,0 +1,13 @@
+<!--miniprogram/pages/question/mode/page.wxml-->
+<view class="margin">
+  <view class="text-lg">{{data.paper.paperName}}</view>
+  <view class="margin-top-xl shadow padding-sm">
+    <view class="text-gray text-sm paperType_item">考试人数：<text class="text-red">{{data.paper.didUserCount}}</text>人</view>
+    <view class="text-gray text-sm paperType_item">考试时间：<text class="text-red">{{data.paper.answerTime || "120"}}</text>分钟</view>
+    <view class="text-gray text-sm paperType_item">合格标准：<text class="text-red">{{data.paper.passingScore || "60"}}</text>分及格</view>
+  </view>
+  <view class='exhibition_btn '>
+      <button class='cu-btn bg-blue text-white' bindtap='to_subject' data-type='1'>练习模式 </button>
+      <button class='cu-btn bg-red text-white' bindtap='to_subject' data-type='2'>考试模式</button>
+    </view>
+</view>

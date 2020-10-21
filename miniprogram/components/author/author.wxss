@@ -1,0 +1,111 @@
+/* Component/author.wxss */
+/* 
+  利用定位 + z-index
+ */
+.author_btn{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  opacity: 0;
+  z-index: 1000;
+}
+.author_btn::after{ 
+  border: none; 
+}
+
+.model button {
+    font-size: 30rpx;
+    background-color:#e0000000;
+    line-height: 100rpx;
+    width: 50%;
+    z-index: 9999;
+}
+
+.model button:after {
+    display: none;
+}
+
+.model {
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+}
+
+.model .inner {
+    width: 624rpx;
+    height: 390rpx;
+    background: #fff;
+    border-radius: 14rpx;
+    margin: 260rpx auto;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.model .inner .title {
+  position: relative;
+    font-size: 36rpx;
+    color: #333;
+    line-height: 100rpx;
+    text-align: center;
+    margin-top: 20rpx;
+    border-bottom: 1rpx solid #ebebeb;
+    z-index: 9999;
+}
+
+.model .inner .image {
+    text-align: center;
+    margin-top: 20rpx;
+}
+
+.model .inner image {
+    width: 342rpx;
+    height: 202rpx;
+}
+
+.model .inner .subtitle {
+    margin-top: 36rpx;
+    padding: 0 80rpx;
+    color: #666;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    z-index: 9999;
+    text-align: center;
+}
+
+.model-btns {
+    border-top: 1rpx solid #ebebeb;
+    height: 100rpx;
+    margin-top: 42rpx;
+    display: flex;
+    text-align: center;
+    font-size: 30rpx;
+    color: #202020;
+    line-height: 100rpx;
+    z-index: 9999;
+}
+.model-btns .cancel {
+    width: 50%;
+    position: relative;
+    z-index: 9999;
+}
+
+.model-btns .cancel:after {
+    content: " ";
+    position: absolute;
+    top: -1rpx;
+    right: 0;
+    width: 1px;
+    height: 210rpx;
+    border-right: 1px solid #ebebeb;
+    color: #ebebeb;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+}

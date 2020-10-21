@@ -1,0 +1,54 @@
+<view class="container">
+  <view class="top-nav">
+    <button class="img-btn nav-left {{tabIndex==0&&'nav-active'}}" bindtap="onchange" data-id="0">学分领取</button>
+    <button class="img-btn nav-right {{tabIndex==1&&'nav-active'}}" bindtap="onchange" data-id="1">我的兑换</button>
+  </view>
+  <swiper class='swiper-box' current="{{current}}" bindchange="swiperChange" duration="100">
+    <swiper-item>
+      <scroll-view class="item-scroll" scroll-y>
+        <block wx:for="{{creditRecord}}" wx:key="creditRecord" wx:for-item="arr" wx:for-index="arrIndex">
+          <view class="item-box">
+            <view class="item-header">
+              <view class="item-title">{{arr.createTime}}</view>
+            </view>
+            <block wx:for="{{arr.data}}" wx:key="credit">
+              <view class="item-cell" >
+                <view class="item-title">{{item.taskName}}</view>
+                <view class="item-content">+{{item.credit}}</view>
+              </view>
+            </block>
+          </view>
+        </block>
+        <block wx:if="{{creditRecord.length==0}}">
+          <view class="data-error">
+            <image src="/static/images/bgImg/data_error.png"></image>
+            <view class="error-tips">暂无数据</view>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class="item-scroll" scroll-y>
+        <block wx:for="{{exchangeList}}" wx:key="exchangeList" wx:for-item="list" wx:for-index="listIndex">
+          <view class="item-box">
+            <view class="item-header">
+              <view class="item-title">{{list.createTime}}</view>
+            </view>
+            <block wx:for="{{list.data}}" wx:key="exchange">
+              <view class="item-cell">
+                <view class="item-title">{{item.taskName}}</view>
+                <view class="item-content">{{item.credit}}</view>
+              </view>
+            </block>
+          </view>
+        </block>
+        <block wx:if="{{exchangeList.length==0}}">
+          <view class="data-error">
+            <image src="/static/images/bgImg/data_error.png"></image>
+            <view class="error-tips">暂无数据</view>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

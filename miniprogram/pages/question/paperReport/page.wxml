@@ -1,0 +1,100 @@
+<view class='nav-wrap text-white' style='height:{{CustomBar}}px;'>
+  <view class="nav-image" >
+    <image src="/static/images/bgImg/nav-bg.png" style="width:100%;height:{{CustomBar}}px;"></image>
+  </view>
+  <text class="nav-back cuIcon-back text-white" bindtap="pageBack"></text>
+  <view class='nav-title text-white' >考试成绩</view>
+</view>
+<view class='modelReport'>
+  <view class='report_top_bg' style="margin-top:{{CustomBar}}px;">
+    <image src='/static/images/bgImg/reportBg.png' mode="widthFix" style="width:100%;"></image>
+  </view>
+  <view class='report_analys'>
+    <view class='report_analys_box'>
+      <view class='report_accuracy'>
+        <text>{{accuracy}}</text>%</view>
+      <view class='report_text'>正确率</view>
+      <view class='report_detail'>
+        <view class='report_detail_li'>
+          <view class='report_detail_data'>{{submitTime}}</view>
+          <view class='report_detail_text'>做题时间</view>
+        </view>
+        <view class='report_detail_li'>
+          <view class='report_detail_data'>{{paperReport.didQuestionIds - paperReport.answerCorrectNum}}</view>
+          <view class='report_detail_text'>错题数</view>
+        </view>
+        <view class='report_detail_li'>
+          <view class='report_detail_data'>{{paperReport.didQuestionIds}}</view>
+          <view class='report_detail_text'>本次答题数</view>
+        </view>
+      </view>
+      <view class='report_control_button'>
+        <view class='report_control'>
+          <button class='report_lookAnswer_btn' bindtap='look_answer' >查看答案</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='report_other_info' >
+    <view class='report_info_item' bindtap='look_answer'>
+      <view class='report_item_img'>
+        <image src="/static/images/icon/icon-report01.png" ></image>
+      </view>
+      <view class='report_item_content'>
+        <view class='item_content_title'>查看错题</view>
+        <view class='item_content_tips'>做错{{paperReport.didQuestionIds - paperReport.answerCorrectNum}}题，未做{{paperReport.selectedQuestionIds - paperReport.didQuestionIds}}题</view>
+      </view>
+    </view>
+    <view class='report_info_item' bindtap='restart'>
+      <view class='report_item_img margin-left'>
+        <image src="/static/images/icon/icon-report02.png"></image>
+      </view>
+      <view class='report_item_content'>
+        <view class='item_content_title'>
+          重新考试
+        </view>
+        <view class='item_content_tips'>成绩不满意？再战</view>
+      </view>
+    </view>
+    <navigator class='report_info_item margin-top-xl' url="/pages/member/singin/page" hover-class='none'>
+      <view class='report_item_img '>
+        <image src="/static/images/icon/icon-report04.png"></image>
+      </view>
+      <view class='report_item_content'>
+        <view class='item_content_title'>
+          <text class="margin-right-xs">自考学分</text>
+          <view class="report_hot"><image src="/static/images/icon/icon-report-hot.png" mode="widthFix"></image></view>
+        </view>
+        <view class='item_content_tips'>做题送学分，学分购课程</view>
+      </view>
+    </navigator>
+    <navigator class='report_info_item margin-top-xl' url="/pages/credit_activity/course/page" hover-class='none'>
+      <view class='report_item_img margin-left'>
+        <image src="/static/images/icon/icon-report03.png"></image>
+      </view>
+      <view class='report_item_content'>
+        <view class='item_content_title'>通关课程</view>
+        <view class='item_content_tips'>万能作文、答题技巧</view>
+      </view>
+    </navigator>
+  </view>
+  <view class="bg-gray margin-top" style="height:30rpx"></view>
+  <view class="shadow radius-xl margin cu-list menu sm-border menu-avatar">
+    <view class=" cu-item" catchtap="to_wechat" data-type="2">
+      <view class="cu-icon">
+        <image src="/static/images/icon/qs-item03.png" mode="aspectFit"></image>
+      </view>
+      <view class="content">
+        <view class="text-df text-black">定制专属考试学习计划</view>
+        <view class="text-sm text-gray">更多自考资讯、免费学习视频...</view>
+      </view>
+      <text class="text-sm text-red">立即定制</text>
+    </view>
+  </view>
+  <view class='report_idea margin'>
+    <view class='report_idea_title text-bold'>专家建议</view>
+    <view class='report_idea_content margin-top margin-buttom'>
+      <text>{{commentary}}</text>
+    </view>
+  </view>
+</view>

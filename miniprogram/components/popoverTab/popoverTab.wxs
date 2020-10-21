@@ -1,0 +1,12 @@
+var htmlUtils = {
+  postion: function (touches, windowHeight){
+    if (touches.type==1){
+      if (touches.y > 280) {
+        return 'bottom:' + (windowHeight - touches.y + 30) + 'px';
+      } else {
+        return 'top:' + (touches.y + 30) + 'px';
+      }
+    }
+  }
+}
+module.exports =  htmlUtils

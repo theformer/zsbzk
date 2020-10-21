@@ -1,0 +1,76 @@
+<!--pages/community/release/page.wxml-->
+<loading wx:if="{{showLoading}}">发布中...</loading>
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <view class="form-item">
+      <input class="form-input {{inputValue.length>0&&'border'}}" placeholder="请输入标题" name="title" bindinput="bindKeyInput" ></input>
+    </view>
+    <view class="form-item">
+      <!-- <view class="toolbar" catchtouchend="format" >
+    <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
+    <i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
+    <i class="iconfont icon-format-header-3 {{formats.header === 3 ? 'ql-active' : ''}}" data-name="header" data-value="{{3}}"></i>
+    <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+    <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+    <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+    <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
+    <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+    <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
+  </view>
+      <editor class="form-textarea" placeholder="请输入内容" maxlength="-1" name="content" id="editor" bindready="onEditorReady"></editor> -->
+      <textarea class="form-textarea" placeholder="添加至少6个汉子的描述后，不要忘记选 择话题" 
+      maxlength="-1" name="content" show-confirm-bar="{{false}}"></textarea>
+    </view>
+    <view class="form-item">
+      <view class="form-upload">
+        <block wx:for="{{files}}" wx:key="imageFile">
+          <view class="form-uploader_file" data-index="{{index}}">
+            <view class="delBtn" data-index="{{index}}" bindtap="delImg"><image src="/static/images/icon/close.png"></image></view>
+            <image class="form-uploader_img" src="{{item.state ? imgUrl + item.url: item.url}}" mode="aspectFill" />
+          </view>
+        </block>
+        <block wx:if="{{videoFile.url}}">
+          <view class="delvideo" data-index="{{index}}" bindtap="delVideo"><image src="/static/images/icon/close.png"></image></view>
+          <video src="{{videoFile.url}}" class="video-container"></video>
+        </block>
+        <view class="form-uploader_file form-uploader-box" wx:if="{{files.length < 9 && videoFile.url == undefined }}">
+          <block wx:if="{{files.length==0 && videoFile.url == undefined }}">
+            <button class="form-uploader-input img-btn" bindtap="uploadImageOrVideo">
+              <image src="/static/images/icon/upload.png"></image>
+            </button>
+          </block>
+          <block wx:else>
+            <button class="form-uploader-input img-btn" bindtap="chooseImage">
+              <image src="/static/images/icon/upload.png"></image>
+            </button>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class="form-itme">
+      <view class="label-title" bindtap="chooseLabel">
+        <block wx:if="{{moduleIndex>=0}}">
+          <view class="label-active" >#{{modules[moduleIndex].name}}
+            <image src="/static/images/icon/close-red.png"></image>
+          </view>
+        </block>
+        <block wx:else><image src="/static/images/icon/label.png"></image>选择话题</block>
+      </view>
+      <!-- <view class="label-box">
+        <block wx:for="{{modules}}" wx:key="label">
+          <view class="label-item  {{moduleIndex == index ? 'label-active' :''}}" bindtap="changeLabel" data-index="{{index}}">#{{item.name}}</view>
+        </block>
+      </view> -->
+    </view>
+    <view class="form-item">
+      <view class="form-label">1、严禁发布涉政、涉黄、广告等违法内容，否则将做封号处理</view>
+      <view class="form-label">2、请关联正确的话题和论坛，错误关联的内容无法通过审核</view>
+      <view class="form-label">3、暂不支持交易内容发布，相关内容无法通过审核</view>
+    </view>
+    <view class="form-item">
+      <button class="form-submit" form-type="submit">发表</button>
+    </view>
+  </form>
+</view>
+<mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}">
+</mp-actionSheet>

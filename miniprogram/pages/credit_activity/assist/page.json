@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "自考学分免费领",
+  "usingComponents": {
+    "isAuthor": "/components/author/author"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#FB6D56",
+  "navigationBarTextStyle": "white"
+}

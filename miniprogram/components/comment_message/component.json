@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "isAuthor": "/components/author/author",
+    "popoverTab": "/components/popoverTab/popoverTab",
+    "mp-loading": "/components/loading/loading"
+  }
+}

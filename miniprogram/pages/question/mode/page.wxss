@@ -1,0 +1,32 @@
+/* miniprogram/pages/question/mode/page.wxss */
+.paperType_item{
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+  line-height: 50rpx;
+  padding-left: 50rpx;
+}
+.exhibition_btn{
+  position: relative;
+  margin-top: 80rpx
+}
+.exhibition_btn .cu-btn{
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  height: 74rpx;
+  font-size: 28rpx;
+  line-height: 74rpx;
+  text-align: center;
+  border-top-left-radius: 50rpx;
+  border-bottom-left-radius: 50rpx;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.exhibition_btn .cu-btn:last-child{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
+}

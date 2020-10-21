@@ -1,0 +1,11 @@
+<!--pages/member/feedback/feedback.wxml-->
+<view class='page'>
+  <form bindsubmit="bindFormSubmit" >
+    <view class='heading'>您的反馈是我们的动力</view>
+    <view class='textarea-box'><textarea class="errorContent" placeholder="请填写您的问题描述以便我们提供更好的帮助" 
+    maxlength="1000" auto-focus name="errorContent" show-confirm-bar="{{false}}" show-confirm-bar="{{false}}"
+    ></textarea></view>
+    <button form-type="submit" class='submit'> 提交 </button>
+  </form>
+</view>
+

@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "社区",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "isAuthor": "/components/author/author",
+    "comment_message":"/components/comment_message/component",
+    "popoverTab": "/components/popoverTab/popoverTab",
+    "mp-loading": "/components/loading/loading",
+    "GridView": "/components/GridView/index"
+  }
+}

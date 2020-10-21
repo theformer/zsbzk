@@ -1,0 +1,83 @@
+<wxs module="utils" src="../../../utils/utils.wxs" />
+<view class="container">
+  <view class="top-nav">
+    <button class="img-btn nav-left {{tabIndex==0&&'nav-active'}}" bindtap="onchange" data-id="0">帖子</button>
+    <button class="img-btn nav-right {{tabIndex==1&&'nav-active'}}" bindtap="onchange" data-id="1">视频</button>
+  </view>
+  <swiper class='swiper-box' current="{{current}}" bindchange="swiperChange" duration="100">
+    <swiper-item>
+      <scroll-view class="item-modules" scroll-y refresher-enabled="{{tabIndex==0}}"
+          refresher-threshold="{{100}}" refresher-triggered="{{refresher}}" 
+          bindrefresherrefresh="getPostNewDate"  bindscrolltolower="getUserTextPost">
+        <block wx:for="{{textPost}}" wx:key="list" wx:for-index="listIndex" wx:for-item="list">
+          <block wx:for="{{list}}" wx:key="comment" wx:for-index="comIndex" wx:for-item="item">
+            <view class="post-item" bindtap="openArticle" data-id="{{item.id}}">
+              <view class="post-content">
+                <view class="post-title">{{item.title}}</view>
+                <view class="post-time">
+                  <text class="post-commentCount">{{item.commentCount}}人回复</text>
+                  <text class="post-createTime">{{utils.DateUtils.dateFormerly(item.createTime)}}</text>
+                </view>
+              </view>
+              <view class="post-foot">
+                <view class="post-delete" catchtap="openDelete" data-id="{{item.id}}">
+                  <image src="/static/images/icon/big-delete.png"></image>
+                </view>
+              </view>
+            </view>
+          </block>
+        </block>
+
+        <block wx:if="{{textPost.length==0}}">
+          <view class="data-error">
+            <image src="/static/images/bgImg/data_error.png"></image>
+            <view class="error-tips">暂无数据</view>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class="item-modules" scroll-y refresher-enabled="{{tabIndex==1}}"
+          refresher-threshold="{{100}}" refresher-triggered="{{refresher}}" 
+          bindrefresherrefresh="getVideoNewDate"  bindscrolltolower="getUserVideoPost">
+        <block wx:for="{{videoPost}}" wx:key="videoList" wx:for-index="videoListIndex" wx:for-item="videoList">
+          <block wx:for="{{videoList}}" wx:key="video" wx:for-index="videoIndex" wx:for-item="video">
+            <view class="video-item" bindtap="openArticle" data-id="{{video.id}}">
+              <view class="video-photo">
+                <image src="{{imgUrl}}{{video.urls[0].firstImgUrl}}" class="poster-image" mode="aspectFill"></image>
+                <view class="video-layer">
+                </view>
+                <view class="video-icon">
+                  <image src="/static/images/icon/video-play.png"></image>
+                </view>
+                <view class="video-commentCount">
+                  <view class="video-message">
+                    <image src="/static/images/icon/message.png"></image>
+                  </view>
+                  <view class="video-count">{{video.commentCount}}</view>
+                </view>
+              </view>
+              <view class="video-title">{{video.title}}</view>
+              <view class="video-time">{{utils.DateUtils.dateFormerly(video.createTime)}}</view>
+              <view class="video-delete" catchtap="openDelete" data-id="{{video.id}}">
+                <image src="/static/images/icon/big-delete.png"></image>
+              </view>
+            </view>
+          </block>
+        </block>
+        <block wx:if="{{videoPost.length==0}}">
+          <view class="data-error">
+            <image src="/static/images/bgImg/data_error.png"></image>
+            <view class="error-tips">暂无数据</view>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view class="popModel" wx:if="{{delShow}}">
+  <view class="other-layer"></view>
+  <button class="okButtom img-btn" bindtap="confirmDel">删除</button>
+  <button class="delButtom img-btn" bindtap="cancelDel">取消</button>
+</view>

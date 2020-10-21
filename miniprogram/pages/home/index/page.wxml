@@ -1,0 +1,138 @@
+<!--pages/home/index/page.wxml-->
+<wxs module="pageJs" src="page.wxs" />
+<wxs module="utils" src="../../../utils/utils.wxs" />
+<view class="custom" style="padding-top:{{padding}}">
+  <view class="province" bindtap="city_options">
+    <view class="province-title">
+      <text>{{province.name ? pageJs.splitName(province.name) : ""}}</text>
+      <text class="red_radio" wx:if="{{red_radio}}"></text>
+    </view>
+  </view>
+  <view class="subcourse-box" style="width:{{subcourse_width}}" catchtap="questionChange">
+    <view class="subcourse-title">
+      <text>{{pageJs.questionSlice(subCourse.subCourseName)}}</text>
+    </view>
+    <image src="/static/images/icon/icon-order.png" mode="aspectFit" class="png"></image>
+  </view>
+</view>
+<view class="container">
+  <swiper class="swiper-box {{isIphoneX && 'iphoneX'}}">
+    <swiper-item >
+      <scroll-view  class="swiper-scroll" scroll-y>
+      <view class="quesiton-box padding">
+        <view class="question-statistics">
+          <view class="border_box">
+            <view class="statistic question-rate">
+              <view class="percentage"><text style="font-size:46rpx">{{reportCount.pj || 0}}</text>%</view>
+              <view class="cu-progress round  xs">
+                <view class="bg-red" style="width:{{reportCount.pj || 0}}%;"></view>
+              </view>
+              <view class="title margin-top">平均正确率</view>
+            </view>
+          </view>
+          <view class="border_box">
+            <view class="statistic question-count">
+              <view class="percentage"><text style="font-size:46rpx">{{reportCount.zzts || 0}}</text>道</view>
+              <view class="cu-progress round  xs">
+                <view class="bg-red" style="width:{{pageJs.progress(reportCount.zzts,reportCount.zts)}}%"></view>
+              </view>
+              <view class="title margin-top">做题总数量</view>
+            </view>
+          </view>
+        </view>
+        <view class="question-statistics">
+          <view class="border_box border_next" catchtap="to_credit">
+            <view class="">
+              <view class="title2">课程兑换</view>
+              <view class="percentage2">海量课程免费学</view>
+              <view class="btn_img">
+                <image src="/static/images/icon/right_btn.png" mode="aspectFit" class="qs-image-btn-left"></image>
+                <image src="/static/images/icon/score_btn.png" mode="aspectFit" class="qs-image-btn-right"></image>
+              </view>
+            </view>
+          </view>
+          <view class="border_box border_next" catchtap="toNextCurrent">
+            <view class="">
+              <view class="title2">考友圈</view>
+              <view class="percentage2">百万考生讨论区</view>
+              <view class="btn_img">
+                <image src="/static/images/icon/right_gif.png" mode="aspectFit" class="qs-image-btn-gif"></image>
+                <image src="/static/images/icon/msg_btn.png" mode="aspectFit" class="qs-image-btn-right"></image>
+              </view>
+            </view>
+          </view>
+          <view class="border_box border_next" catchtap="to_myclass">
+            <view class="">
+              <view class="title2">我的课程</view>
+              <view class="percentage2">开启学习之旅</view>
+              <view class="btn_img">
+                <image src="/static/images/icon/right_btn.png" mode="aspectFit" class="qs-image-btn-left"></image>
+                <image src="/static/images/icon/book_btn.png" mode="aspectFit" class="qs-image-btn-right"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="margin-top radius-xl shadow  padding">
+          <view class="flex justify-around">
+            <view class="qs-item" >
+              <image src="/static/images/icon/qs-coll.png" mode="aspectFit" class="qs-image"></image>
+              <view class="margin-top text-sm">我的收藏</view>
+              <isAuthor bind:flagEvent="toCollection" />
+            </view>
+            <view class="qs-item">
+              <image src="/static/images/icon/qs-error.png" mode="aspectFit" class="qs-image"></image>
+              <view class="cu-tag badge bg-red" wx:if="{{reportCount.ctb}}">{{reportCount.ctb}}</view>
+              <view class="margin-top text-sm">错题本</view>
+              <isAuthor bind:flagEvent="toWrongReview" />
+            </view>
+            <view class="qs-item">
+              <image src="/static/images/icon/qs-record.png" mode="aspectFit" class="qs-image"></image>
+              <view class="margin-top text-sm">做题记录</view>
+              <isAuthor bind:flagEvent="toReport" />
+            </view>
+          </view>
+          <view class="margin-top-xl"  catchtap="to_wechat" data-type="3">
+            <image src="/static/images/icon/qs-chat.png" mode="aspectFit" class="icon-xing margin-right-sm"></image>
+            <text class="text-df text-red">您还没有加入考生交流群</text>
+            <button class="cu-btn round text-white bg-red text-sm sm fr">立即加入</button>
+          </view>
+        </view>
+      </view>
+      <view class="shadow radius-xl margin cu-list menu sm-border menu-avatar" style="margin-top:0;">
+          <view class="arrow cu-item" catchtap="to_paper" data-type="1">
+            <view class="cu-icon">
+              <image src="/static/images/icon/qs-item01.png" mode="aspectFit"></image>
+            </view>
+            <view class="content">
+              <view class="text-df text-black">模拟试题</view>
+              <view class="text-sm text-gray">共有{{reportCount.mnsjzs}}套试题</view>
+            </view>
+          </view>
+          <view class="arrow cu-item" catchtap="to_paper" data-type="4">
+            <view class="cu-icon">
+              <image src="/static/images/icon/qs-item02.png" mode="aspectFit"></image>
+            </view>
+            <view class="content">
+              <view class="text-df text-black">历年真题</view>
+              <view class="text-sm text-gray">共有{{reportCount.lnsjzs}}套试题</view>
+            </view>
+          </view>
+          <view class=" cu-item" catchtap="to_wechat" data-type="2">
+            <view class="cu-icon">
+              <image src="/static/images/icon/qs-item03.png" mode="aspectFit"></image>
+            </view>
+            <view class="content">
+              <view class="text-df text-black">定制专属考试学习计划</view>
+              <view class="text-sm text-gray">更多自考资讯、免费学习视频...</view>
+            </view>
+            <text class="text-sm text-red">立即定制</text>
+          </view>
+        </view>
+        <view style="height:50rpx;"></view>
+      </scroll-view>
+      <view class="abs-task" catchtap="to_singin">
+        <image src="/static/images/icon/bg-task.png" mode="aspectFit"></image>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

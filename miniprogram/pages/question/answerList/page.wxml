@@ -1,0 +1,48 @@
+<wxs module="indexGroup" src="page.wxs" />
+<scroll-view class="scroll-box" scroll-y>
+  <view class="text-df margin" wx:if="{{indexGroup.isAnswer(questionTypes,1)}}">单项选择题</view>
+  <view class="margin">
+    <block wx:for="{{questionTypes}}" wx:key="single" wx:if="{{item==1}}">
+      <view class="cirle {{indexGroup.inspect(answerList[index])}}" catchtap="to_question" data-index="{{index}}">{{index+1}}</view>
+    </block>
+  </view>
+  <view class="text-df margin" wx:if="{{indexGroup.isAnswer(questionTypes,2)}}">多项选择题</view>
+  <view class="margin">
+    <block wx:for="{{questionTypes}}" wx:key="many" wx:if="{{item==2}}">
+      <view class="cirle {{indexGroup.inspect(answerList[index])}}" catchtap="to_question" data-index="{{index}}">{{index+1}}</view>
+    </block>
+  </view>
+  <view class="text-df margin" wx:if="{{indexGroup.isAnswer(questionTypes,3)}}">判断选择题</view>
+  <view class="margin">
+    <block wx:for="{{questionTypes}}" wx:key="judge" wx:if="{{item==3}}">
+      <view class="cirle {{indexGroup.inspect(answerList[index])}}" catchtap="to_question" data-index="{{index}}">{{index+1}}</view>
+    </block>
+  </view>
+  <view class="text-df margin" wx:if="{{indexGroup.isAnswer(questionTypes,4)}}">不定项选择题</view>
+  <view class="margin">
+    <block wx:for="{{questionTypes}}" wx:key="uncertain" wx:if="{{item==4}}">
+      <view class="cirle {{indexGroup.inspect(answerList[index])}}" catchtap="to_question" data-index="{{index}}">{{index+1}}</view>
+    </block>
+  </view>
+  <view class="text-df margin" wx:if="{{indexGroup.isAnswer(questionTypes,5)}}">简答题</view>
+  <view class="margin" >
+    <block wx:for="{{questionTypes}}" wx:key="JQuiz" wx:if="{{item==5}}">
+      <view class="cirle {{indexGroup.inspect(answerList[index])}}" catchtap="to_question" data-index="{{index}}">{{index+1}}</view>
+    </block>
+  </view>
+</scroll-view>
+<view class='answerList-button'>
+  <view class='button-ul'>
+    <view class='button-li'>
+      <view class='button-box bg-green'></view>做对</view>
+    <view class='button-li'>
+      <view class='button-box bg-red'></view>做错</view>
+    <view class='button-li'>
+      <view class='button-box bg-gray'></view>未做</view>
+  </view>
+  <view class='botton-options'>
+    <button class='button-btn bg-red' hover-class='none'>交卷
+      <isAuthor bind:flagEvent="changeSubmit"></isAuthor>
+    </button>
+  </view>
+</view>

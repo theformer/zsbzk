@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "兑换课程",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "isAuthor": "/components/author/author"
+  }
+}

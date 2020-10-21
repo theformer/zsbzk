@@ -1,0 +1,5 @@
+<view class="page" style="background:#fff;padding:0 24rpx">
+    <view class="fui-content">
+        <include src="/pages/common/bargainRule.wxml"></include>
+    </view>
+</view>

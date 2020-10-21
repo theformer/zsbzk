@@ -1,0 +1,150 @@
+/* miniprogram/pages/credit_activity/course/page.wxss */
+.scroll-box{
+  position: relative;
+  min-height: 90vh;
+}
+.subcourse-title{
+  position: relative;
+  font-size: 36rpx;
+  color: #26292C;
+  text-align: center;
+}
+.subcourse-title .png{
+  position: relative;
+  width: 28rpx;
+  height: 26rpx;
+  margin-left: 10rpx;
+}
+.nav-container{
+  position: relative;
+  margin-top: 9vh;
+  
+}
+
+.course-item{
+  position: relative;
+  padding: 30rpx 0;
+  margin:0 30rpx;
+  border-bottom: 2rpx solid #ECECEC;
+  display:flex;
+}
+.item-coverImg{
+  position: relative;
+  display: inline-block;
+  width: 45%;
+  height: auto;
+}
+.item-content{
+  position: relative;
+  display: inline-block;
+  width: 55%;
+}
+
+.rankstars{
+  display: inline-flex;
+  flex-direction: row;
+  height: 21rpx;
+  margin-right: 6rpx;
+  margin-top: 12rpx;
+  }
+.rankstars .icon-star{
+  padding-left: 3rpx;
+  height: 21rpx;
+  width: 20rpx;
+  margin-left: 10rpx;
+}
+
+.item-buttom{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: 48rpx;
+}
+
+.item-btn{
+  position: relative;
+  float: right;
+  padding: 0 20rpx;
+  margin: 0;
+  margin-right: 12rpx;
+  text-align: center;
+  border: 2rpx solid #FF3233;
+  height: 48rpx;
+}
+
+/* 弹窗样式 */
+.tips-box{
+  position: absolute;
+  margin: auto;
+  top: 30%;
+  width: 70vw;
+  height: 35vh;
+  border-radius: 22rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* justify-content: center; */
+  background-color: #FFF;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+.tips-top{
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+.tips-bottom{
+  position: relative;
+  display: block;
+}
+.tips-content{
+  position: relative;
+  margin-top: 45rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 40rpx;
+  color: #26292C;
+}
+.tips-btn{
+  position: relative;
+  padding: 0;
+  margin:auto;
+  width: 310rpx;
+  height: 65rpx;
+  text-align: center;
+  background-color: none;
+  background: none;
+}
+.tips-btn-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.load-close{
+  position: absolute;
+  width: 64rpx;
+  height: 64rpx;
+  font-size: 64rpx;
+  text-align: center;
+  margin: auto;
+  top: 68%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+.abs-task{
+  position: fixed;
+  width: 178rpx;
+  height: 175rpx;
+  right: 0;
+  bottom: 15%;
+  z-index: 19999;
+}

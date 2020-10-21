@@ -1,0 +1,86 @@
+/* custom-tab-bar/index.wxss */
+.bottom-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 105rpx;
+    background-color: #fff;
+    border-top: 1rpx solid #E4E4E4;
+    width: 100%;
+    position: fixed;
+    z-index: 999999;
+    bottom: 0;
+    left: 0;
+    overflow: visible;
+    box-sizing:inherit;
+}
+.bottom-bar.iphoneX{
+    padding-bottom: 50rpx;
+}
+
+.bottom-bar .item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100rpx;
+    /* width: 100rpx; */
+    flex: 1;
+    color: #333333;
+    font-size: 24rpx;
+}
+.bottom-bar .item .img-view{
+    position: relative;
+    height: 56rpx;
+    width: 100rpx;
+    padding-top: 10rpx;
+    display: flex;
+    justify-content: center;
+}
+.bottom-bar .item .img-view .badge{
+    position: absolute;
+    height: 30rpx;
+    min-width: 30rpx;
+    text-align: center;
+    color: #fff;
+    background-color: #f00;
+    font-size: 22rpx;
+    line-height: 30rpx;
+    border-radius: 20rpx;
+    top: 0rpx;
+    right: 10rpx;
+}
+
+.bottom-bar .item.active{
+    color: #D42722;
+}
+
+.bottom-bar .item .img-view .img{
+    display: block;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.bottom-bar .item .text{
+    text-align: center;
+}
+
+.flex-img{
+  position: relative;
+  width: 140rpx;
+  height: 140rpx;
+}
+.bottom-bar.iphoneX .img-view-img{
+  bottom:50rpx;
+}
+.img-view-img{
+  position:absolute;
+  width:140rpx;
+  height:140rpx;
+  padding:10rpx;
+  border-top:1rpx solid #E4E4E4;
+  border-radius:50%;
+  text-align:center;
+  justify-content:center;
+  bottom:0px;
+  background:#fff;
+}

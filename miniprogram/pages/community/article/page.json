@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "帖子",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "isAuthor": "/components/author/author",
+    "popoverTab": "/components/popoverTab/popoverTab",
+    "mp-loading": "/components/loading/loading"
+  }
+}

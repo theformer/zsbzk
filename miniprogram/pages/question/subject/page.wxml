@@ -1,0 +1,245 @@
+<wxs module="indexGroup" src="page.wxs" />
+<swiper class='swiper-box' current="{{currentId}}" bindchange="bindChange" duration="100" >
+	<block wx:for="{{questionList}}" wx:key='questionIndex' wx:for-item='question' wx:index="index">
+		<swiper-item>
+      <view class="{{question.isSituation == 1 ? 'float-question':''}} " style="{{indexGroup.questionTop(windowHeight,question.situationMove,question.isSituation)}}" >
+        <view class="question-top" wx:if="{{question.isSituation == 1}}" catchtouchmove="situation_touchmove" >
+          <image src="/static/images/bgImg/question-top.png" mode="widthFix" style="width:100%;"></image>
+        </view>
+        <view  class="question-box">
+          <view class='questionTitle {{ellipsis?"questionTitle-ellipsis":question.questionTitle.length>maxLength?"":"questionTitle-ellipsis"}}'>
+            <view class="margin-bottom">
+              <text class='questionTypeName'>【{{question.questionTypeName}}题】</text>
+              <view class='serial-number'>
+                <text class="text-red text-df">{{index+1}}</text>
+                <text>/{{questionList.length}}</text>
+              </view>
+            </view>
+            <rich-text class='questionTitle-content text-df ' nodes="{{indexGroup.replaceImg(question.questionTitle)}}"></rich-text>
+          </view>
+          <view class='ellipsis' wx:if="{{question.questionTitle.length>maxLength}}" bindtap="ellipsis">
+            <text>{{ellipsis?"收起":"展开"}}</text>
+            <!-- <image src='../../../static/images/ellipsis-{{ellipsis?"up":"down" }}.png'></image> -->
+          </view>
+          <block wx:if='{{question.questionTypeId==1}}'>
+            <view class="table padding-sm margin-top {{(answerList[index] != null && auth != 1) || Islook_up ?'look_up':''}}" >
+              <view class="table-row {{didAnswerSet[index]=='A'?'check':''}} {{correctAnswer[index]=='A'?'answerCheck':''}}" 
+              wx:if='{{question.a}}' catchtap="get_answer" data-answer="A">
+                <view class="table-cell"><view class="cirle">A</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.a)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{didAnswerSet[index]=='B'?'check':''}} {{correctAnswer[index]=='B'?'answerCheck':''}}" 
+              wx:if='{{question.b}}'  catchtap="get_answer" data-answer="B">
+                <view class="table-cell"><view class="cirle">B</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.b)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{didAnswerSet[index]=='C'?'check':''}} {{correctAnswer[index]=='C'?'answerCheck':''}}" 
+              wx:if='{{question.c}}'  catchtap="get_answer" data-answer="C">
+                <view class="table-cell"><view class="cirle">C</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.c)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{didAnswerSet[index]=='D'?'check':''}} {{correctAnswer[index]=='D'?'answerCheck':''}}" 
+              wx:if='{{question.d}}'  catchtap="get_answer" data-answer="D">
+                <view class="table-cell"><view class="cirle">D</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.d)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{didAnswerSet[index]=='E'?'check':''}} {{correctAnswer[index]=='E'?'answerCheck':''}}" 
+              wx:if='{{question.e}}'  catchtap="get_answer" data-answer="E">
+                <view class="table-cell"><view class="cirle">E</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.e)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{didAnswerSet[index]=='F'?'check':''}} {{correctAnswer[index]=='F'?'answerCheck':''}}" 
+              wx:if='{{question.f}}'  catchtap="get_answer" data-answer="F">
+                <view class="table-cell"><view class="cirle">F</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.f)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{didAnswerSet[index]=='G'?'check':''}} {{correctAnswer[index]=='G'?'answerCheck':''}}" 
+              wx:if='{{question.g}}'  catchtap="get_answer" data-answer="G">
+                <view class="table-cell"><view class="cirle">G</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.g)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{didAnswerSet[index]=='H'?'check':''}} {{correctAnswer[index]=='H'?'answerCheck':''}}" 
+              wx:if='{{question.h}}'  catchtap="get_answer" data-answer="H">
+                <view class="table-cell"><view class="cirle">H</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.h)}}"></rich-text></view>
+              </view>
+            </view>
+          </block>
+          <block wx:elif='{{question.questionTypeId==2 || question.questionTypeId==4}}'>
+            <view class="table padding-sm margin-top {{(answerList[index] != null && auth != 1) || Islook_up ?'look_up':''}}" >
+              <view class="table-row {{indexGroup.isAnswer(didAnswerSet[index],'A')?'check':''}} {{indexGroup.isAnswer(correctAnswer[index],'A')?'answerCheck':''}}" 
+              wx:if='{{question.a}}' catchtap="get_answer_many" data-answer="A">
+                <view class="table-cell"><view class="cirle">A</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.a)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{indexGroup.isAnswer(didAnswerSet[index],'B')?'check':''}} {{indexGroup.isAnswer(correctAnswer[index],'B')?'answerCheck':''}}" 
+              wx:if='{{question.b}}'  catchtap="get_answer_many" data-answer="B">
+                <view class="table-cell"><view class="cirle">B</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.b)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{indexGroup.isAnswer(didAnswerSet[index],'C')?'check':''}} {{indexGroup.isAnswer(correctAnswer[index],'C')?'answerCheck':''}}" 
+              wx:if='{{question.c}}'  catchtap="get_answer_many" data-answer="C">
+                <view class="table-cell"><view class="cirle">C</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.c)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{indexGroup.isAnswer(didAnswerSet[index],'D')?'check':''}} {{indexGroup.isAnswer(correctAnswer[index],'D')?'answerCheck':''}}" 
+              wx:if='{{question.d}}'  catchtap="get_answer_many" data-answer="D">
+                <view class="table-cell"><view class="cirle">D</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.d)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{indexGroup.isAnswer(didAnswerSet[index],'E')?'check':''}} {{indexGroup.isAnswer(correctAnswer[index],'E')?'answerCheck':''}}" 
+              wx:if='{{question.e}}'  catchtap="get_answer_many" data-answer="E">
+                <view class="table-cell"><view class="cirle">E</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.e)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{indexGroup.isAnswer(didAnswerSet[index],'F')?'check':''}} {{indexGroup.isAnswer(correctAnswer[index],'F')?'answerCheck':''}}" 
+              wx:if='{{question.f}}'  catchtap="get_answer_many" data-answer="F">
+                <view class="table-cell"><view class="cirle">F</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.f)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{indexGroup.isAnswer(didAnswerSet[index],'G')?'check':''}} {{indexGroup.isAnswer(correctAnswer[index],'G')?'answerCheck':''}}" 
+              wx:if='{{question.g}}'  catchtap="get_answer_many" data-answer="G">
+                <view class="table-cell"><view class="cirle">G</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.g)}}"></rich-text></view>
+              </view>
+              <view class="table-row {{indexGroup.isAnswer(didAnswerSet[index],'H')?'check':''}} {{indexGroup.isAnswer(correctAnswer[index],'H')?'answerCheck':''}}" 
+              wx:if='{{question.h}}'  catchtap="get_answer_many" data-answer="H">
+                <view class="table-cell"><view class="cirle">H</view></view>
+                <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.h)}}"></rich-text></view>
+              </view>
+            </view>
+            <view class="checkbox-btn" bindtap='submit_many' wx:if="{{answerList[index] == null && !Islook_up}}">提交答案</view>
+          </block>
+          <block wx:elif='{{question.questionTypeId==3}}'>
+            <view class="table padding-sm margin-top {{(answerList[index] != null && auth != 1) || Islook_up ?'look_up':''}}">
+              <view class="table-row {{didAnswerSet[index]=='A'?'check':''}} {{correctAnswer[index]=='A'?'answerCheck':''}}" 
+                wx:if='{{question.a}}' catchtap="get_answer_judge" data-answer="A">
+                  <view class="table-cell"><view class="cirle">A</view></view>
+                  <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.a)}}"></rich-text></view>
+                </view>
+                <view class="table-row {{didAnswerSet[index]=='B'?'check':''}} {{correctAnswer[index]=='B'?'answerCheck':''}}" 
+                wx:if='{{question.b}}'  catchtap="get_answer_judge" data-answer="B">
+                  <view class="table-cell"><view class="cirle">B</view></view>
+                  <view class="table-cell text-gray text-df"><rich-text  nodes="{{indexGroup.replaceImg(question.b)}}"></rich-text></view>
+                </view>
+            </view>
+          </block>
+          <block wx:elif='{{question.questionTypeId==5}}'>
+            <view class='margin-top-xl text-xs text-gray text-center padding-bottom'>
+              <text class="text-line">本题不支持作答，请提交后核对答案并查看解析</text>
+            </view>
+          </block>
+          <block wx:if="{{Islook_up || (paperType!=2 && answerList[index]) || (paperType!=2 && answerState[index])}}">
+            <view class='obAnswer shadow margin padding-xs' wx:if="{{question.questionTypeId!=5}}">
+              <view class='rightAnswer'>
+                <view class='rightAnswer-title'>参考答案</view>
+                <view class='text-green text-xl text-content '>{{question.obAnswer}}</view>
+              </view>
+              <view class='myAnswer' >
+                <view class='rightAnswer-title'>我的答案</view>
+                <view class='{{answerList[index] == 2 ? "text-green" : "text-red"}} text-xl text-content '>{{didAnswerSet[index] ? didAnswerSet[index] : "无"}}</view>
+              </view>
+            </view>
+            <view class="shadow margin padding ">
+              <view class='analyzeWord-title'>
+                <image src="/static/images/bgImg/analys.png" style='width:130rpx;height:34rpx;'></image>
+              </view>
+              <view class="text-sm margin-top">参考解析</view>
+              <block wx:if="{{question.questionTypeId==5}}">
+                <view class='analyzeWord margin-top-sm'>
+                  <rich-text class="radio-titel" nodes="{{question.subAnswer ? indexGroup.replaceImg(question.subAnswer) : '暂无解析'}}"></rich-text>
+                </view>
+              </block>
+              <block wx:else>
+                <view class='analyzeWord margin-top-sm'>
+                  <rich-text class="radio-titel" nodes="{{question.analyzeWord ? indexGroup.replaceImg(question.analyzeWord) : '暂无解析'}}"></rich-text>
+                </view>
+              </block>
+            </view>
+          </block>
+        </view>
+      </view>
+      <view class="situation padding" wx:if="{{question.isSituation == 1}}">
+        <view class="text-lg text-bold">阅读材料</view>
+        <view class="text-df text-grey padding-xs padding-bottom-xl">
+          <rich-text  nodes="{{indexGroup.replaceImg(question.situationData.content)}}"></rich-text>
+        </view>
+      </view>
+		</swiper-item>
+	</block>
+</swiper>
+
+ <view class='nav-tab' wx:if="{{questionList.length>0}}">
+    <block wx:if="{{paperType}}">
+    <view class='menu' bindtap='openAnswerList'>
+      <view class='icon-image'>
+        <image src='/static/images/icon/question-answerList.png'></image>
+      </view>
+      <text class='menu-name'>答题卡</text>
+    </view>
+    <view class='menu' wx:if="{{paperType==2 && !Islook_up}}" >
+      <view class='icon-image'>
+        <image src='/static/images/icon/question-time.png'></image>
+      </view>
+      <text class='menu-name'>{{clock?clock:'02:30:00'}}</text>
+    </view>
+    <view class='menu' wx:if="{{paperType==4}}" catchtap="deleteRecord">
+      <view class='icon-image'>
+        <image src='/static/images/icon/question-delete.png'></image>
+      </view>
+      <text class='menu-name'>移除</text>
+    </view>
+    <view class='menu' wx:if="{{paperType!=2 || Islook_up}}" catchtap='clickAnswerState'>
+      <view class='icon-image'>
+        <image src='/static/images/icon/question-look.png'></image>
+      </view>
+      <text class='menu-name'>{{answerState[activeIndex]?"关闭解析":"查看解析"}}</text>
+    </view>
+    <view class='menu' wx:if="{{paperType==4 || Islook_up}}" catchtap="recovery_question">
+      <view class='icon-image'>
+        <image src='/static/images/icon/question-error.png'></image>
+      </view>
+      <text class='menu-name'>纠错</text>
+    </view>    
+    <view class='menu' wx:if="{{(paperType==2 || paperType==1) && !Islook_up }}">
+      <view class='icon-image'>
+        <image src='/static/images/icon/question-submit.png'></image>
+      </view>
+      <text class='menu-name'>交卷</text>
+      <isAuthor bind:flagEvent="changeSubmit"></isAuthor>
+    </view>
+    <view class='menu' wx:if="{{paperType!=4}}">
+      <view class='icon-image'>
+        <image src="/static/images/icon/question-{{indexGroup.ArrayIndexOf(collectionList,questionIds[activeIndex])?'coll-active':'coll'}}.png"></image>
+      </view>
+      <text class="menu-name">{{indexGroup.ArrayIndexOf(collectionList,questionIds[activeIndex])?'取消收藏':'收藏'}}</text>
+      <isAuthor bind:flagEvent="checkCollection"></isAuthor>
+    </view>
+    </block>
+    <block wx:else>
+      <navigator class="gotoHome" url="/pages/home/index/page" open-type="switchTab">去练习更多题目<text class="boldtext">GO！</text></navigator>
+    </block>
+</view>
+<!-- 交卷弹框 -->
+<view class='modelSubmitpaper' wx:if="{{submitPaperShow}}">
+  <view class='submit-box'>
+    <view class="submit-bg-tips">
+      <image src='/static/images/bgImg/bg-submit-tips.png' mode="widthFix" style="width:100%;"></image>
+    </view>
+    <view class='floatbtn'>
+      <view class='remarks'>
+        <view class="back-tips" wx:if="{{tipsEvent}}">你还有10道题没有做哦！相信自己</view>
+        <view class="submit-tips" wx:else>
+          <view class="margin-top-lg text-lg ">当前做题进度{{indexGroup.filterArrayAndCount(answerList)}}/{{questionList.length}}</view>
+          <view class="margin-top-sm text-sm text-grey"><text class="cuIcon-remind lg text-gray margin-right-xs"></text><text>倒计时{{clock?clock:'02:30:00'}}</text></view>
+        </view>
+      </view>
+      <view class='submit-btn'>
+        <view bindtap='changeSubmit' class="btn-mt text-white bg-grey text-center">继续做题</view>
+        <view bindtap="submitPaper"  class="btn-mt text-white bg-red text-center" >立即交卷</view>
+      </view>
+    </view>
+  </view>
+  <view class='altremodel'></view>
+</view>
+<include src="/pages/common/loading.wxml" wx:if="{{loadModal}}"/>

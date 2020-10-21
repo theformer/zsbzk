@@ -1,0 +1,26 @@
+<!--pages/member/blacklist/page.wxml-->
+<view class="container">
+  <scroll-view class="item-scroll" scroll-y>
+    <block wx:for="{{list}}" wx:key="blackList">
+      <view class="item">
+        <view class="item-header">
+          <view class="user-photo">
+            <image src="{{item.photoUrl ? item.photoUrl :  photoUrl}}"></image>
+          </view>
+        </view>
+        <view class="item-content">
+          <view class="user-name">{{item.nickName}}</view>
+        </view>
+        <view class="item-foot">
+          <button class="img-btn gray-button" bindtap="deleteUserFromBlackList" data-index="{{index}}">解除拉黑</button>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <block wx:if="{{list.length==0}}">
+    <view class="data-error">
+      <image src="/static/images/bgImg/data_error.png"></image>
+      <view class="error-tips">暂无数据</view>
+    </view>
+  </block>
+</view>

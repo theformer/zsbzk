@@ -1,0 +1,97 @@
+<!--pages/home/test-circle/page.wxml-->
+<wxs module="utils" src="../../../utils/utils.wxs" />
+<view>
+  <scroll-view class=" swiper-scroll {{userAuth ? 'notHeight':''}}" scroll-y refresher-enabled
+          refresher-threshold="{{500}}" refresher-triggered="{{pageConfig.refresher}}" 
+          bindrefresherrefresh="article_init"   bindscrolltolower="getHotPosts" lower-threshold="800">
+  <view class="shadow arrow hot-news margin padding-dp radius-xl" catchtap="to_hotNews">
+    <view class="inner-elem text-lg text-bold icon-line paddinsg-right-sm">
+      <text class="text-black">今日</text><text class="text-red">资讯</text>
+    </view>
+    <swiper class="roll-hot" vertical autoplay interval="3000"  circular bindchange="hotChange">
+      <swiper-item wx:for="{{hotNewsList}}" wx:for-item="item" wx:key="news" >
+        <view class="hot-item text-df">{{item.title}}</view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <block wx:for="{{postList}}" wx:for-item="list" wx:key="list" wx:for-index="pindex">
+    <block wx:for="{{list}}" wx:key="info" wx:for-index="index">
+      <view class="shadow margin padding-dp radius-xl">
+        <view class="item-header item-content" catchtap="openCommunity" data-id="{{item.id}}">
+          <block wx:for="{{item.labelList}}" wx:key="label" wx:for-item="label">
+              <text class="laber text-xs margin-right-sm" >{{label.name}}</text>
+          </block>
+          <text class="text-lg text-black" style="font-weight: 800">{{item.title}} </text>{{item.content}}
+        </view>
+        <view class="margin-top-sm relative cu-card" >
+          <GridView images="{{item.urls}}" wx:if="{{item.state == 1 && item.urls.length>0}}"></GridView>
+          <view class="video-container" wx:elif="{{item.state == 2}}">
+            <image class="poster-image" src="{{imgUrl}}{{item.urls[0].firstImgUrl}}" mode="aspectFill"></image>
+            <view class="video-play" catchtap="openCommunity" data-id="{{item.id}}">
+              <image src="/static/images/icon/video-play.png" ></image>
+            </view>
+          </view>
+          <!-- <fullscreen-video video="{{item.urls[0]}}"  wx:elif="{{item.state == 2}}"></fullscreen-video> -->
+        </view>
+        <view class="margin-top-sm relative">
+          <image class="cu-avatar sm round margin-right-sm bg-white" src="{{item.photoUrl ? item.photoUrl : photoUrl}}"></image>
+          <text class="text-gray text-sm margin-right-sm">{{item.userNickName}}</text>
+          <text class="text-gray text-sm margin-right-sm">{{utils.DateUtils.dateFormerly(item.createTime)}}</text>
+          <text class="text-gray text-sm margin-right-sm">{{item.readCount}}阅读</text>
+          <image src="/static/images/icon/delete.png" class="icon-right-delete" bindtap="openPorover" data-indexA="{{pindex}}" data-indexB="{{index}}"></image>
+        </view>
+        <view wx:if="{{item.moduleName}}" class="tab_box">
+          <view class="tab">
+            <text><text class="text-df text-bold text-red margin-right-xs">#</text><text class="text-sm"> {{item.moduleName}}</text></text>
+          </view>
+        </view>
+        <view class="margin-top-sm relative flex">
+          <button class="flex-sub img-btn"  hover-class="none" catchtap="openCommunity" data-id="{{item.id}}">
+            <image class="item-icon-btn margin-right-sm" src="/static/images/icon/icon-post.png" ></image>
+            <text class="text-black text-df">分享</text>
+          </button>
+          <button class="flex-sub img-btn" catchtap="openMessage" data-indexA="{{pindex}}" data-indexB="{{index}}" data-id="{{item.id}}" data-num="{{item.commentCount}}">
+            <image class="item-icon-btn margin-right-sm" src="/static/images/icon/icon-mark.png" ></image>
+            <text class="text-black text-df">{{item.commentCount ? item.commentCount : '评论'}}</text>
+          </button>
+          <button class="flex-sub img-btn" >
+            <image class="item-icon-btn margin-right-sm" src="/static/images/icon/icon-appreciate-active.png" wx:if="{{item.likeState == 1 }}"></image>
+            <image class="item-icon-btn margin-right-sm" src="/static/images/icon/icon-appreciate.png" wx:else></image>
+            <text class="text-black text-df">{{item.likeCount > 0 ? item.likeCount : "赞"}}</text>
+            <isAuthor bind:flagEvent="userAddLikeCount" data-indexA="{{pindex}}" data-indexB="{{index}}" bind:openEvent="openEvent"></isAuthor>
+          </button>
+        </view>
+      </view>
+    </block>
+  </block>
+  <view class="item-buttom">
+    <text class="text-line">{{pullUp? "加载中..." : "我是有底线的"}}</text>
+  </view>
+</scroll-view>
+</view>
+<view class="release-fixed"  wx:if="{{release_show_text}}">
+  <button class="release-btn release_show_text img-btn">
+    <image src="/static/images/bgImg/release_tip.png"></image>
+  </button>
+</view>
+
+<view class="release-fixed"  wx:if="{{!userAuth}}">
+  <view class="release-tips" wx:if="{{release_show}}">
+    <view class="arrow"></view>发帖子分享你的趣事，获取学分换课程</view>
+  <button class="release-btn img-btn">
+    <image src="/static/images/bgImg/release.png"></image>
+    <isAuthor bind:flagEvent="release"></isAuthor>
+  </button>
+</view>
+<view class="fixed-bottom-group" wx:if="{{group_modal  && !userAuth}}" catchtap="to_wechat" data-type="3" >
+  <image src="/static/images/icon/icon-group.png" class="group-logo"></image>
+  <text class="text-df margin-left-sm">您还没有加入考生交流群</text>
+  <view class="group-btn" >立即加入</view>
+  <view class="group-close" catchtap="group_close">
+    <text class="cuIcon-close text-gray"></text>
+  </view>
+</view>
+
+<comment_message commentData="{{commentData}}" bind:close_comment="close_message" class="{{!messageShow && 'messageShow'}}"></comment_message>
+<popoverTab wx:if="{{popoverShow}}" bind:callback="popover_callback" touches="{{touches}}"></popoverTab>
+<include src="/pages/common/loading.wxml" wx:if="{{loadModal}}"/>

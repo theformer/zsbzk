@@ -1,0 +1,97 @@
+.manu{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #FFFFFF;
+  z-index: 999;
+  overflow: hidden;
+}
+.manu-head{
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 36%;
+  background-color: #EEEEEE;
+  z-index: 1001;
+  overflow-y:  scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.manu-body{
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 64%;
+  z-index: 1001;
+  background-color: #FFFFFF;
+  overflow-y:  scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.manu-ul{
+  position: relative;
+  width: 100%;
+  /* border-bottom: 1rpx solid #E6E6E6; */
+  background: #F7F7F7;
+  padding-bottom: 1rpx;
+}
+.manu-ul.active{
+  background-color: #FFFFFF;
+}
+
+
+.manu-ul .courseName{
+  position: relative;
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  line-height:  84rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+
+}
+.active .courseName{
+  color: #FF3233;
+}
+.manu-ul .right-direction{
+  display: none;
+}
+.manu-ul.active .right-direction{
+  position: absolute;
+  display: block;
+  top: 24rpx;
+  right: 10rpx;
+  font-size: 24rpx;
+  color: #FF3233;
+}
+.manu-li .right-direction{
+  display: none;
+}
+.manu-li.active .right-direction{
+  position: absolute;
+  display: block;
+  top: 16rpx;
+  right: 27rpx;
+  font-size: 34rpx;
+  color: #FF3233;
+}
+.manu-li{
+  position: relative;
+  border-bottom: 1rpx solid #E3E3E3;
+}
+.manu-li .subCourseName{
+  position: relative;
+  margin-left: 28rpx;
+  margin-right: 40rpx;
+  height: 84rpx;
+  line-height:  84rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.active .subCourseName{
+  color: #FF3233;
+}

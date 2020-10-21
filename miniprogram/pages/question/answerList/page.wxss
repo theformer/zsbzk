@@ -1,0 +1,79 @@
+/* miniprogram/pages/question/answerList/page.wxss */
+.scroll-box{
+  position: relative;
+  max-height: 88vh;
+}
+.cirle {
+  position: relative;
+  display: inline-block;
+  width: 76rpx;
+  height: 76rpx;
+  color: #26292C;
+  line-height: 76rpx;
+  font-size: 30rpx;
+  text-align: center;
+  background-color: #EDEFF2;
+  border-radius: 50%;
+  margin-right: 28rpx;
+  margin-bottom:30rpx;
+}
+.cirle:nth-child(7n){
+  margin-right: 0;
+}
+.cirle.success{
+  color: #fff;
+  background-color: #15C29D;
+}
+.cirle.error{
+  color: #fff;
+  background-color: #FF3233;
+}
+
+.answerList-button{
+  position: fixed;
+  height: 12vh;
+  bottom: 0;
+  width: 100%;
+}
+.answerList-button .button-ul{
+  position: relative;
+  height: 5vh;
+  display: flex;
+  padding: 0 120rpx;
+  border-top:1rpx solid #DDDDDD;
+}
+.answerList-button .button-li{
+  position: relative;
+  display: inline-block;
+  flex: 1;
+  font-size: 22rpx;
+  text-align: center;
+  line-height: 5vh;
+  vertical-align:middle;
+}
+.answerList-button .button-li .button-box{
+  position: absolute;
+  display: inline-block;
+  top: 18rpx;
+  width:22rpx; 
+  height:22rpx;
+  left: 15%;
+  border: 1rpx solid #DDDDDD;
+}
+.answerList-button .botton-options{
+  position: relative;
+  display: flex;
+  height: 7vh;
+}
+.answerList-button .button-btn{
+  position: relative;
+  flex: 1;
+  display: inline-block;
+  font-size: 28rpx;
+  line-height: 7vh;
+  text-align: center;
+  color: #FFFFFF;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}

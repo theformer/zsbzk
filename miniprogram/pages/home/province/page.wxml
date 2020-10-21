@@ -1,0 +1,37 @@
+<view class="searchLetter touchClass">
+  <view wx:for="{{search}}" class="letter-item" wx:key="index" data-letter="{{item.name}}" catchtouchend="clickLetter" >{{item.name}}</view>
+</view>
+<block wx:if="{{isShowLetter}}">
+  <view class="showSlectedLetter">
+    {{showLetter}}
+  </view>
+</block>
+
+<scroll-view scroll-y scroll-into-view="{{scrollTopId}}" style="height:100vh;">
+  <view class='provinceName'>
+    <view class="header">定位省份</view>
+    <view class="thisCityName">
+      {{province.name}}
+    </view>
+  </view>
+  <view class='selection'>
+    <view class="header">热门省份</view>
+    <view class="city">
+      <view class="item_city "  
+      wx:for="{{hotProvince}}" wx:for-item="ct" wx:key="city" data-province="{{ct}}" catchtap="bindCity" wx:for-index="cityIndex">
+        <view class="city_name">{{ct.name}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="selection" wx:for="{{cityList}}" wx:key="initials" id="{{item.initials}}" wx:for-index="initialsIndex">
+    <view class="item_letter"  >
+      <view class="city_initials">{{item.initials}}</view>
+    </view>
+    <view class="city">
+      <view class="item_city {{province_name == ct.province_name?'active-name':''}}"  
+      wx:for="{{item.provinces}}" wx:for-item="ct" wx:key="city" data-province="{{ct}}" catchtap="bindCity" wx:for-index="cityIndex">
+        <view class="city_name">{{ct.name}}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

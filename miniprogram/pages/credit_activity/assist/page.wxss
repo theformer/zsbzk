@@ -1,0 +1,859 @@
+/* .page{
+  padding-bottom: 105rpx;
+}
+.page.iphoneX{
+  padding-bottom: 150rpx;
+} */
+.page{
+  background: #FB6D56;
+}
+.page.pageFixed{
+  position:fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+}
+.page-top{
+  position: relative;
+  background-image: url("https://tel.360xkw.com/attachment/assist-top-bg02.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 76vw;
+}
+.page-main{
+  position: absolute;
+  top: 76vw;
+  width: 100%;
+  height: 237vw;
+  background-image: url("https://tel.360xkw.com/attachment/assist-main-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.page-content{
+  position: relative;
+  top: -70rpx;
+}
+.rule-btn{
+  position: absolute;
+  top: 25rpx;
+  right: 0px;
+  width: 137rpx;
+  height: 50rpx;
+  border-radius:25rpx 0px 0px 25rpx;
+  line-height: 50rpx;
+  font-size: 22rpx;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  color: #F75656;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+}
+.activity-date{
+  position: relative;
+  top: 330rpx;
+  margin-left:188rpx; 
+  margin-right: 188rpx;
+  background-color:#FFF;
+  color: #FF454A; 
+  font-size: 28rpx;
+  text-align: center;
+  height: 58rpx;
+  line-height: 58rpx;
+  border-radius: 24rpx;
+  box-shadow:0px 0px 11px 0px rgba(209,12,9,1);
+
+}
+.main-container{
+  position: relative;
+  margin: 0 30rpx 0rpx 30rpx;
+  background:rgba(255,255,255,1);
+  height: 470rpx;
+  border-radius:10rpx;
+}
+.main-container .user-heading{
+  position: relative;
+  top:-58rpx;
+  margin: auto;
+  width:120rpx;
+  height:120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  background:linear-gradient(0deg,rgba(249,81,69,1) 0%,rgba(253,187,98,1) 100%);
+  box-shadow:0px 2rpx 10rpx 0px rgba(248,83,79,0.55);
+  border-radius:50%;
+  vertical-align: middle;
+  overflow:hidden;
+}
+.user-heading .user-avatarUrl{
+  width:107rpx;
+  height:107rpx;
+  line-height: 107rpx;
+  vertical-align: middle;
+  background:linear-gradient(0deg,rgba(249,81,69,1) 0%,rgba(253,187,98,1) 100%);
+  border-radius:50%;
+  margin: auto;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  overflow:hidden;
+}
+.main-container .user-name{
+  position: relative;
+  margin-top: 5rpx;
+  text-align: center;
+  top :-58rpx;
+  font-size: 30rpx;
+  color: #540600;
+}
+.main-container .user-vipDays{
+  position: relative;
+  top: -20rpx;
+  font-size: 50rpx;
+  text-align: center;
+  color: #540600;
+  font-weight:  bolder;
+}
+.user-vipDays .receiveDays{
+  color: #F3281D;
+}
+.exercise-countdown{
+  position: relative;
+  height: 48rpx;
+  line-height: 48rpx;
+  color: #540600;
+}
+.exercise-countdown .countdown-infor{
+  position: relative;
+  float: left;
+  font-size: 24rpx;
+  left: 28rpx;
+}
+.exercise-countdown .countdown-time{
+  position: relative;
+  font-size: 22rpx;
+  float: right;
+  right: 30rpx;
+}
+.main-container .exercise-message{
+  position: relative;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-top:20rpx; 
+  text-align: center;
+  font-size: 26rpx;
+}
+.exercise-message .exercise-message-content{
+  position: relative;
+  display: inline-block;
+  padding:0 30rpx; 
+  border-radius:10rpx;
+  background: linear-gradient(0deg,rgba(254,75,64,1) 0%,rgba(254,170,61,1) 100%);
+  color: #FFFFFF;
+  letter-spacing: 1rpx;
+}
+.countdown-time .time{
+  position: relative;
+  padding: 5rpx;
+  background:linear-gradient(0deg,rgba(254,75,64,1) 0%,rgba(254,170,61,1) 100%);
+  color: #FFFFFF;
+  font-size: 24rpx;
+}
+.main-container .exercise-progress{
+  position: relative;
+  height: 100rpx;
+  margin: 10rpx 30rpx 0rpx 30rpx;
+  padding-top: 5rpx;
+}
+.exercise-progress .exercise-progress-background{
+  position: absolute;
+  height: 26rpx;
+  width: 100%;
+  background-color: #FFD9CE;
+  border-radius:20rpx;
+  top: 10rpx;
+}
+.exercise-progress-background .exercise-progress-entity{
+  position: relative;
+  height: 100%;
+  background:linear-gradient(0deg,rgba(248,83,79,1) 0%,rgba(255,191,16,1) 100%);
+  border-radius:10px;
+}
+.exercise-progress .exercise-progress-days{
+  position: relative;
+  height: 100%;
+}
+.exercise-progress-days .exercise-progress-node{
+  position: relative;
+  top: 0;
+  height: 100%;
+  width: 120rpx;
+  font-size: 24rpx;
+  color: #FB5418; 
+  text-align: center;
+  float:left;
+}
+.exercise-progress-node .point{
+  position: absolute;
+  width: 36rpx;
+  height: 36rpx;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #FFD9CE;
+  left: 0;
+  right: 0;
+}
+.exercise-progress-node.next-node .point{
+  /* position: relative; */
+  width: 48rpx;
+  height: 48rpx; 
+  top:-8rpx;
+}
+
+.exercise-progress .point-1{
+  left: -35rpx;
+}
+.exercise-progress .point-2{
+  left: -30rpx;
+}
+.exercise-progress .point-3{
+  left: 0;
+}
+.exercise-progress .point-4{
+  left: 25%;
+}
+
+.exercise-progress-node.active .point{
+  background:linear-gradient(0deg,rgba(248,83,79,1) 0%,rgba(255,191,16,1) 100%);
+}
+.exercise-progress-node .progress-explain{
+  position: relative;
+  margin-top: 50rpx;
+} 
+.base-btn{
+  position: relative;
+  margin: 50rpx 30rpx 0rpx 30rpx; 
+  height: 150rpx;
+}
+.base-btn .promoter-btn{
+  position: relative;
+  height: 110rpx;
+}
+.assist-btn{
+  background:linear-gradient(0deg,rgba(255,192,29,1) 0%,rgba(255,242,52,1) 100%);
+  box-shadow:0px 2rpx 10rpx 0px rgba(170,125,0,0.55), 0rpx 6rpx 0rpx 0px rgba(255,192,29,0.6);
+  border-radius:47rpx;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.assist-disabled-btn{
+  background:linear-gradient(0deg,rgba(100, 100, 100, 1) 0%,rgba(185, 186, 185, 1) 100%);
+  box-shadow:0px 2rpx 10rpx 0px rgba(54,54,54,0.55), 0rpx 6rpx 0rpx 0px rgba(54,54,54,1);
+  border-radius:47rpx;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.assist-disabled-btn.open-exercise{
+  position: relative;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin: 0 40rpx;
+  color: #FFFFFF;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.assist-btn.open-exercise{
+  position: relative;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin: 0 40rpx;
+  color: #540600;
+  font-size: 40rpx;
+  font-weight: bold;
+  letter-spacing: 5rpx;
+}
+.assist-btn.receive-btn{
+  position: relative;
+  /* display: inline-block; */
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #540600;
+  font-size: 40rpx;
+  font-weight: bold;
+  letter-spacing: 5rpx;
+  width: 42%;
+  float: left;
+}
+.assist-btn.share-btn{
+  position: relative;
+  /* display: inline-block; */
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #540600;
+  font-size: 40rpx;
+  font-weight: bold;
+  letter-spacing: 5rpx;
+  width: 53%;
+  float: right;
+}
+.base-btn .share-tips{
+  position: relative;
+  float: right;
+  color: #FFF;
+  width: 53%;
+  text-align: center;
+  font-size: 24rpx;
+}
+.main-friend-tips{
+  position: relative;
+  margin: 0 36rpx;
+  height: 128rpx;
+}
+.main-friend-box{
+  position: relative;
+  height: 518rpx;
+  margin: 0 30rpx;
+  background-color: #FFFFFF;
+  box-shadow:0px 6rpx 26rpx 0px rgba(220,21,16,0.52);
+  border-radius:10rpx;
+}
+.main-friend-box .friend-container{
+  position: relative;
+  margin: 0rpx 46rpx;
+  padding-top: 25rpx;
+  height: 390rpx;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch; 
+  line-height: 390rpx;
+}
+.friend-container .no-friend{
+  position: relative;
+  margin: auto;
+  height: 331rpx;
+  width: 359rpx;
+  margin-top: 60rpx;
+  vertical-align: middle;
+}
+.main-friend-box .friend-tps{
+  position: relative;
+  text-align: center;
+  color: #F5241F;
+  padding-top: 30rpx;
+  font-size: 24rpx;
+}
+.main-friend-box .friend-tps text{
+  font-size: 28rpx;
+}
+.friend-container .friend-infor{
+  position: relative;
+  padding-top: 10rpx;
+  padding-bottom:20rpx;
+  height: 100rpx;
+  line-height: 100rpx; 
+  /* border-bottom: 2px solid #FFD9CE; */
+}
+.friend-container .friend-infor .friend-heading{
+  position: relative;
+  display: inline-block;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+}
+.friend-heading image{
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.friend-container .friend-infor .friend-name{
+  position: relative;
+  display: inline-block;
+  color: #540600;
+  padding: 0 30rpx;
+  font-size: 24rpx;
+  width: 200rpx;
+  height: 100%;
+  line-height: 75rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.friend-container .friend-infor .friend-exercise-explain{
+  position: relative;
+  display: inline-block;
+  color: #540600;
+  font-size: 30rpx;
+  text-align: left;
+  vertical-align: middle;
+}
+.friend-exercise-explain .friend-exercise-days{
+  color: #FB5418;
+}
+.buttom-zl{
+  position: relative;
+  margin:0 24rpx;
+  margin-top: 20rpx;
+  height: 180rpx;
+}
+.buttom-ck{
+  position: relative;
+  margin: 0 60rpx;
+  margin-top: 40rpx;
+  height: 150rpx;
+}
+
+
+/* 报名系统弹框样式  start  */
+
+.zan-dialog__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background: rgb(0, 0, 0); /*设置阴影半透明背景如： background: rgba(0, 0, 0, 0.4);*/
+    display: none;
+    opacity: 0.8;
+}
+
+.zan-dialog__container {
+    position: fixed;
+    top: 200rpx;
+    width: 80%;
+    /* height: 350rpx;弹窗布局高，与下面弹出距离transform有关 */
+    margin-left: 10vw;
+    background: #fff;
+    transform: translateY(400%); /*弹框弹出距离，与弹框布局高度有关，如300%表示弹起距离为3倍弹窗高度*/
+    transition: all 0.4s ease;
+    z-index: 12;
+    border-radius: 20rpx;
+    /* box-shadow: 0px 3px 3px 2px gainsboro;弹框的悬浮阴影效果，如不需要可注释该行 */
+}
+.zan-receive-container{
+  margin:auto;left:0; right:0; top:0; bottom:0;
+  width: 558rpx;
+  height: 441rpx;
+  background-image: url("https://tel.360xkw.com/attachment/assist-receive-menu.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10rpx;
+}
+.zan-assist-success{
+  margin:auto;left:0; right:0; top:0; bottom:0;
+  width: 558rpx;
+  height: 494rpx;
+  background-image: url("https://tel.360xkw.com/attachment/asssit-success-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10rpx;
+}
+.zan-assist-success .assist-success-content{
+  position: relative;
+  top: 70%;
+  text-align: center;
+  margin: auto;
+  font-size: 30rpx;
+  color: #3F100A;
+}
+.zan-assist-success .assist-success-btn{
+  position: relative;
+  top: 78%;
+  width: 360rpx;
+  margin: auto;
+  height: 88rpx;
+  color: #540600;
+  font-size: 35rpx;
+  letter-spacing: 2rpx;
+  font-weight: bold;
+}
+.zan-assist-success .assist-success-content .assist-success-days{
+  color: #F5241F;
+  font-size: 38rpx;
+}
+.zan-dialog__container .zan-dialog-bg{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.zan-dialog--show .closeIcon{
+  position: relative;
+  width: 72rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  color: #FFF;
+  margin: auto;
+  bottom: -20rpx;
+}
+.zan-receive-logo{
+  width:190rpx;
+  height:68rpx;
+}
+.zan-receive-container .zan-receive-content{
+  margin:100rpx 30rpx 0 30rpx;
+  text-align: center;
+  color: #3F100A;
+  font-size: 30rpx;
+  font-weight: bold;
+  letter-spacing: 1rpx;
+}
+.zan-receive-content view{
+  padding-top: 20rpx;
+}
+.zan-receive-content .receiveDays{
+  color: #FB5418;
+  font-size: 40rpx;
+}
+.closeIcon .iconfont{
+  font-size: 72rpx;
+}
+.zan-dialog--show .zan-dialog__container {
+    transform: translateY(0);
+}
+.zan-dialog__container .zan-dialog-head{
+  position: relative;
+  height: 95rpx;
+  line-height: 95rpx;
+}
+.zan-dialog-head .zan-dialog-image{
+  position: relative;
+  display: block;
+  height: 38rpx;
+  width: 147rpx;
+  margin: auto;
+}
+.zan-dialog--show .layui-layer-wrap{
+  height:600rpx; 
+  background:linear-gradient(180deg,rgba(254,235,239,1) 0%,rgba(252,239,241,0) 100%);
+  margin: 0 20rpx;
+}
+
+.zan-dialog--show .zan-dialog__mask {
+    display: block;
+}
+.zan-receive-container .assist-receive-tips{
+  position:relative;
+  margin: auto;
+  margin-top: 70rpx;
+  width:411rpx;
+  height:70rpx;
+}
+.zan-receive-container .assist-receive-btn{
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+.zan-receive-container .assist-confim-btn{
+  position: relative;
+  display: inline-block;
+  width:257rpx;
+  height: 113rpx;
+  margin: 0;
+  padding: 0;
+}
+.zan-receive-container .assist-continue-btn{
+  position: relative;
+  display: inline-block;
+  width:257rpx;
+  height: 113rpx;
+  margin: 0;
+  padding: 0;
+}
+.zan-receive-container .assist-receive-tipss{
+  position: relative;
+  text-align: center;
+  font-size: 24rpx;
+  margin: 20rpx auto;
+  color: #FFF;
+}
+.closeBtn {
+    position: relative;
+    width: 60%;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    border: 0;
+    letter-spacing: 2px;
+    font-size: 36rpx;
+    font-weight: bold;
+    margin: auto;
+    top: 50rpx;
+    color: #3F100A;
+}
+
+.scroll-view {
+    height: 500rpx;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    
+}
+
+.scroll-view text {
+    font-size: 14px;
+    color: #3F100A;
+    width: 90%;
+    /* background: #fff; */
+    margin: 0 auto;
+    line-height: 2;
+}
+
+/* 报名系统弹框样式 end  */
+
+/* 授权弹框样式 start */
+
+.model button {
+    font-size: 30rpx;
+    background-color:#e0000000;
+    line-height: 100rpx;
+    width: 50%;
+}
+
+.model button:after {
+    display: none;
+}
+
+.model {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+}
+
+.model .inner {
+    width: 624rpx;
+    height: 380rpx;
+    background: #fff;
+    border-radius: 8rpx;
+    margin: 260rpx auto;
+    overflow: hidden;
+}
+
+.model .inner .title {
+    font-size: 36rpx;
+    color: #000;
+    line-height: 100rpx;
+    text-align: center;
+    margin-top: 20rpx;
+    border-bottom: 1rpx solid #ebebeb;
+}
+
+.model .inner .image {
+    text-align: center;
+    margin-top: 20rpx;
+}
+
+.model .inner image {
+    width: 342rpx;
+    height: 202rpx;
+}
+
+.model .inner .subtitle {
+    margin-top: 36rpx;
+    padding: 0 80rpx;
+    color: #888;
+    font-size: 26rpx;
+    line-height: 40rpx;
+}
+
+.model-btns {
+    border-top: 1rpx solid #ebebeb;
+    height: 100rpx;
+    margin-top: 42rpx;
+    display: flex;
+    text-align: center;
+    font-size: 30rpx;
+    color: #000;
+    line-height: 100rpx;
+}
+
+.model-btns .cancel {
+    width: 50%;
+    position: relative;
+}
+
+.model-btns .cancel:after {
+    content: " ";
+    position: absolute;
+    top: -1rpx;
+    right: 0;
+    width: 1px;
+    height: 210rpx;
+    border-right: 1px solid #ebebeb;
+    color: #ebebeb;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+}
+button::after{
+  border: none;
+}
+/* 授权弹框样式 end */
+
+/* 滚动动画 */
+.trundle{
+    animation: topMove 10s ease-out infinite; /*无限循环这个过程*/
+}
+
+@keyframes topMove{
+    0%{margin-top: 0px;}
+    100%{margin-top: -100px;}
+}
+
+/* .num:nth-child(4){margin-right: 30px;}
+.num:nth-child(3){margin-right: 60px;}
+.num:nth-child(2){margin-right: 90px;}
+.num:nth-child(1){margin-right: 120px;} */
+
+/*将数字与图片信息进行绑定*/
+/* #a1:hover ~ #photos{animation: move1 .5s ease-out forwards;}
+#a2:hover ~ #photos{animation: move2 .5s ease-out forwards;}
+#a3:hover ~ #photos{animation: move3 .5s ease-out forwards;}
+#a4:hover ~ #photos{animation: move4 .5s ease-out forwards;}
+#a5:hover ~ #photos{animation: move5 .5s ease-out forwards;}
+
+@keyframes move1{100%{margin-left: 0px;}}
+@keyframes move2{100%{margin-left: -500px;}}
+@keyframes move3{100%{margin-left: -1000px;}}
+@keyframes move4{100%{margin-left: -1500px;}}
+@keyframes move5{100%{margin-left: -2000px;}} */
+/* 滚动动画end */
+
+/* 按钮动画 start  */
+
+.scaleAnimation {
+    animation: jello 2.5s;
+    -webkit-animation: jello 2.5s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    transform-origin: 50% 50% 0px;
+    -webkit-transform-origin: 50% 50% 0px;
+}
+
+@keyframes jello {
+    from, 0%, to {
+        transform: none;
+    }
+
+    50% {
+        transform: scale(0.9, 0.9);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+@-webkit-keyframes jello {
+    from, 0%, to {
+        transform: none;
+    }
+
+    50% {
+        transform: scale(0.9, 0.9);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+
+/* 按钮动画 :end */
+
+.release-fixed {
+  position: fixed;
+  bottom: 23%;
+  width: auto;
+  height: 112rpx;
+  line-height: 112rpx;
+  right: 7rpx;
+  z-index: 99;
+}
+
+.release-fixed .release-tips {
+  position: relative;
+  float: left;
+  margin-left: 15vw;
+  height: 60rpx;
+  color: #fff;
+  line-height: 60rpx;
+  width: 65vw;
+  border-radius: 10rpx;
+  text-align: center;
+  background: #e6645f;
+  margin-top: 24rpx;
+}
+
+.release-tips .arrow {
+  position: absolute;
+  top: 16rpx;
+  right: -28rpx; /* 圆角的位置需要细心调试哦 */
+  width: 0;
+  height: 0;
+  font-size: 0;
+  border: solid 16rpx;
+  border-color: transparent transparent transparent #e6645f;
+}
+
+.release-fixed .release-btn {
+  position: relative;
+  float: right;
+  width: 110rpx;
+  height: 112rpx;
+  margin-right: 24rpx;
+  z-index: 10;
+}
+
+.fixed-bottom-group{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background-color: #FFF1F1;
+  line-height: 100rpx;
+  padding-left: 40rpx;
+  z-index: 99;
+}
+.fixed-bottom-group .group-logo{
+  position: relative;
+  width: 58rpx;
+  height: 48rpx;
+  vertical-align: middle;
+}
+.fixed-bottom-group .group-btn{
+  position: relative;
+  float: right;
+  color: #FF3233;
+  height: 100rpx;
+  margin-right: 60rpx;
+}
+.fixed-bottom-group .group-close{
+  position: absolute;
+  line-height: 30rpx;
+  top: 10rpx;
+  right: 20rpx;
+  font-size: 30rpx;
+}
+
+.shareTips{
+  position: fixed;
+  top: 0;
+  right: 4%;
+  width: 495rpx;
+  height: 88rpx;
+}
+
+.closeModel{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 88rpx;
+  height: 88rpx;
+}

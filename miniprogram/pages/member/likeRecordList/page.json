@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我赞过的",
+  "usingComponents": {
+    "mp-loading": "/components/loading/loading"
+  }
+}

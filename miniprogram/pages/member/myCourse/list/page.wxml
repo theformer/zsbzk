@@ -1,0 +1,28 @@
+<!--miniprogram/pages/member/myCourse/list/page.wxml-->
+<wxs module="utils" src="../../../../utils/utils.wxs" />
+<scroll-view class="scroll-box" scroll-y>
+  <block wx:for="{{list}}" wx:key="list">
+    <view class="course-item">
+      <view class="item-coverImg">
+        <image src="{{imgUrl + item.picUrl}}" mode="widthFix" style="width:100%;border-radius:10rpx;" ></image>
+      </view>
+      <view class="item-content padding-left-sm">
+        <view class="text-df">{{item.itemsName}}</view>
+        <view class="margin-top-xs">
+          <text class="text-gray text-xs">有效期：{{utils.dataTermSub(item.endTime)}} </text>
+        </view>
+        <view class="item-buttom">
+          <button class="item-btn cu-btn round text-sm bg-white text-red" catchtap="to_study" data-item="{{item}}">
+            <text>开始学习</text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{list.length==0}}">
+    <view class="data-error">
+      <image src="/static/images/bgImg/data_error.png" ></image>
+      <view class="error-tips">暂无数据</view>  
+    </view>
+  </block>
+</scroll-view>

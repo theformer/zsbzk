@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "考友圈",
+  "usingComponents": {
+    "isAuthor": "/components/author/author",
+    "comment_message":"/components/comment_message/component",
+    "popoverTab": "/components/popoverTab/popoverTab",
+    "GridView": "/components/GridView/index"
+  }
+}
